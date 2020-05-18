@@ -61,8 +61,6 @@ function license(passed) {
 // Also note that const variables need to be declared with the value because we can't assign the value to it later.
 ```
 
-
-
 Another good example for scope is that if two variables in different blocks are assigned with `let`, they are actually two different variables that just happen to have the same name.
 
 ```js
