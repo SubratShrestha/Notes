@@ -95,3 +95,26 @@ It doesn't work like that in ES6 in that the variables declared with `const` and
 If a variable inside this **dead zone** is used, an error is raised, instead of the variable returning undefined.
 
 The variables come out of this zone when they are assigned a value, when we can use them normally.
+
+
+
+## Data privacy without IIFEs.
+
+Before, with `var`, we needed to make an IIFE to have data privacy, but now with `let` and `const`, we can easily just make another block and since variables defined with let and const are only defined within the blocks, we already have data privacy.
+
+```js
+// ES5 with IIFEs.
+(function() {
+    var a = 1; 
+    var b = 2;
+})();
+
+// ES6.
+{
+    let a = 1;
+	let b = 2;
+}
+
+// Running any of these would result in the same thing, ReferenceError.
+```
+
