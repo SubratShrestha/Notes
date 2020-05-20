@@ -17,15 +17,9 @@ yearOfBirth = 1990;
 const yearOfBirth = 1990;
 ```
 
-
-
-
-
 ## let.
 
 `let` is very similar to the `var` in that the values are immutable. Like `const`, variables declared with `let` are **block scoped**.
-
-
 
 ## Scope.
 
@@ -36,7 +30,7 @@ const yearOfBirth = 1990;
 function license(passed) {
     var name = 'john';
     var yearOfBirth = 1990;
-    
+
     if (passed) {
         console.log(name + ", born in " + yearOfBirth + 'can drive.');
     }
@@ -50,7 +44,7 @@ but `let` and `const` are block scoped, meaning that it is defined and can be us
 function license(passed) {
     let name = 'john';
     const yearOfBirth = 1990;
-    
+
     if (passed) {
         console.log(name + ", born in " + yearOfBirth + 'can drive.');
     }
@@ -80,8 +74,6 @@ The i in line 1 is defined throughout the file.
 */
 ```
 
-
-
 ## Hoisting.
 
 Hoisting with `const` and `let` work slightly differently. Before, with `var`, when a variable was used before a value was assigned to it, no error would be raised, instead the variable would return `undefined`. 
@@ -93,8 +85,6 @@ It doesn't work like that in ES6 in that the variables declared with `const` and
 If a variable inside this **dead zone** is used, an error is raised, instead of the variable returning undefined.
 
 The variables come out of this zone when they are assigned a value, when we can use them normally.
-
-
 
 ## Data privacy without IIFEs.
 
@@ -110,9 +100,10 @@ Before, with `var`, we needed to make an IIFE to have data privacy, but now with
 // ES6.
 {
     let a = 1;
-	let b = 2;
+    let b = 2;
 }
 
 // Running any of these would result in the same thing, ReferenceError.
 ```
+
 
