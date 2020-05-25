@@ -1,6 +1,6 @@
 # Arrow Functions.
 
-Its a shorthand for writing small functions. Think of the actual arrow as `return`.
+Its a shorthand for writing small anonymous functions. Think of the actual arrow as `return`.
 
 ```js
 const years = [1990, 1965, 1998, 1972];
