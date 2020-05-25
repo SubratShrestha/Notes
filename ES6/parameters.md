@@ -1,4 +1,6 @@
-# Rest Parameters.
+# Parameters.
+
+## Rest Parameters.
 
 Rest parameters are very similar to the spread operator, in that they have the same notation (`...`), but in function, they are the exact opposite. Instead of converting an array to single values, it converts single values to an array.
 
@@ -61,5 +63,55 @@ function fullAge(limit, ...years) {
 }
 
 isFullAge(1998, 2001, 2002, 1969);
+```
+
+
+
+
+
+## Default Parameters.
+
+Default parameters are just some values that we give an element in case something isn't assigned.
+
+By default, when we don't mention a default value, the value will be set to `undefined`.
+
+```js
+// Ex. We make some sort of Person function constructor, and if a value isn't provided when making a new object, we want the lastname of the person to be 'Smith'.
+
+// ES5.
+// since we know that the default value will be undefined, we can check for undefined and assign it something else.
+function SmithPerson(firstName, yearOfBirth, origin, lastName) {
+    lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+    origin === undefined ? origin = 'Somewhere' : origin = origin;
+    
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.origin = origin;
+}
+
+var john = new SmithPerson('john', 1998);
+
+
+// ES6.
+// Instead of checking for undefined, we can just assign it in the arguments.
+function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', origin = 'somewhere') {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.origin = origin;
+}
+
+var john = new SmithPerson('john', 1998);
+
+/*
+Here, we still run into the problem where if we don't have a value for an argument somewhere in the middle (like yearOfBirth here), we need to manually put in 'undefined' because we can't just skip values in calls.
+
+we can't just do:
+var john = new SmithPerson('john', 'somewhere');
+because then the yearOfBirth would be 'somewhere'.
+*/
+
+
 ```
 
