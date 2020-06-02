@@ -94,6 +94,10 @@ There's also `fgrep` or `grep -F` that finds any of several (thousands) fixed st
 
 
 
+**cut:** will for every line, slice the full string from some start to end. `cut -c1-4 course_codes` will cut from 1st to 4th characters of every line of document course_coes. It takes in arguments like `-c` for cut/slicing, `-d` to specify some delimiter, `-f` to specify some field.
+
+
+
 ## Examples.
 
 ```shell
@@ -120,6 +124,18 @@ cat course_codes | grep Comp | wc -l
 
 cat course_codes | grep Comp | grep Graphic
 >> lists out the comp courses that mention graphics.
+
+cut -c1-8 course_codes
+>> ACCT1021
+>> ACCT1134 
+>> ....
+
+cut -d' ' -f2 course_codes | head
+This will say to shell, the delimiter is ' ', take the second field which is the word after the course code, pass these into head.
+>> Accounting
+>> Accounting
+>> Industry
+>> ...
 
 
 
