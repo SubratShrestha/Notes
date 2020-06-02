@@ -40,7 +40,11 @@ Any program that gets terminated returns some bit of data. Conventionally if the
 
 Something special with these commands is that they can be combined with the pipe ( | ) notation which basically takes whatevers returned by one program and passes that into the second. We're not limited to just 2, we can pipe as many programs together as we want.
 
-Another thing we can do is **redirection** and this is just when the output of some command is given to some file. This is writing to the file though. `>` will truncate the first file and overwrite the data, and `>>` will append to the file if it already exists.
+Another thing we can do is **redirection** and this is just when the output of some command is given to some file. This is writing to the file though. `>` will truncate the first file and overwrite the data, and `>>` will append to the file if it already exists. There's also `<` which gives some data to the command.
+
+The really magical thing about the two streams - stdout and stderr of unix is that the stderr is treated differently, and is not the same as stdout. Ex.  if fred.c doesn't exist and we try `ls fred.c > output`, it wont put the error message into `output`, but it will seperately print the error message to the terminal and not put anything in fred.c. 
+
+If you really want, we can send the error messages to files using `2>`, seen in examples.
 
 
 
@@ -62,9 +66,11 @@ Another thing we can do is **redirection** and this is just when the output of s
 
 
 
-**grep:** Its similar to cat, but it can return all the lines containing some word or something, with grep. It takes in the word to search and the file names as command line args.
+**grep:** Its similar to cat, but it can return all the lines containing some word or something, with grep. It takes in the word to search and the file names as command line args. Grep also allows for alterations, so instead of having to do grep twice, we can have `-E` saying search for either one or the other.
 
 `grep Dudley hp7.txt`
+
+`grep -E 'Ocean|Sea' course_codes`
 
 
 
@@ -91,6 +97,13 @@ grep Dudley hp1.txt | wc
 grep Herm hp1.txt | wc
 >> 233 9646 54451
 
+grep -E 'Ocean|Sea' course_codes
+>> This will output lines with either Ocean or Sea in course_codes.
+
+grep -E 'C[aeiou]t' course_codes
+>> this will output all lines that have C followed by any of the vowels and ends with t, [] indicates range of values.
+>> like 'Cities or citizens etc.'
+
 cat course_codes | head -n 1000 | tail -1
 >> The thousandth line in that file.
 
@@ -99,6 +112,28 @@ cat course_codes | grep Comp | wc -l
 
 cat course_codes | grep Comp | grep Graphic
 >> lists out the comp courses that mention graphics.
+
+
+
+============== REDIRECTING EXAMPLES ================
+
+date > output
+cat output
+>> the date
+
+date > output
+cat output
+>> different date because > will overwrite.
+
+date >> output
+cat output
+>> 2 dates in the same file because >> appends.
+
+ls fred.c 2> error > output
+>> if there are any errors, it will be given to error, and everything else will go to output.
+
+a.out < test_data
+>> when we have some data to be analysed by a program we wrote.
 ```
 
 
