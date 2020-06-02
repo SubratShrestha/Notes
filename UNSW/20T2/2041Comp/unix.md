@@ -66,7 +66,15 @@ If you really want, we can send the error messages to files using `2>`, seen in 
 
 
 
-**grep:** Its similar to cat, but it can return all the lines containing some word or something, with grep. It takes in the word to search and the file names as command line args. Grep also allows for alterations, so instead of having to do grep twice, we can have `-E` saying search for either one or the other.
+**grep:** family:
+
+Its similar to cat, but it can return all the lines containing some word or something, with grep. It takes in the word to search and the file names as command line args. Grep uses a limited form of POSIX regex (no + ? | or parantheses).
+
+Grep also allows for the full regex with the `-E` (extended grep) or `egrep`, so instead of having to do grep twice, we can have `-E` saying search for either one or the other, and everything else that comes with regex.
+
+There's also `fgrep` or `grep -F` that finds any of several (thousands) fixed strings using an optimised algorithm.
+
+`grep -P` is Perl-like extension for regex.
 
 `grep Dudley hp7.txt`
 
