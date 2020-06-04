@@ -66,7 +66,9 @@ If you really want, we can send the error messages to files using `2>`, seen in 
 
 
 
-**grep:** family:
+---
+
+## GREP.
 
 Its similar to cat, but it can return all the lines containing some word or something, with grep. It takes in the word to search and the file names as command line args. Grep uses a limited form of POSIX regex (no + ? | or parantheses).
 
@@ -79,6 +81,16 @@ There's also `fgrep` or `grep -F` that finds any of several (thousands) fixed st
 `grep Dudley hp7.txt`
 
 `grep -E 'Ocean|Sea' course_codes`
+
+Within regualar grep, there are some useful options - 
+
+`-i` to ignore cases from the search, `-w` to get whole word (so if you searched for 'john williams', only john williams would return ignoring something like 'john williamson'), `-n` to get the line number for all matches.
+
+Something useful are the `-B or -A or -C` followed by a number to get that number of lines Behind, After or Around (C or context). These flags require an argument, so they need to be seperate from other flags (or comb. of flags.).
+
+To search multiple files, we can just put in `./*` to search all files in that directory, or `./*.txt` to search for it just in the .txt files. `-r` to recursively search through all directories from the one we are currently in. `-l` can be used to know only file the matches were found in, and not the matched word itself. `-c` to get the number of matches in each file.
+
+---
 
 
 
@@ -115,6 +127,12 @@ grep -E 'Ocean|Sea' course_codes
 grep -E 'C[aeiou]t' course_codes
 >> this will output all lines that have C followed by any of the vowels and ends with t, [] indicates range of values.
 >> like 'Cities or citizens etc.'
+
+** very interesting example **
+suppose we wanted to search through our git commits and find some specific commit.
+history | grep 'git commit' | grep 'uiChanges'
+
+grep "...-...-..." numbers.txt
 
 cat course_codes | head -n 1000 | tail -1
 >> The thousandth line in that file.
