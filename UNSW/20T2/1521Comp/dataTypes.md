@@ -41,6 +41,8 @@ Ex. With `stdint.h`, we get `int8_t`, `uint8_t`, `int16_t`, etc.
 
 These are even more precise with the number of bytes, and the range with 8, 16, 32, 64.
 
+The useful thing about them is that they have guaranteed ranges. Anywhere and everywhere which is unlike other datatypes.
+
 We only use these with low-level code like the assembly we'll be writing. They are more helpful with writing Operating Systems, emulators, networks, compilers, small computers where the bits and bytes need to be specific.
 
 Ex. For the low-level calculations a $2 processor needs to make inside a wash machine, which maybe can't understand values over 16-bits.
@@ -87,6 +89,9 @@ Why base 16? The trouble with binary is that it takes up too much space, one dig
 And the trouble with base 10 is that with computers which are binary, 10 is not a power of 2, so its very hard to see what the bits are. With hex, every digit or character corresponds to 4 binary digits, its just more convenient.
 
 ```ps
+We can interpret hex number 3AF1 as:
+3 x 16^3 + 10 x 16^2 + 15 x 16^1 + 1 x 16^0 = 15089 in decimal.
+
 Convert 1011111000101001 to Hex.
 1001 - 9
 0010 - 2
@@ -105,7 +110,7 @@ D - 1101
 binary - 101011010101
 ```
 
-
+In C, the notation for a hex is a `0x` following something. Ex. 15 = 0xF. Its also carried over to many other languages.
 
 
 

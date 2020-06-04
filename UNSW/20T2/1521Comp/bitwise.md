@@ -92,7 +92,7 @@ This is a binary operator, we take in the number and the number of places it sho
 
 when 000001 gets shifted left with 1 (<< 1) 00001? What will be in the question mark?
 
-For unsigned integers, its guaranteed to be a 0, but with signed values, its not guaranteed. So basically don't use the bitwise shift on signed values.
+**For unsigned integers, its guaranteed to be a 0, but with signed values, its not guaranteed. So basically don't use the bitwise shift on signed values.**
 
 ```ps
      0000000000001111
@@ -111,5 +111,39 @@ It will be multiplied by 2 ^ number of shifts.
 ```ps
 345 >> 4 => 345 * 2^4
 345 * 16
+```
+
+
+
+## Example.
+
+```c
+#define FIRE_TYPE 0x0001
+#define WATER_TYPE 0x0002
+#define GRASS_TYPE 0x0003 ...
+
+int main(void) {
+    // giving pokemon 3 types.
+    
+    // this OR will make the type fire and water.
+    uint16_t pokemon_type = FIRE_TYPE | WATER_TYPE;
+    
+    //to add another type.
+    pokemon_type = pokemon_type | GRASS_TYPE;
+    
+    //to remove a type, we need to remove every bit of the type code in the pokemon_type variable.
+    // we can do this with a negation.
+    pokemon_type = pokemon_type & ~ GRASS_TYPE;
+}
+```
+
+
+
+# Possible Exam Qs.
+
+```ps
+if a = 0x0159, b = 0x02a6
+what is 
+~a	a & b 	a | b 	a ^ b 	a >> c 	a << c.
 ```
 
