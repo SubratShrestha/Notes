@@ -52,5 +52,5 @@ grep -E 'd.g' course_codes
 
 ## Resource.
 
-Use websites like online regex tester and some other stuff to see exactly what matches with regex.
+Use websites like online regex - https://regex101.com/ - and some other stuff to see exactly what matches with regex.
 
