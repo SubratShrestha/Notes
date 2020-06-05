@@ -62,7 +62,9 @@ If you really want, we can send the error messages to files using `2>`, seen in 
 
 
 
-**cat:** prints out the content of a file to the stdout, and an error to stderr if the file can't be found or something. Takes in the file name as arguments, and it can also open multiple files at once.
+**cat:** prints out the content of a file to the stdout, and an error to stderr if the file can't be found or something. Takes in the file name as arguments, and it can also open multiple files at once. It comes with some useful features.
+
+Often the whitespace within the text is confusing because we don't know if the text is indented with spaces or tabs or if there is a trailing whitespace after lines or if there is a newline character after lines -- this is the sort of thing that breaks most string-based searches. To avoid this, we use a flag `-A` to see exactly what the characters are in terms of their code. (tabs are \I, newlines are $, spaces are just spaces).
 
 
 
@@ -88,7 +90,7 @@ Within regualar grep, there are some useful options -
 
 Something useful are the `-B or -A or -C` followed by a number to get that number of lines Behind, After or Around (C or context). These flags require an argument, so they need to be seperate from other flags (or comb. of flags.).
 
-To search multiple files, we can just put in `./*` to search all files in that directory, or `./*.txt` to search for it just in the .txt files. `-r` to recursively search through all directories from the one we are currently in. `-l` can be used to know only file the matches were found in, and not the matched word itself. `-c` to get the number of matches in each file.
+To search multiple files, we can just put in `./*` to search all files in that directory, or `./*.txt` to search for it just in the .txt files. `-r` to recursively search through all directories from the one we are currently in. `-l` can be used to know only file the matches were found in, and not the matched word itself. `-c` to get the number of matches in each file. This is the same as doing `grep -E 'pattern' filename | wc -l`.
 
 ---
 
@@ -106,7 +108,61 @@ To search multiple files, we can just put in `./*` to search all files in that d
 
 
 
-**cut:** will for every line, slice the full string from some start to end. `cut -c1-4 course_codes` will cut from 1st to 4th characters of every line of document course_coes. It takes in arguments like `-c` for cut/slicing, `-d` to specify some delimiter, `-f` to specify some field.
+**cut:** will for every line, slice the full string from some start to end. `cut -c1-4 course_codes` will cut from 1st to 4th characters of every line of document course_coes. It takes in arguments like `-c` for cut/slicing, `-d` to specify some delimiter, `-f` to specify some field with respect to the delimiter.
+
+```ps
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|M
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|F
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|M
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|F
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|F
+COMP2041|874353453|someone else					|4849854|COMPA1|45785|48754|M
+
+cut -d'|' -f8 input.txt | tr '\n' ' '
+M F M F F M
+
+Here we're specifying the '|' as the delimiter and cutting everything before the 8th field.
+Start the count from 1 which is COMP2041.
+```
+
+
+
+**tr:** will map one string of characters to another string. This is character based operation. every character in the first string will be mapped to every character of the second string. We can get rid of all delimiters by converting the delimiter to nothing by `tr -d ' '`.
+
+
+
+**sort:** will sort numbers or text. Many ways to sort, `-r` to reverse sort (decreasing), `-n` to sort with string numerical value.
+
+
+
+**uniq:** will get rid of duplicates, given that they are next to each other. Usually used along with sort, because after we sort, the values will be next to each other and we can run `uniq`.  `-c` will count the unique occurances and this can be very useful. `-d` to print only the lines with duplicates, `-u` to get everthing that doesn't have duplicates, and `-f` to avoid comparing the first N lines (as argument).
+
+If we had some huge data, and wanted to count the number of occurances of some pattern:
+
+```shell
+grep -E 'pattern' | sort | uniq -c
+/* this will print all the types of data along with the number of times they appear in sorted order */
+```
+
+
+
+**join:**
+
+There is way to join columns from multiple files. Lets say if we had a file enrollments that had all the program codes and the number of people in those programs, and another file that had the program codes and the name of those programs (sorted). If we sort and uniq the the enrollments data, we'll get the count but we will see that with the prgram codes, and if we wanted to see that list but with program names from the other list, we would need to join those columns like:
+
+```shell
+egrep 'COMP(2041|9044)' enrollments | cut -d'|' -f4 | cut -c1-4 | sort | join - program_codes | sort | uniq -c | sort
+```
+
+Join usually takes as arguments two filenames, but if we want to give the data to join with standard input like above, we use a hyphen.
+
+When there isn't a oone-to-one correspondence to the 2 files in join, that data is not shown. This can be changed though with the other flags that join offers. Everything on `man join`
+
+But if we come to the point where we need to dive really deep into using join with many many of the flags, it may be easier and make more sense if we used some scripting language like python or perl.
+
+
+
+**sed:**
 
 
 
@@ -154,6 +210,16 @@ This will say to shell, the delimiter is ' ', take the second field which is the
 >> Accounting
 >> Industry
 >> ...
+
+tr 'a-z' 'A-Z' < course_codes | grep 'comp'
+>> this will remove the case and search for comp.
+
+
+egrep -i 'computer|computing' course_codes | egrep -v '^(COMP|SENG|BINF|ZEIT)' | tr '\n' ' '
+>> This will return all the course codes that are not COMP, SENG, etc in a space seperated form.
+
+
+grep -E 'pattern' input.txt | sort | uniq -c
 
 
 
