@@ -84,7 +84,7 @@ There's also `fgrep` or `grep -F` that finds any of several (thousands) fixed st
 
 Within regualar grep, there are some useful options - 
 
-`-i` to ignore cases from the search, `-w` to get whole word (so if you searched for 'john williams', only john williams would return ignoring something like 'john williamson'), `-n` to get the line number for all matches.
+`-i` to ignore cases from the search, `-w` to get whole word (so if you searched for 'john williams', only john williams would return ignoring something like 'john williamson'), `-n` to get the line number for all matches, `-v` will take the opposite of the search pattern.
 
 Something useful are the `-B or -A or -C` followed by a number to get that number of lines Behind, After or Around (C or context). These flags require an argument, so they need to be seperate from other flags (or comb. of flags.).
 

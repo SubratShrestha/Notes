@@ -24,9 +24,17 @@ These 5 characters are sufficient to express regex but there are many more featu
 
 **Square brackets []** provide a set of characters. `[first - last]` like `[a-e] [a-z] [0-9] [a-zA-Z] [A-Za-z] [a-zA-Z0-9]`
 
-**Inverted** matches can be inverted with the `^` operator. `[^a-e]` matches any character other than first 5 letters.
+**Paranthesis ()** are just normal parenthesis to group stuff together.
 
+**Braces {}** will give us a specific number of repititions. 
 
+**Inverted ^** matches can be inverted with the `^` operator. `[^a-e]` matches any character other than first 5 letters.
+
+**^** at the start means start of the line, and **$** means the end of the line.
+
+**plus +** matches a pattern in parenthesis maybe 1 or more times.
+
+**asterisk *** matches 0 or more times.
 
 
 
@@ -39,4 +47,10 @@ grep -E 'd.g' course_codes
 >> will search for lines with 'd some_letter g' like indigenous or Heidegger.
 >> or even something like Applied geomechanics becuase 'd g' with space seperating d and g.
 ```
+
+
+
+## Resource.
+
+Use websites like online regex tester and some other stuff to see exactly what matches with regex.
 
