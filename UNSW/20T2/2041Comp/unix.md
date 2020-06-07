@@ -164,7 +164,13 @@ But if we come to the point where we need to dive really deep into using join wi
 
 **sed:**
 
+its an interactive edit/filter mode. So once you give the sed command, it will wait for some input where the editing will take place. 
 
+Something to be careful about is that just like grep, sed has a limited set of the regular expressions by default, so just like grep, things like alteration (|), plus (+) and some others don't work in sed by default. To enable these, along with more of the regular expressions, we use the `-r` flag.
+
+`s/RegExp/ReplaceString` will search for some regular expression pattern RegExp, with something else, which is "Replace". This command will just replace the first occurance of the regexp.
+
+`s/RegExp/Replace/g` will search for and replace **all** occurances of the regexp. 
 
 ## Examples.
 
@@ -220,6 +226,18 @@ egrep -i 'computer|computing' course_codes | egrep -v '^(COMP|SENG|BINF|ZEIT)' |
 
 
 grep -E 'pattern' input.txt | sort | uniq -c
+
+sed 's/a/ahhh/g'
+the cat is happy.
+>> the cahhht is hahhhpy
+
+sed 's/[aeiou]/z/g'
+the cat is happy.
+>> thz czt zt hzppy.
+
+sed 's/^ *//'
+	This will remove all spaces in the beginning of lines.
+This will remove all spaces in the beginning of lines.
 
 
 
