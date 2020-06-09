@@ -107,3 +107,44 @@ echo $PATH
 The programs that are in one of these directories can be run from anywhere, like for ex. the date command (which is a program).
 
 A handy side effect of this is that we can just move some our custom scripts into one of these directories and they can be run from anywhere on the computer.
+
+
+
+## Variables.
+
+Very easy to assign variables, we just put in `var=value`.
+
+To read variables in, we use `read var`.
+
+To use the variable, we use the dollar sign `$`. Wherever we want the variable to be expanded later, we use the dollar sign.
+
+```shell
+read x			// read value into x.
+y=John			// assign value to y.
+echo $x			// display the value of x.
+z="$y $y"		// assign two copies of y to z.
+```
+
+*** spaces matter in shell, putting a space before and after assignment will not work.**
+
+
+
+Variables in shell are typeless, at least in POSIX shell. All data is essentially strings. So theres no difference between `x=1` and `x="1"`. 
+
+But when we need to put spaces or tabs into a variable for ex., then we need to use quotes.
+
+```shell
+something interesting.
+
+animal="cat      dog"
+echo $animal
+>> cat dog            // we put in 4 spaces but it returned the string with one space
+					// this is because when shell expanded animals, it gave 2 args to echo
+					// and echo just prints all the args that it gets, putting a space between everything.
+					// to get the space, we need to mention to echo that it is 1 argument were providing.
+echo "$animal"
+>> cat       dog
+```
+
+
+
