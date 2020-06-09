@@ -110,6 +110,20 @@ A handy side effect of this is that we can just move some our custom scripts int
 
 
 
+### Pathname Expansion (GLOB).
+
+The pathname in shell uses GLOB for pathnames which is similar to regex but not quite and much simpler. Only a couple symbols to know.
+
+| symbol | function                                 |
+| ------ | ---------------------------------------- |
+| *      | matches zero or more of any character.   |
+| ?      | matches any one character.               |
+| []     | matches any one character between the [] |
+
+
+
+
+
 ## Variables.
 
 Very easy to assign variables, we just put in `var=value`.
@@ -129,9 +143,11 @@ z="$y $y"		// assign two copies of y to z.
 
 
 
-Variables in shell are typeless, at least in POSIX shell. All data is essentially strings. So theres no difference between `x=1` and `x="1"`. 
+Variables in shell are typeless, at least in POSIX shell. All data is essentially strings. So theres no difference between `x=1` and `x="1"`. Although these two are different, **there will be variable expansion with double quotes, but no variable expansion with single quotes.**
 
 But when we need to put spaces or tabs into a variable for ex., then we need to use quotes.
+
+We put braces `{}` when we want to specify what part of our command is the variable.
 
 ```shell
 something interesting.
@@ -144,7 +160,26 @@ echo $animal
 					// to get the space, we need to mention to echo that it is 1 argument were providing.
 echo "$animal"
 >> cat       dog
+
+Braces.
+// when we want to print something23, with x = something.
+
+x=something
+echo ${something}23
 ```
 
 
 
+### Special variables.
+
+| variable | function                                 |
+| -------- | ---------------------------------------- |
+| $0       | name of the command.                     |
+| $1       | first command line argument.             |
+| $2       | second command line argument.            |
+| $3       | third command line argument.             |
+| $#       | number of command line arguments.        |
+| $*       | all command line arguments (together).   |
+| $@       | all command line arguments (seperately). |
+| $?       | exit status of most recent command.      |
+| $$       | process ID of this shell.                |

@@ -119,3 +119,9 @@ In C, the notation for a hex is a `0x` following something. Ex. 15 = 0xF. Its al
 The simplest way would be set aside a bit for the sign - maybe the first bit (0 or 1) of the binary representation for the sign, but then this doesn't end up being as easy as we'd like with double representations, and we'd also have positive and negative 0s, which is weird.
 
 All of this can be handled, and some processors actually use this representation, but there's a simpler approach which most processors use - 2's complement.
+
+
+
+**The system we actually use is 2's complement.**
+
+Here the first bit is set to 1.
