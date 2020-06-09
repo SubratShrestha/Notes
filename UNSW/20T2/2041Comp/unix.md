@@ -48,7 +48,7 @@ If you really want, we can send the error messages to files using `2>`, seen in 
 
 
 
-**ls: ** prints out the files in a directory with stdout if its okay, and stderr if it runs into a problem. It can take command line arguments.
+**ls: ** prints out the files in a directory with stdout if its okay, and stderr if it runs into a problem. It can take command line arguments. `-l` to get the long version of some file, that includes its permissions and stuff, `-a` to get the list of all files, including hidden ones.
 
 
 
@@ -171,6 +171,10 @@ Something to be careful about is that just like grep, sed has a limited set of t
 `s/RegExp/ReplaceString` will search for some regular expression pattern RegExp, with something else, which is "Replace". This command will just replace the first occurance of the regexp.
 
 `s/RegExp/Replace/g` will search for and replace **all** occurances of the regexp. 
+
+
+
+**printf:** Exact same as printf in C, only in shell, just without the parantheses, same formattin, etc. Just of laughs.
 
 ## Examples.
 
