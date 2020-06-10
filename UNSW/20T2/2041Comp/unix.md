@@ -48,6 +48,29 @@ If you really want, we can send the error messages to files using `2>`, seen in 
 
 
 
+## /dev/null
+
+This is a special directory. We see that when we're writing shell scripts, and we have conditional statements like ifs and elses, but every time the if fails (which takes in a program and not an expression), we get some sort error message, and then the else part is executed. This can get pretty annoying because when the if part fails, we want it to just go to the else part without some error showing up.
+
+Just above this topic, we saw we could just put the error message into a seperate file and it would no longer show up in the terminal, but would be written to some file. But this is just dumb because the file could have been an important one which we just overwrote with some dumb error message and we just created an extra file for no reason.
+
+This is where `/dev/null` comes in, whatever is sent to this directory, has no effect on anything. Its a **black hole** of sorts, things in this directory just get deleted after some time, and we can just send whatever we want into it.
+
+Now using it with error messages is not what its for, it can be used for many things, but something like this is an example. Anything we don't want can be put into `/dev/null`, and it won't affect anything.
+
+```shell
+if ls fred.c 2> /dev/null
+then
+	dcc fred.c
+else
+	echo Hey go ahead and create fred.c
+fi
+```
+
+
+
+
+
 **ls: ** prints out the files in a directory with stdout if its okay, and stderr if it runs into a problem. It can take command line arguments. `-l` to get the long version of some file, that includes its permissions and stuff, `-a` to get the list of all files, including hidden ones.
 
 
@@ -175,6 +198,16 @@ Something to be careful about is that just like grep, sed has a limited set of t
 
 
 **printf:** Exact same as printf in C, only in shell, just without the parantheses, same formattin, etc. Just of laughs.
+
+
+
+**expr:** this is something only for arithmetic, so increments within scripts (in loops) or just normal arithmetic on the console. `expr 48 + 78`. 
+
+Something that's very confusing is when we use multiplication, the `*` is a shell character and it means everything in the file, so when we do `expr 5 * 2`, it will return an error. Instead we need to put the asterisk in quotes. `expr 5 '*' 2`.
+
+
+
+**which:** this will just return the location of the program. `which expr` will return `/bin/expr`
 
 ## Examples.
 

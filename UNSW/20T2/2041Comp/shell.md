@@ -49,7 +49,7 @@ These transformations can include:
 
     Ex. when we say `*.c`, it expands `*` as all the file names in that directory.
 
-
+The exact transformations can be seen with `set -x`. This just shows what you put into the command, along with what the shell transforms that into. So all the variable expansions, pathname expansions, etc.
 
 
 
@@ -122,8 +122,6 @@ The pathname in shell uses GLOB for pathnames which is similar to regex but not 
 
 
 
-
-
 ## Variables.
 
 Very easy to assign variables, we just put in `var=value`.
@@ -183,3 +181,213 @@ echo ${something}23
 | $@       | all command line arguments (seperately). |
 | $?       | exit status of most recent command.      |
 | $$       | process ID of this shell.                |
+
+
+
+
+
+## Conditional operators.
+
+There are the same conditional operators in shell as in C, the conditional AND is what strikes out as most useful. The notation is still the same, for ex.
+
+```shell
+gcc filename.c && ./a.out
+```
+
+
+
+
+
+## Exit status and control.
+
+Not too many applications of exit status and returns when using the shell interactively, but when writing scripts..
+
+*   zero exit -> command successful -> true.
+*   non-zero -> error occurred -> false.
+
+
+
+It can and is used with conditional operators like AND lists or OR lists.
+
+*   `cmd1 && cmd2 && ... && cmdn`. Here the commands after `cmd1` only run if it exits with status 0.
+*   `cmd1 || cmd2 || ... || cmdn`. Here the commands after `cmd1` only run if it exits with some error. So run 1 and if it fails, run 2, and so on.
+
+
+
+If we want to run some commands sequentially, regardless of its exit status, without passing a program's stdout into the next program's stdin (with pipes), then we just seperate the commands with semicolons, or just execute them one by one with newlines (which is generally encouraged because its more readable).
+
+```shell
+cmd1; cmd2; cmd3;
+```
+
+
+
+
+
+## If, then, elif.
+
+Everything in shell are commands or programs, and that's something that catches us off guard. In programming languages, the if statement takes in expressions like `1 < 2` or something. In shell, it takes in a program, and if that program exits with 0 status, the `then` part is executed, or else the `else` part is.
+
+Every if statement starts with an `if` and ends with a `fi`.
+
+```shell
+if testList{1}
+then
+	commandList{1}
+elif testList{2}
+then
+	commandList{2}
+    ...
+else
+	commandList{n}
+fi
+```
+
+```shell
+if ls fred.c 2> /dev/null
+then
+	if dcc fred.c
+	then
+		./a.out
+	fi
+else
+	echo hey go ahead and create fred.c
+fi
+```
+
+
+
+
+
+## Loops.
+
+Very much like loops in python.
+
+
+
+### For loops.
+
+```shell
+# program to compile and run every .c file in directory.
+#!/bin/sh
+
+for c_file in *.c
+do
+	gcc "$c_file" && ./a.out
+done
+
+# program to see how many lines in every filename passed in as arg.
+#!/bin/sh
+
+for arg in "$@"
+do
+	echo "$arg" has $(wc -l <"$arg") lines
+	# the little < symbol is there because wc -l will actually also print the file 
+    # name and we get the filename twice. To avoid this, we just pass the contents
+    # of that file directly into wc so that it won't know the filename.
+done
+```
+
+
+
+
+
+### while loops.
+
+```shell
+# program to monitor a certain file, and check if it exists every 2s (of course a real program would check a lot less often)
+#!/bin/sh
+
+while test -r file.c
+do
+	echo file.c is still there # a better indicator would be -> echo -n .
+	sleep 2
+done
+
+echo Argh!! its gone!
+
+```
+
+
+
+With incrementors.
+
+```shell
+#!/bin/sh
+
+i=1
+while test $i -lt 11
+do
+	echo $i
+	i=$(expr $i + 1)
+done
+echo finished
+
+# OR this is a newer way of writing expressions.
+#!/bin/sh
+
+i=1
+while test $i -lt 11
+do
+	echo $i
+	i=$((i + 1))
+done
+echo finished.
+
+# OR in bash, we can have the < symbol (this is not allowed in POSIX).
+# change here.
+#!/bin/bash	
+
+i=1
+while ((i < 11))
+do
+	echo $i
+	i=$((i + 1))
+done
+echo finished
+
+# Somthing that's very cool is that there's actually a program called '['.
+# this program has the same content as the 'test' program, and so we can write ...
+#!/bin/sh
+
+i=1
+while [ $i -lt 11 ]		# the '[' program also ignores the extra argument ']'.
+do
+	echo $i
+	i=$((i + 1))
+done
+echo finished
+
+# we can see where this program is located with 
+which [
+>> /usr/bin/[
+```
+
+
+
+Although if we need to do a lot of arithmetic 
+
+# Testing.
+
+`Test` is another program/command and it performs a test or combination of tests and ...
+
+*   0 if test succeeds
+*   non-zero if test fails.
+
+
+
+Many testing features available. There are many many more features available [here](https://www.linuxtopia.org/online_books/advanced_bash_scripting_guide/tests.html) 
+
+*   string comparison (`= or !=`)
+
+    Exactly what you think.
+
+*   numeric comparison (`-eq -ne -lt`)
+
+    `-eq` if its equal, `-ne` not equal, `-lt` less than,`-le` less or equal, `-gt, ge`, etc.
+
+*   checks on files (`-f -x -r`)
+
+    `-f` if file is a file and not a dir, `-x` if file is executable, `-r` readable, `-e` if file exists.
+
+*   boolean operators (`-a -o !`)
