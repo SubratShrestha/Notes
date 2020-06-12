@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://lukakerr.github.io/uni/1521-notes -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="./1521-luka_files/katex.min.css">
+  <script src="./1521-luka_files/katex.min.js.download"></script>
+  <script src="./1521-luka_files/auto-render.min.js.download"></script>
+  <meta name="google-site-verification" content="omohoY3H1M6pzrJhl72R5b1zUAKPlUUDWmthuAHb4TE">
+  <link rel="shortcut icon" type="image/x-icon" href="https://lukakerr.github.io/uni/assets/img/favicon.ico">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>COMP1521 Notes | lukakerr.github.io</title>
+<meta name="generator" content="Jekyll v3.8.5">
+<meta property="og:title" content="COMP1521 Notes">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Written by Luka Kerr on June 20, 2018">
+<meta property="og:description" content="Written by Luka Kerr on June 20, 2018">
+<link rel="canonical" href="https://lukakerr.github.io/uni/1521-notes">
+<meta property="og:url" content="https://lukakerr.github.io/uni/1521-notes">
+<meta property="og:site_name" content="lukakerr.github.io">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-06-20T11:05:00+10:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="COMP1521 Notes">
+<meta name="twitter:site" content="@lukakerr">
+<script type="application/ld+json">
+{"datePublished":"2018-06-20T11:05:00+10:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://lukakerr.github.io/uni/1521-notes"},"@type":"BlogPosting","url":"https://lukakerr.github.io/uni/1521-notes","headline":"COMP1521 Notes","description":"Written by Luka Kerr on June 20, 2018","dateModified":"2018-06-20T11:05:00+10:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./1521-luka_files/main.css"><link type="application/atom+xml" rel="alternate" href="https://lukakerr.github.io/feed.xml" title="lukakerr.github.io"><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./1521-luka_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82823876-8');
+</script><script src="./1521-luka_files/embed.js.download" data-timestamp="1591917389977"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.5c5dad4ae74bbb3422efd01116dc45e6.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.7d87bb8040158de8c0a9cf48216dcb06.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.4697f58c97653da26d3b1c3872a5c702.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script src="./1521-luka_files/alfalfalfa.0823c767a3bc925f628afd9bed26c958.js.download" async="" charset="UTF-8"></script></head>
+
+<body data-gr-c-s-loaded="true" class="vsc-initialized"><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="https://lukakerr.github.io/">lukakerr.github.io</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="https://lukakerr.github.io/about">About</a><a class="page-link" href="https://lukakerr.github.io/projects">Projects</a><a class="page-link" href="https://lukakerr.github.io/uni">Uni</a><a class="page-link" href="https://lukakerr.github.io/code">Code</a>
+          <a class="page-link" href="https://lukakerr.github.io/misc">Misc</a>
+          <a class="page-link" href="https://lukakerr.github.io/feed.xml">RSS Feed</a>
+        </div>
+      </nav></div>
+</header><main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <p><small class="written-by">
+  Written by <a href="https://github.com/lukakerr">Luka Kerr</a> on June 20, 2018
+</small></p>
+
+<h2 id="bit-manipulation">Bit Manipulation</h2><a href="https://lukakerr.github.io/uni/1521-notes#bit-manipulation" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<h3 id="bitwise-operators">Bitwise Operators</h3><a href="https://lukakerr.github.io/uni/1521-notes#bitwise-operators" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code>
+    <ul>
+      <li>Bitwise AND</li>
+      <li><code class="language-plaintext highlighter-rouge">10101010&nbsp;&amp;&nbsp;11110000</code> = <code class="language-plaintext highlighter-rouge">10100000</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">|</code>
+    <ul>
+      <li>Bitwise OR</li>
+      <li><code class="language-plaintext highlighter-rouge">10101010&nbsp;|&nbsp;11110000</code> = <code class="language-plaintext highlighter-rouge">11111010</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">^</code>
+    <ul>
+      <li>Bitwise XOR</li>
+      <li><code class="language-plaintext highlighter-rouge">10101010&nbsp;^&nbsp;11110000</code> = <code class="language-plaintext highlighter-rouge">01011010</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">~</code>
+    <ul>
+      <li>Bitwise NEG (flips the bits)</li>
+      <li><code class="language-plaintext highlighter-rouge">~10101010</code> = <code class="language-plaintext highlighter-rouge">01010101</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code>
+    <ul>
+      <li>Left shift</li>
+      <li><code class="language-plaintext highlighter-rouge">11110010 &lt;&lt; 2</code> = <code class="language-plaintext highlighter-rouge">11001000</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code>
+    <ul>
+      <li>Right shift</li>
+      <li><code class="language-plaintext highlighter-rouge">11110010 &gt;&gt; 2</code> = <code class="language-plaintext highlighter-rouge">00111100</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="memory">Memory</h2><a href="https://lukakerr.github.io/uni/1521-notes#memory" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<h3 id="regions">Regions</h3><a href="https://lukakerr.github.io/uni/1521-notes#regions" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Code
+    <ul>
+      <li>Contains machine code for a program</li>
+      <li>Once initialised, doesn’t change</li>
+    </ul>
+  </li>
+  <li>Data
+    <ul>
+      <li>Contains global variables and constants</li>
+      <li>Once initialised, doesnt change</li>
+    </ul>
+  </li>
+  <li>Heap
+    <ul>
+      <li>Contains dynamicaly allocated data created by <code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">calloc</code>, <code class="language-plaintext highlighter-rouge">realloc</code></li>
+      <li>Is able to increase (<code class="language-plaintext highlighter-rouge">malloc()</code>) and decrease (<code class="language-plaintext highlighter-rouge">free()</code>) throughout the program lifecycle</li>
+    </ul>
+  </li>
+  <li>Stack
+    <ul>
+      <li>Contains local variables that get destroyed once they go out of scope</li>
+      <li>Each function has a stack frame created when the function is called, and destroyed when the function returns</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="physical-memory">Physical Memory</h3><a href="https://lukakerr.github.io/uni/1521-notes#physical-memory" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Indexed array of bytes</li>
+  <li>Indexes are ‘memory addresses’, or pointers</li>
+  <li>Two properties
+    <ul>
+      <li>Volatile - data lost when powered off</li>
+      <li>Non-volatile - data remains when powered off</li>
+    </ul>
+  </li>
+  <li>Can be <em>big-endian</em> or <em>little-endian</em></li>
+</ul>
+
+<h2 id="data-representation">Data Representation</h2><a href="https://lukakerr.github.io/uni/1521-notes#data-representation" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Characters</p>
+
+    <ul>
+      <li>
+        <p>ASCII (7-bit values), UTF-8 (8-bit values)</p>
+      </li>
+      <li>
+        <p>UTF-8 uses a variable length encoding as follows</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#bytes</th>
+              <th>#bits</th>
+              <th>Byte 1</th>
+              <th>Byte 2</th>
+              <th>Byte 3</th>
+              <th>Byte 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>7</td>
+              <td>0xxxxxxxx</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>11</td>
+              <td>110xxxxx</td>
+              <td>10xxxxxx</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>16</td>
+              <td>1110xxxx</td>
+              <td>10xxxxxx</td>
+              <td>10xxxxxx</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>21</td>
+              <td>11110xxx</td>
+              <td>10xxxxxx</td>
+              <td>10xxxxxx</td>
+              <td>10xxxxxx</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>For example, UTF-8 to binary of <code class="language-plaintext highlighter-rouge">U+1D536</code></p>
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mh">0x1D536</span> <span class="o">=</span> <span class="mo">0001</span> <span class="mi">1101</span> <span class="mo">0101</span> <span class="mo">0011</span> <span class="mo">0110</span>    <span class="c1">// there are 17 significant bits, use 4 byte encoding</span>
+<span class="o">=</span> <span class="mi">11110</span><span class="n">xxx</span> <span class="mi">10</span><span class="n">xxxxxx</span> <span class="mi">10</span><span class="n">xxxxxx</span> <span class="mi">10</span><span class="n">xxxxxx</span>
+<span class="o">=</span> <span class="mi">11110000</span> <span class="mi">10011101</span> <span class="mi">10010100</span> <span class="mi">10110110</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Integers</p>
+
+    <ul>
+      <li>Can represent as a signed decimal (0..9), unsigned hexadecimal (0..F) or a signed octal (0..7)</li>
+      <li><code class="language-plaintext highlighter-rouge">int</code> - can store values from <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><msup><mn>2</mn><mn>31</mn></msup><mo>…</mo><msup><mn>2</mn><mn>31</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2^{31} … 2^{31}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.897438em; vertical-align: -0.08333em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>
+        <ul>
+          <li>Can represent negative values using
+            <ul>
+              <li>
+                <p><em>signed magnitude</em> - first bit is sign, rest are magnitude</p>
+              </li>
+              <li>
+                <p><em>ones complement</em> - inverting all bits in a number (keeping the original sign)</p>
+              </li>
+              <li>
+                <p><em>twos complement</em> - inverting all bits in a number and adding 1 (keeping the original sign)</p>
+
+                <ul>
+                  <li>
+                    <p>For example, converting to twos complement</p>
+
+                    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">111010100</span>                  <span class="c1">// sign is 1, so negative result</span>
+<span class="mo">000101011</span>                  <span class="c1">// flip all the bits</span>
+<span class="mo">000101011</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mo">000101100</span>  <span class="c1">// add the value 1</span>
+<span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>                    <span class="c1">// result is negative 44</span>
+</code></pre></div>                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">unsigned int</code> - can store values from <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>…</mo><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0…2^{32} - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.897438em; vertical-align: -0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></li>
+    </ul>
+  </li>
+  <li>
+    <p>Pointers</p>
+
+    <ul>
+      <li>Size of pointers is the same for all data types</li>
+      <li>For any pointer <code class="language-plaintext highlighter-rouge">T *p</code>, <code class="language-plaintext highlighter-rouge">p++</code> increases p by <code class="language-plaintext highlighter-rouge">sizeof(T)</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Floats</p>
+
+    <ul>
+      <li>Two types
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">float</code> - typically 32 bits</li>
+          <li><code class="language-plaintext highlighter-rouge">double</code> - typically 64 bits</li>
+        </ul>
+      </li>
+      <li>
+        <p>IEEE 754 standard</p>
+
+        <ul>
+          <li>
+            <p>Stored with 1 bit for the sign, 8 bits for the exponential and 23 bits for the fraction</p>
+          </li>
+          <li>
+            <p>Converting from binary to decimal</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 10000010 01000000000000000000000
+
+sign = 0 (positive)
+exp = 10000010 = (130 - 127 = 3)
+frac = 01000000000000000000000 = 2^(-2)
+
+= +1.25 x 2^3
+= 10
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Converting from decimal to binary</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>150.75
+
+150 = 10010110
+.75 = 11
+
+= 10010110.11
+= 1.001011011 x 2^7
+
+sign = 0 (positive)
+exp = 10000110 (127 + 7 = 134)
+frac = 00101101100000000000000 (001011011 + remaining digits)
+
+= 0 10000110 00101101100000000000000
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Arrays</p>
+
+    <ul>
+      <li>Have a type and size</li>
+      <li>Laid out adjacent in memory</li>
+    </ul>
+  </li>
+  <li>
+    <p>Structs</p>
+
+    <ul>
+      <li>
+        <p>Have a name and a type</p>
+      </li>
+      <li>
+        <p>Padding may be needed between elements in struct</p>
+      </li>
+      <li>
+        <p>Can have <em>bit wise structs</em></p>
+      </li>
+    </ul>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">_object</span> <span class="p">{</span> <span class="c1">// comprised of two 32-bit integers</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span>  <span class="n">red</span>    <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1">// 5 bits for red</span>
+                <span class="n">blue</span>   <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1">// 5 bits for blue</span>
+                <span class="n">green</span>  <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1">// 5 bits for green</span>
+                <span class="n">pad</span>    <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1">// 1 bit to pad to short</span>
+                <span class="n">ident</span>  <span class="o">:</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 16 bits for object ID</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span>  <span class="n">height</span> <span class="o">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="c1">// 6 bits for object height</span>
+                <span class="n">width</span>  <span class="o">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="c1">// 6 bits for object width</span>
+                <span class="n">xcoord</span> <span class="o">:</span> <span class="mi">9</span><span class="p">,</span>  <span class="c1">// 9 bits for x-coordinate</span>
+                <span class="n">ycoord</span> <span class="o">:</span> <span class="mi">9</span><span class="p">;</span>  <span class="c1">// 9 bits for y-coordinate</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">_object</span> <span class="n">oval</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="n">oval</span><span class="p">.</span><span class="n">red</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">oval</span><span class="p">.</span><span class="n">blue</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="n">oval</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">oval</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">oval</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Unions</p>
+
+    <ul>
+      <li>Multiple interpretations for a single piece of memory</li>
+      <li>Size of union is the size of the largest element of the union</li>
+    </ul>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">union</span> <span class="n">Tag</span> <span class="p">{</span>
+  <span class="n">Type1</span>  <span class="n">Member1</span><span class="p">;</span>
+  <span class="n">Type2</span>  <span class="n">Member2</span><span class="p">;</span>
+  <span class="n">Type3</span>  <span class="n">Member3</span><span class="p">;</span>
+  <span class="p">...</span>
+<span class="p">}</span> <span class="n">uvar</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Enums</p>
+
+    <ul>
+      <li>A set of distinct named values</li>
+    </ul>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> <span class="n">RED</span><span class="p">,</span> <span class="n">YELLOW</span><span class="p">,</span> <span class="n">BLUE</span> <span class="p">}</span> <span class="n">PrimaryColours</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="instruction-set-architectures">Instruction Set Architectures</h2><a href="https://lukakerr.github.io/uni/1521-notes#instruction-set-architectures" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>A typical modern CPU has
+    <ul>
+      <li>A set of data registers</li>
+      <li>A set of control registers</li>
+      <li>An arithmetic logic unit (ALU)</li>
+      <li>Access to RAM</li>
+      <li>A set of simple instructions</li>
+    </ul>
+  </li>
+  <li>Two broad families of instruction set architectures
+    <ul>
+      <li>RISC - reduced instruction set computer</li>
+      <li>CICS - complex instruction set computer</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="fetch-execute-cycle">Fetch Execute Cycle</h3><a href="https://lukakerr.github.io/uni/1521-notes#fetch-execute-cycle" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<p>All CPUs have program execution logic like:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">instruction</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="n">PC</span><span class="p">]</span>
+  <span class="n">PC</span><span class="o">++</span>  <span class="c1">// Program Counter move to next instruction</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">instruction</span> <span class="o">==</span> <span class="n">HALT</span><span class="p">)</span>
+    <span class="k">break</span>
+  <span class="k">else</span>
+    <span class="n">execute</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="mips">MIPS</h2><a href="https://lukakerr.github.io/uni/1521-notes#mips" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>A simple architecture</li>
+  <li>Has:
+    <ul>
+      <li>32 x 32-bit general purpose registers</li>
+      <li>16 x 64-bit double precision registers</li>
+      <li>Program Counter is a 32 bit register</li>
+      <li>HI and LO for storing results of multiplication and division</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="memory-addressing">Memory Addressing</h3><a href="https://lukakerr.github.io/uni/1521-notes#memory-addressing" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Memory addresses can be given by a symolic name (label) or indirectly via a register</li>
+</ul>
+
+<pre><code class="language-assembly">    .data
+vec: .space   16      # int vec[4];
+    .text             # 16 bytes of storage
+    .globl  main
+main:
+    la  $t0, vec      # reg[t0] = &amp;vec
+    li  $t1, 5        # reg[t1] = 5
+    sw  $t1, ($t0)    # vec[0] = reg[t1]
+    li  $t1, 13       # reg[t1] = 13
+    sw  $t1, 4($t0)   # vec[1] = reg[t1]
+    li  $t1, -7       # reg[t1] = -7
+    sw  $t1, 8($t0)   # vec[2] = reg[t1]
+    li  $t2, 12       # reg[t2] = 12
+    li  $t1, 42       # reg[t1] = 42
+    sw  $t1, vec($t2) # vec[3] = reg[t1]
+</code></pre>
+
+<h3 id="spim">SPIM</h3><a href="https://lukakerr.github.io/uni/1521-notes#spim" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Spim is an <em>emulator</em> for the MIPS instruction set</p>
+  </li>
+  <li>
+    <p>It reads .s files, converts them to machine code and loads them into memory</p>
+  </li>
+  <li>
+    <p>Provides extra instructions such as <code class="language-plaintext highlighter-rouge">move</code></p>
+  </li>
+  <li>
+    <p>Provides debugging capabilities and mechanisms to interact with the operating system (i.e. syscalls)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Code</th>
+          <th>Arguments</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>print_int</td>
+          <td>1</td>
+          <td><code class="language-plaintext highlighter-rouge">$a0</code> = integer</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>print_float</td>
+          <td>2</td>
+          <td><code class="language-plaintext highlighter-rouge">$f12</code> = float</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>print_double</td>
+          <td>3</td>
+          <td><code class="language-plaintext highlighter-rouge">$f12</code> = double</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>print_string</td>
+          <td>4</td>
+          <td><code class="language-plaintext highlighter-rouge">$a0</code> = char *</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>read_int</td>
+          <td>5</td>
+          <td>&nbsp;</td>
+          <td>integer in $v0</td>
+        </tr>
+        <tr>
+          <td>read_float</td>
+          <td>6</td>
+          <td>&nbsp;</td>
+          <td>float in $f0</td>
+        </tr>
+        <tr>
+          <td>read_double</td>
+          <td>7</td>
+          <td>&nbsp;</td>
+          <td>double in $f0</td>
+        </tr>
+        <tr>
+          <td>read_string</td>
+          <td>8</td>
+          <td><code class="language-plaintext highlighter-rouge">$a0</code> = buffer, <code class="language-plaintext highlighter-rouge">$a1</code> = length</td>
+          <td>string in buffer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="functions">Functions</h3><a href="https://lukakerr.github.io/uni/1521-notes#functions" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>When a function is called
+    <ul>
+      <li>The arguments are evaluated and setup for the function (<code class="language-plaintext highlighter-rouge">$a0</code>, <code class="language-plaintext highlighter-rouge">$a1</code>)</li>
+      <li>Control is transferred to the code for the function (<code class="language-plaintext highlighter-rouge">jal</code>)</li>
+      <li>Local variables are created (<code class="language-plaintext highlighter-rouge">$s0</code>, <code class="language-plaintext highlighter-rouge">$s1</code>)</li>
+      <li>The function code is executed</li>
+      <li>The return value is setup (<code class="language-plaintext highlighter-rouge">$v0</code>)</li>
+      <li>Control transfers back to where the function was called from (<code class="language-plaintext highlighter-rouge">jr $ra</code>)</li>
+      <li>The caller receives the return value</li>
+    </ul>
+  </li>
+  <li>
+    <p>Data associated with the function call is placed on the MIPS stack</p>
+  </li>
+  <li>
+    <p>Each function allocates a section of the stack (the stack frame)</p>
+  </li>
+  <li>
+    <p>Example function call and stack frame setup:</p>
+
+    <pre><code class="language-assembly">func:
+  # setup stack frame with registers $s0, $s1, $s2
+  sw    $fp, -4($sp)
+  sw    $ra, -8($sp)
+  sw    $s0, -12($sp)
+  sw    $s1, -16($sp)
+  sw    $s2, -20($sp)
+  la    $fp, -4($sp)
+  add   $sp, $sp, -20
+
+  ...
+
+end:
+  # return value, move $s1 into $v0
+  move  $v0, $s1
+
+  # epilogue
+  lw    $s2, -16($fp)
+  lw    $s1, -12($fp)
+  lw    $s0, -8($fp)
+  lw    $ra, -4($fp)
+  la    $sp, 4($fp)
+  lw    $fp, ($fp)
+  jr    $ra
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="2d-arrays">2D Arrays</h3><a href="https://lukakerr.github.io/uni/1521-notes#2d-arrays" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Can be represented as one large chunk of memory (a), or as pointers to rows in memory (b)</p>
+  </li>
+  <li>
+    <p>To access an element at <code class="language-plaintext highlighter-rouge">int arr[row][col]</code> we can use the formula <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>r</mi><mi>o</mi><mi>w</mi><mo>×</mo><mi>r</mi><mi>o</mi><mi>w</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">)</mo><mo>+</mo><mi>c</mi><mi>o</mi><mi>l</mi><mo stretchy="false">)</mo><mo>×</mo><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mi>o</mi><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mi>n</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">((row \times rowsize) + col) \times sizeof(int)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right: 0.02691em;">w</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right: 0.02691em;">w</span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right: 0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right: 0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span></span></p>
+  </li>
+  <li>
+    <p>For strategy (a) we can implement it as follows:</p>
+
+    <pre><code class="language-assembly">  li  $s0, 0             # sum = 0
+  li  $s1, 6             # s1 = #rows
+  li  $s2, 0             # row = 0
+  li  $s3, 5             # s3 = #cols
+  li  $s4, 0             # col = 0 // redundant
+  li  $s5, 4             # intsize = sizeof(int)
+  mul $s6, $s3, $s5      # rowsize = #cols*intsize
+loop1:
+  beq  $s2, $s1, end1    # if (row &gt;= 6) break
+  li   $s4, 0            # col = 0
+loop2:
+  beq  $s4, $s3, end2    # if (col &gt;= 5) break
+  mul  $t0, $s2, $s6     # t0 = row*rowsize
+  mul  $t1, $s4, $s5     # t1 = col*intsize
+  add  $t0, $t0, $t1     # offset = t0+t1
+  lw   $t0, matrix($t0)  # t0 = *(matrix+offset)
+  add  $s0, $s0, $t0     # sum += t0
+  addi $s4, $s4, 1       # col++
+  j    loop2
+end2:
+  addi $s2, $s2, 1       # row++
+  j    loop1
+end1:
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="structs">Structs</h3><a href="https://lukakerr.github.io/uni/1521-notes#structs" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Structs in MIPS are just blocks of memory, where each member can be accessed using the appropriate offset</p>
+
+    <pre><code class="language-assembly">stu1: .space 56       # Student stu1;
+stu2: .space 56       # Student stu2;
+# stu is $s1          # Student *stu;
+
+li  $t0  5012345
+sw  $t0, stu1+0       # stu1.id = 5012345;
+li  $t0, 3778
+sw  $t0, stu1+44      # stu1.program = 3778;
+
+la  $s1, stu2         # stu = &amp;stu2;
+li  $t0, 3707
+sw  $t0, 44($s1)      # stu-&gt;program = 3707;
+li  $t0, 5034567
+sw  $t0, 0($s1)       # stu-&gt;id = 5034567;
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="computer-system-architecture">Computer System Architecture</h2><a href="https://lukakerr.github.io/uni/1521-notes#computer-system-architecture" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<h3 id="operating-systems">Operating Systems</h3><a href="https://lukakerr.github.io/uni/1521-notes#operating-systems" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Provide an abstraction layer on top of hardware</li>
+  <li>Characteristics:
+    <ul>
+      <li>Have privileged access to the raw machine</li>
+      <li>Manage use of machine resources (CPU, disk, memory)</li>
+      <li>Provide a uniform interface to access machine level operations</li>
+      <li>Arrange for controlled execution of user programs</li>
+      <li>Provide multi-tasking and parallelism</li>
+    </ul>
+  </li>
+  <li>Abstractions provided:
+    <ul>
+      <li>Uses, access rights, file system, input/output, processes, communication and networking</li>
+    </ul>
+  </li>
+  <li>Flavours:
+    <ul>
+      <li>Batch (Eniac, early IBM)
+        <ul>
+          <li>Computational jobs run one at a time via a queue</li>
+        </ul>
+      </li>
+      <li>Multi-user (Unix, Linux OSX, Windows)
+        <ul>
+          <li>Multiple jobs run in parallel</li>
+        </ul>
+      </li>
+      <li>Embedded
+        <ul>
+          <li>Smallish, cut-down systems embedded in a device</li>
+        </ul>
+      </li>
+      <li>Real-time
+        <ul>
+          <li>Specialised OS with time guarantees on job completion</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Evolution of Unix
+    <ul>
+      <li>1970’s - Bell Labs delevoped a small OS core written mostly in high level languages and having a small set of simple tools</li>
+      <li>1980’s to present - Unix and variants ported to wide variety of architectures and developments in hardware/sortware led to more OS services (databases, networking, GUIs)</li>
+    </ul>
+  </li>
+  <li>CPUs typically run in either privileged mode (full access to all machine operations and memory) or non-privileged mode (limited set of operations and access to part of memory).</li>
+</ul>
+
+<h3 id="system-calls">System Calls</h3><a href="https://lukakerr.github.io/uni/1521-notes#system-calls" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Used primarily for input/output (<code class="language-plaintext highlighter-rouge">printf()</code>), memory allocation (<code class="language-plaintext highlighter-rouge">malloc()</code>), file management (<code class="language-plaintext highlighter-rouge">read()</code>, <code class="language-plaintext highlighter-rouge">open()</code>), device management (<code class="language-plaintext highlighter-rouge">ioctl()</code>), information maintenance (<code class="language-plaintext highlighter-rouge">settimeofday()</code>) and communication (<code class="language-plaintext highlighter-rouge">pipe()</code>, <code class="language-plaintext highlighter-rouge">connect()</code>)</li>
+  <li>Successful system calls usually return 0, unsuccessful system falls usually return -1 or raise an error <code class="language-plaintext highlighter-rouge">errno</code></li>
+</ul>
+
+<h2 id="file-systems">File Systems</h2><a href="https://lukakerr.github.io/uni/1521-notes#file-systems" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Provide a mechanism for managing stored data</p>
+  </li>
+  <li>
+    <p>Unix file system:</p>
+
+    <ul>
+      <li>Paths are absolute or relative</li>
+      <li>Metadata is stored in <em>inodes</em> which hold
+        <ul>
+          <li>Physical location on storage device of file data</li>
+          <li>File type and file size</li>
+          <li>Ownership, access permissions, timestamps</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Links</p>
+
+    <ul>
+      <li>Hard links are when multiple directory entries reference the same inode</li>
+      <li>Symolic links refers to a file containing the path name of another file</li>
+    </ul>
+  </li>
+  <li>
+    <p>Various file system functions</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// attemps to open an object at Path according to Flags (i.e. O_RDONLY, O_WRONLY, O_APPEND...)</span>
+<span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">Path</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Flags</span><span class="p">);</span>
+
+<span class="c1">// attemps to release an open file descriptor</span>
+<span class="kt">int</span> <span class="nf">close</span><span class="p">(</span><span class="kt">int</span> <span class="n">FileDesc</span><span class="p">);</span>
+
+<span class="c1">// attempts to read Count bytes from FileDesc into Buffer</span>
+<span class="kt">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">FileDesc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">Buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">Count</span><span class="p">);</span>
+
+<span class="c1">// attempts to write Count bytes from Buffer onto FileDesc</span>
+<span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">FileDesc</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">Buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">Count</span><span class="p">);</span>
+
+<span class="c1">// stores metadata associated with FileName into StatBuf</span>
+<span class="kt">int</span> <span class="nf">stat</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">FileName</span><span class="p">,</span> <span class="k">struct</span> <span class="n">stat</span> <span class="o">*</span><span class="n">StatBuf</span><span class="p">);</span>
+
+<span class="c1">// same as stat() but gets data via an open file descriptor</span>
+<span class="kt">int</span> <span class="nf">fstat</span><span class="p">(</span><span class="kt">int</span> <span class="n">FileDesc</span><span class="p">,</span> <span class="k">struct</span> <span class="n">stat</span> <span class="o">*</span><span class="n">StatBuf</span><span class="p">);</span>
+
+<span class="c1">// same as stat() but doesn't follow symbolic links</span>
+<span class="kt">int</span> <span class="nf">lstat</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">FileName</span><span class="p">,</span> <span class="k">struct</span> <span class="n">stat</span> <span class="o">*</span><span class="n">StatBuf</span><span class="p">);</span>
+
+<span class="c1">// create a new directory called PathName with mode Mode</span>
+<span class="kt">int</span> <span class="nf">mkdir</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">PathName</span><span class="p">,</span> <span class="n">mode_t</span> <span class="n">Mode</span><span class="p">);</span>
+
+<span class="c1">// attaches a file system Source to a Target (mount point) with a particular layout/driver FileSysType and with specific properties of the file system Flags</span>
+<span class="kt">int</span> <span class="nf">mount</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">Source</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Target</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">FileSysType</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">Flags</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="memory-management">Memory Management</h2><a href="https://lukakerr.github.io/uni/1521-notes#memory-management" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>In early days
+    <ul>
+      <li>One process at a time</li>
+      <li>The single process could use the entirety of the memory</li>
+      <li>Addresses within process code are absolute</li>
+    </ul>
+  </li>
+  <li>Nowadays
+    <ul>
+      <li>Multiple processes are loaded into memory at once</li>
+      <li>Addresses are relative to the other processes and their memory usage</li>
+      <li>When adding a new process, if there isn’t a large enough free space we can split processes to create a larger space. The process address mapping table must be updated</li>
+    </ul>
+  </li>
+  <li>Process memory
+    <ul>
+      <li>Each ‘chunk’ of address space is called a <em>page</em></li>
+      <li>All paegs are the same size <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span></span></span></span></span> (PageSize)</li>
+      <li>Process memory is spread across <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>e</mi><mi>i</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo stretchy="false">(</mo><mi>P</mi><mi>r</mi><mi>o</mi><mi>c</mi><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ceiling(ProcSize/P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right: 0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right: 0.05764em;">S</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right: 0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mclose">)</span></span></span></span></span> pages</li>
+      <li>Page <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathdefault">i</span></span></span></span></span> has addresses <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault">A</span></span></span></span></span> in range <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>×</mo><mi>P</mi><mo>≤</mo><mi>A</mi><mo>&lt;</mo><mo stretchy="false">(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">i \times P \le A \lt (i + 1) \times P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.74285em; vertical-align: -0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.8193em; vertical-align: -0.13597em;"></span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.72243em; vertical-align: -0.0391em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span></span></span></span></span></li>
+    </ul>
+  </li>
+  <li>Address mapping table
+    <ul>
+      <li>Each process has an array of page entries</li>
+      <li>Each page entry contains start address of one chunk</li>
+      <li>Can compute index of relevant page entry by <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi mathvariant="normal">/</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">A / P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault">A</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span></span></span></span></span></li>
+      <li>Can compute offset within page by <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">%</mi><mtext>&nbsp;</mtext><mi>P</mi></mrow><annotation encoding="application/x-tex">A \ \% \ P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord mathdefault">A</span><span class="mspace">&nbsp;</span><span class="mord">%</span><span class="mspace">&nbsp;</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span></span></span></span></span></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="address-mapping">Address Mapping</h3><a href="https://lukakerr.github.io/uni/1521-notes#address-mapping" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<p>To map from process address (virtual address) to physical address:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span><span class="kt">char</span> <span class="n">status</span><span class="p">,</span> <span class="n">uint</span> <span class="n">frameNo</span><span class="p">,</span> <span class="p">...}</span> <span class="n">PageData</span><span class="p">;</span>
+
+<span class="n">PageData</span> <span class="o">*</span><span class="n">AllPageTables</span><span class="p">[</span><span class="n">maxProc</span><span class="p">];</span> <span class="c1">// one entry for each process</span>
+
+<span class="n">Address</span> <span class="nf">processToPhysical</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">Vaddr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">PageData</span> <span class="o">*</span><span class="n">PageTable</span> <span class="o">=</span> <span class="n">AllPageTables</span><span class="p">[</span><span class="n">pid</span><span class="p">];</span>
+  <span class="n">uint</span> <span class="n">pageno</span> <span class="o">=</span> <span class="n">PageNumberFrom</span><span class="p">(</span><span class="n">Vaddr</span><span class="p">);</span>
+  <span class="n">uint</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">OffsetFrom</span><span class="p">(</span><span class="n">Vaddr</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">PageTable</span><span class="p">[</span><span class="n">pageno</span><span class="p">].</span><span class="n">status</span> <span class="o">!=</span> <span class="n">Loaded</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// load page into free frame</span>
+    <span class="c1">// set PageTable[pageno]</span>
+  <span class="p">}</span>
+  <span class="n">uint</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">PageTable</span><span class="p">[</span><span class="n">pageno</span><span class="p">].</span><span class="n">frameNo</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">P</span> <span class="o">+</span> <span class="n">offset</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="virtual-memory">Virtual Memory</h3><a href="https://lukakerr.github.io/uni/1521-notes#virtual-memory" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Divides process memory space into fixed sized pages</li>
+  <li>On-demand loading of process pages into physical memory</li>
+  <li>Pages/frames are usually 512B to 8KB in size</li>
+  <li>Each frame holds one page of process address space</li>
+  <li>Requesting a non-loaded page generates a <em>page fault</em>
+    <ul>
+      <li>To handle page faults, we can find a free (unused) page frame in memory and use that</li>
+      <li>When finding free page we can either <strong>suspend</strong> the requesting process until a page is free, or <strong>replace</strong> a currently loaded page based on some condition (possibly by when it was loaded)</li>
+    </ul>
+  </li>
+  <li>Page replacement
+    <ul>
+      <li>When a page is replaced
+        <ul>
+          <li>If it has been modified, save it to disk</li>
+          <li>Get its frame number and give it to the requestor</li>
+        </ul>
+      </li>
+      <li>To decide which page to replace, we can use a measure of usefulness. This may be implemented using a priority queue. The page with the lowest usefulness is replaced</li>
+      <li>A useful heuristic is <em>LRU replacement</em> which refers to replacing a page that hasn’t been used recently and may not be needed again</li>
+      <li>Other heuristics include <em>FIFO</em> and <em>clock sweep</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cache-memory">Cache Memory</h3><a href="https://lukakerr.github.io/uni/1521-notes#cache-memory" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Small, fast and close to the CPU</li>
+  <li>Holds parts of RAM that are heavily used</li>
+  <li>Transfers data to and from RAM in cache blocks</li>
+</ul>
+
+<h3 id="memory-management-hardware">Memory Management Hardware</h3><a href="https://lukakerr.github.io/uni/1521-notes#memory-management-hardware" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Specialised hardware (MMU) is provided to perform address translation efficiently</li>
+  <li>Has a translation lookaside buffer (TLB) which is a lookup table containing virtual and physical address pairs</li>
+</ul>
+
+<h2 id="process-management">Process Management</h2><a href="https://lukakerr.github.io/uni/1521-notes#process-management" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>A process is an instance of an executing program</p>
+  </li>
+  <li>
+    <p>The OS manages multiple simultaneous processed using:</p>
+
+    <ul>
+      <li><em>Context</em> - a collection of information for one process
+        <ul>
+          <li>Static information - program code and data</li>
+          <li>Dynamic state - heap, stack, registers, program counter</li>
+          <li>OS-supplied state - environment variables, stdin, stdout</li>
+        </ul>
+      </li>
+      <li><em>Context switch</em>
+        <ul>
+          <li>Saves context for one process</li>
+          <li>Restores context for another process</li>
+        </ul>
+      </li>
+      <li><em>Process control block</em> - info about each process including:
+        <ul>
+          <li>Identifier - unique process ID (pid)</li>
+          <li>Status - running, ready, suspended or dead</li>
+          <li>State: registers, program counter</li>
+          <li>Privileges - owner, group</li>
+          <li>If suspended, the event being waited for</li>
+          <li>Memory management info - reference to page table</li>
+          <li>Accounting - CPU time used, amount of input/output done</li>
+          <li>Input/Output - open file descriptors</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Process info is split across process table entry and user structure</p>
+
+    <ul>
+      <li><em>Process table</em> - kernel data structure describing all processes</li>
+      <li><em>User structure</em> - kernel data structure describing runtime state</li>
+    </ul>
+  </li>
+  <li>
+    <p>PIDs</p>
+
+    <ul>
+      <li>Every process in Unix is allocated a unique, positive integer PID</li>
+      <li>PID 0 is the <strong>scheduler</strong></li>
+      <li>PID 1 is <strong>init</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Zombie processes</p>
+
+    <ul>
+      <li>A process which has exited but signal <code class="language-plaintext highlighter-rouge">SIGCHLD</code> not handed</li>
+    </ul>
+  </li>
+  <li>
+    <p>Orphan process</p>
+
+    <ul>
+      <li>A process whose parent has exited</li>
+    </ul>
+  </li>
+  <li>
+    <p>Process related system calls</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// creates new process by duplicating the calling process</span>
+<span class="n">pid_t</span> <span class="nf">fork</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// returns the PID of the current process</span>
+<span class="n">pid_t</span> <span class="nf">getpid</span><span class="p">();</span>
+
+<span class="c1">// returns the parent PID of the current process</span>
+<span class="n">pid_t</span> <span class="nf">getppid</span><span class="p">();</span>
+
+<span class="c1">// set the process group ID of specified process</span>
+<span class="kt">int</span> <span class="nf">setpgid</span><span class="p">(</span><span class="n">pid_t</span> <span class="n">pid</span><span class="p">,</span> <span class="n">pid_t</span> <span class="n">pgid</span><span class="p">);</span>
+
+<span class="c1">// returns the process group ID of specified process</span>
+<span class="n">pid_t</span> <span class="nf">getpgid</span><span class="p">(</span><span class="n">pid_t</span> <span class="n">pid</span><span class="p">);</span>
+
+<span class="c1">// pause current process until process pid changes state</span>
+<span class="n">pid_t</span> <span class="nf">waitpid</span><span class="p">(</span><span class="n">pid_t</span> <span class="n">pid</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">status</span><span class="p">,</span> <span class="kt">int</span> <span class="n">options</span><span class="p">);</span>
+
+<span class="c1">// pauses until one of the child processes terminates</span>
+<span class="n">pid_t</span> <span class="nf">wait</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">status</span><span class="p">);</span>
+
+<span class="c1">// send signal SigID to process ProcID</span>
+<span class="kt">int</span> <span class="nf">kill</span><span class="p">(</span><span class="n">pid_t</span> <span class="n">ProcID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">SigID</span><span class="p">);</span>
+
+<span class="c1">// terminates current process, closes any open file descriptors</span>
+<span class="kt">void</span> <span class="nf">_exit</span><span class="p">(</span><span class="kt">int</span> <span class="n">status</span><span class="p">);</span>
+
+<span class="c1">// terminates current process, flushes stdio buffers, then behaves like _exit()</span>
+<span class="kt">void</span> <span class="nf">exit</span><span class="p">(</span><span class="kt">int</span> <span class="n">status</span><span class="p">);</span>
+
+<span class="c1">// generates SIGABRT signal</span>
+<span class="kt">void</span> <span class="nf">abort</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// replaces current process by executing Path object, passes arrays of strings to new process</span>
+<span class="kt">int</span> <span class="nf">execve</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">Path</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Argv</span><span class="p">[],</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Envp</span><span class="p">[]);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="signals">Signals</h3><a href="https://lukakerr.github.io/uni/1521-notes#signals" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Generated from a variety of sources (<code class="language-plaintext highlighter-rouge">kill()</code>, syscall, divide by zery, CTR-C)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">man signal</code> for a list of signals</p>
+  </li>
+  <li>
+    <p>Process can choose to ignore signals, or can terminate, terminate and dump core, stop, or continue</p>
+  </li>
+  <li>
+    <p>Signal handlers are functions that are invoked in response to a signal</p>
+
+    <ul>
+      <li>They know which signal was invoked</li>
+      <li>Carries out an appropriate action</li>
+      <li>Note for below: <code class="language-plaintext highlighter-rouge">typedef void (*SigHnd)(int);</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// define how to handle a particular signal</span>
+<span class="c1">// SigID is one of the OS-defined signals</span>
+<span class="c1">// Handler could be SIG_IGN, or SIG_DFL or user defined</span>
+<span class="n">SigHnd</span> <span class="nf">signal</span><span class="p">(</span><span class="kt">int</span> <span class="n">SigID</span><span class="p">,</span> <span class="n">SigHnd</span> <span class="n">Handler</span><span class="p">);</span>
+
+<span class="c1">// sigID is one of the OS-defined signals</span>
+<span class="c1">// newAct defines how signal should be handled</span>
+<span class="c1">// oldAct saves a copy of how signal was handled</span>
+<span class="kt">int</span> <span class="nf">sigaction</span><span class="p">(</span><span class="kt">int</span> <span class="n">sigID</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sigaction</span> <span class="o">*</span><span class="n">newAct</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sigaction</span> <span class="o">*</span><span class="n">oldAct</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="interrupts">Interrupts</h3><a href="https://lukakerr.github.io/uni/1521-notes#interrupts" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Signals that cause normal process execution to be suspended</li>
+  <li>An <em>interrupt handler</em> carries out tasks related to interrupt</li>
+  <li>Control is then returned to the original process</li>
+</ul>
+
+<h3 id="exceptions">Exceptions</h3><a href="https://lukakerr.github.io/uni/1521-notes#exceptions" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Unexpected but&nbsp;<em>not</em>&nbsp;unanticipated conditions which arise during computation</li>
+</ul>
+
+<h3 id="multi-tasking">Multi Tasking</h3><a href="https://lukakerr.github.io/uni/1521-notes#multi-tasking" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Multiple processes are “active” at the same time</li>
+</ul>
+
+<h3 id="scheduling">Scheduling</h3><a href="https://lukakerr.github.io/uni/1521-notes#scheduling" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Selecting which process should run next</p>
+  </li>
+  <li>
+    <p>Processes are organised into&nbsp;priority queue(s) where “highest” priority process is always at head of queue</p>
+  </li>
+  <li>
+    <p>Priority determined by multiple factors</p>
+
+    <ul>
+      <li>System processes have higher priority</li>
+      <li>Longer running processes may have lower priority</li>
+      <li>Memory intensitve processes may have lower priority</li>
+    </ul>
+  </li>
+  <li>
+    <p>Abstract view of the OS scheduler</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function onTimerInterrupt() {
+   save state of currently executing process
+   newPID = dequeue(runnableProcesses)
+   setup state of newPID
+   - make process's Page Table active
+   - load pages in working set
+   - load process's registers
+   transfer control to newPID
+   - leave kernel mode
+   - set PC to saved PC from process
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="device-management">Device Management</h2><a href="https://lukakerr.github.io/uni/1521-notes#device-management" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<h3 id="io-devices">I/O Devices</h3><a href="https://lukakerr.github.io/uni/1521-notes#io-devices" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Hard Disks
+    <ul>
+      <li>Address specified by track and sector</li>
+      <li>Typical cost: 10ms seek + 5ms latency + 0.1ms transfer</li>
+    </ul>
+  </li>
+  <li>Solid State Disks
+    <ul>
+      <li>High capacity (GB), high cost, reading faster than writing</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="device-drivers">Device Drivers</h3><a href="https://lukakerr.github.io/uni/1521-notes#device-drivers" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>
+    <p>Code chunks to control an I/O device, often written in assembly</p>
+  </li>
+  <li>
+    <p>Each type of device has its own unique access protocol</p>
+  </li>
+</ul>
+
+<h3 id="memory-mapped-io">Memory Mapped I/O</h3><a href="https://lukakerr.github.io/uni/1521-notes#memory-mapped-io" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Operating system defines special memory address</li>
+  <li>User programs perform I/O by getting/setting data into memory</li>
+</ul>
+
+<h3 id="devices-on-unix">Devices On Unix</h3><a href="https://lukakerr.github.io/uni/1521-notes#devices-on-unix" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Devices can be accessed via the file system under <code class="language-plaintext highlighter-rouge">/dev</code></li>
+  <li>Two standard types of device files
+    <ul>
+      <li>Character devices - provide unbuffered direct access to hardware devices</li>
+      <li>Block devices - provide buffered access to hardware devices</li>
+    </ul>
+  </li>
+  <li>Devices can be manipulated by <code class="language-plaintext highlighter-rouge">open()</code>, <code class="language-plaintext highlighter-rouge">read()</code>, <code class="language-plaintext highlighter-rouge">write()</code> etc</li>
+</ul>
+
+<h3 id="buffered-io">Buffered I/O</h3><a href="https://lukakerr.github.io/uni/1521-notes#buffered-io" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>Devices are typically very slow compared to CPU speed</li>
+  <li>Using a&nbsp;<code class="language-plaintext highlighter-rouge">read()</code>&nbsp;from a device for each byte is inefficient</li>
+  <li>OS uses a collection of buffers to hold data from devices</li>
+</ul>
+
+<h2 id="networks">Networks</h2><a href="https://lukakerr.github.io/uni/1521-notes#networks" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li>A network is an interconnected collection of computers</li>
+  <li>Internet communications are based on a 5 layer stack:
+    <ul>
+      <li><strong>Physical layer</strong> - bits on wires or fibre optics or radio</li>
+      <li><strong>Link layer</strong> - ethernet, MAC addressing, CSMA…</li>
+      <li><strong>Network layer</strong> - routing protocols, IP</li>
+      <li><strong>Transport layer</strong> - TCP/UDP</li>
+      <li><strong>Application layer</strong> - DNS, HTTP, FTP, SMTP…</li>
+    </ul>
+  </li>
+  <li><em>Network protocols</em> govern all communication activity on a network
+    <ul>
+      <li>Protocols are defined in all of the layers</li>
+      <li>Examples include PPP (link layer), IP (network layer), TCP (transport layer), HTTP (application layer)</li>
+    </ul>
+  </li>
+  <li><em>Client-server architecture</em> is a common way of structuring network communication
+    <ul>
+      <li>The server is the data provided, that processes and waits for requests</li>
+      <li>The client is the data consumer that sends requests and receives responses</li>
+    </ul>
+  </li>
+  <li><em>Addressing</em>
+    <ul>
+      <li>Servers must have a unique internet wide address</li>
+      <li>Includes an IP address and a port number, for example - 128.119.245.12:80</li>
+      <li>Some standard port numbers include 22 (SSH), 25 (SMTP), 53 (DNS), 80 (HTTP), 443 (HTTPS)</li>
+      <li>An <em>IP address</em> is a unique identifier for a host on a network, can be IPv4 (32 bit) or IPv6 (128 bit)</li>
+    </ul>
+  </li>
+  <li><em>DNS</em>
+    <ul>
+      <li>The Doman Name System provides a mapping from name to IP address</li>
+      <li>Use the <code class="language-plaintext highlighter-rouge">host</code> command to view a servers IP address</li>
+      <li>Is decentralised and distributed</li>
+      <li>Two styles of name resolution
+        <ul>
+          <li><em>Iterated query</em> - the client gets a response and send a request to a different server</li>
+          <li><em>Recursive query</em> - the client contacts a server and the query propagates until the name is resolved</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="network-architecture-in-depth">Network Architecture In Depth</h3><a href="https://lukakerr.github.io/uni/1521-notes#network-architecture-in-depth" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li><em>Transport Layer</em>
+    <ul>
+      <li>Deals with data integrity (e.g. no packet loss), timing (delay/ping), throughput and security (tls)</li>
+      <li>Two main transport layer protocols - TCP (reliable, bytestream, <code class="language-plaintext highlighter-rouge">man tcp</code>) and UDP (unreliable, simple, fast, <code class="language-plaintext highlighter-rouge">man udp</code>)</li>
+    </ul>
+  </li>
+  <li><em>Network Layer</em>
+    <ul>
+      <li>Provides a way for processes/hosts to communicate</li>
+      <li>Internet Protocol (IP) is a network layer that provides host addressing, routing of packets, splitting and reassembly of large packets</li>
+      <li>Each host maintains a routing table and uses subnets to reduce table size</li>
+    </ul>
+  </li>
+  <li><em>Link Layer</em>
+    <ul>
+      <li>Takes packets from the network layer and transmits them</li>
+      <li>Each host contains a network interface card (NIC)</li>
+      <li>Services provided by link layer include: flow control, error detection and error correction</li>
+      <li>An example is ethernet</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="concurrency">Concurrency</h2><a href="https://lukakerr.github.io/uni/1521-notes#concurrency" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<ul>
+  <li><em>Parallelism</em> is when multiple comutations are executed simultaneously</li>
+  <li><em>Consurrency</em> is when multiple processes are running simultaneously</li>
+  <li>One method for creating concurrent taks is using <code class="language-plaintext highlighter-rouge">fork()</code> which
+    <ul>
+      <li>Creates a new child process that executes concurrently with parent</li>
+      <li>Inherits some state from parent</li>
+      <li>Runs in its own address space</li>
+    </ul>
+  </li>
+  <li>Another method is threads which are
+    <ul>
+      <li>Independent of each other</li>
+      <li>Share parent process state</li>
+      <li>Share address space</li>
+    </ul>
+  </li>
+  <li>Effects of poorly controlled concurrency
+    <ul>
+      <li><strong>Nondeterminism</strong> - same code on different runs produces different results</li>
+      <li><strong>Deadlock</strong> - a group of processes end up waiting for each other</li>
+      <li><strong>Starvation</strong> - one process keeps missing access to resource</li>
+    </ul>
+  </li>
+  <li>Concurrency control aims to provide correct sequencing of interactions between processes
+    <ul>
+      <li>Shared memory based - <em>semaphores</em>
+        <ul>
+          <li>Uses shared variable which is manipulated atomically</li>
+          <li>Blocks if access unavailabble, unblocks when available</li>
+        </ul>
+      </li>
+      <li>Message passing bases - <em>send/receive</em>
+        <ul>
+          <li>Processes communicate by sending and receiving messages</li>
+          <li>Receiver can block waiting for message to arrive</li>
+          <li>Sender can block waiting for message to be received</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Producer Consumer Problem</strong>
+    <ul>
+      <li>The producer’s job is to generate data, put it into a buffer, and start again. At the same time, the consumer is consuming the data (i.e., removing it from the buffer), one piece at a time</li>
+      <li>A problem arises when
+        <ul>
+          <li>The consumer checks and finds the buffer empty, and decides to pause</li>
+          <li>Before pausing the consumer gets timed out</li>
+          <li>The producer puts an item in the empty buffer</li>
+          <li>The producer signals the consumer</li>
+          <li>Because the consumer is not paused the signal is lost</li>
+          <li>The consumer is resumed after the time out and pauses</li>
+          <li>The producer resumes and adds items into the buffer until full, and then pauses</li>
+          <li>Each process is paused waiting for a signal from the other</li>
+        </ul>
+      </li>
+      <li>The problem is called <strong>deadlock</strong>, and to fix it we use semaphores</li>
+    </ul>
+  </li>
+  <li><strong>File Locking</strong>
+    <ul>
+      <li>Controls access to shared files</li>
+      <li>Uses <code class="language-plaintext highlighter-rouge">flock()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">man 2 flock</code></li>
+    </ul>
+  </li>
+  <li><strong>Pipes</strong>
+    <ul>
+      <li>Provides buffered I/O between producer and consumer</li>
+      <li>Uses <code class="language-plaintext highlighter-rouge">pipe()</code></li>
+      <li>Usually <code class="language-plaintext highlighter-rouge">fork()</code> called after pipe opened, so child and parent share pipe fd’s and can communicate with each other</li>
+      <li><code class="language-plaintext highlighter-rouge">man 2 pipe</code></li>
+    </ul>
+  </li>
+  <li><strong>Message Queues</strong>
+    <ul>
+      <li>Provides a mechanism for unrelated processes to pass information along a buffered channel shared by many processes</li>
+      <li><code class="language-plaintext highlighter-rouge">man 7 mq_overview</code></li>
+    </ul>
+  </li>
+  <li><strong>Sockets</strong>
+    <ul>
+      <li>An IPC endpoint for communication</li>
+      <li>Commonly used for client server systems
+        <ul>
+          <li>Server creates a socket which binds to an address and listens for connections</li>
+          <li>Client creates a socket which connects to the socket and writes/reads from a socket</li>
+        </ul>
+      </li>
+      <li>Uses a <code class="language-plaintext highlighter-rouge">struct sockaddr_in</code>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sin_family</code> - domain (AF_UNIX or AF_INET)</li>
+          <li><code class="language-plaintext highlighter-rouge">sin_port</code> - port number</li>
+          <li><code class="language-plaintext highlighter-rouge">sin_addr</code> - struct containing host address</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">man 2 socket</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="functions-related-to-concurrency">Functions Related to Concurrency</h3><a href="https://lukakerr.github.io/uni/1521-notes#functions-related-to-concurrency" class="markdown-link" style="margin-top: 4px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// creates a new thread with specified Attributes</span>
+<span class="c1">// thread info stored in *Thread</span>
+<span class="c1">// thread starts by executing Func() with Arg</span>
+<span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span><span class="n">Thread</span><span class="p">,</span> <span class="n">pthread_attr_t</span> <span class="o">*</span><span class="n">Attr</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">Func</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">Arg</span><span class="p">);</span>
+
+<span class="c1">// returns a pthread_t for current thread</span>
+<span class="n">pthread_t</span> <span class="nf">pthread_self</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// compares two thread IDs and returns 0 if the same, otherwise non-zero</span>
+<span class="kt">int</span> <span class="nf">pthread_equal</span><span class="p">(</span><span class="n">pthread_t</span> <span class="n">t1</span><span class="p">,</span> <span class="n">pthread_t</span> <span class="n">t2</span><span class="p">);</span>
+
+<span class="c1">// suspend execution until thread T terminates</span>
+<span class="c1">// pthread_exit() value is placed in *value_ptr</span>
+<span class="c1">// if T has already exited, does not wait</span>
+<span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="n">T</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+
+<span class="c1">// terminate execution of thread, and do some cleaning up</span>
+<span class="c1">// stores a return value in *value_ptr</span>
+<span class="kt">void</span> <span class="nf">pthread_exit</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">value_ptr</span><span class="p">);</span>
+
+<span class="c1">// create a semaphore object, and set initial value</span>
+<span class="kt">int</span> <span class="nf">sem_init</span><span class="p">(</span><span class="n">sem_t</span> <span class="o">*</span><span class="n">Sem</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Shared</span><span class="p">,</span> <span class="n">uint</span> <span class="n">Value</span><span class="p">);</span>
+
+<span class="c1">// try to decrement</span>
+<span class="c1">// blocks if Sem == 0</span>
+<span class="kt">int</span> <span class="nf">sem_wait</span><span class="p">(</span><span class="n">sem_t</span> <span class="o">*</span><span class="n">Sem</span><span class="p">);</span>
+
+<span class="c1">// increment the value of semaphore Sem</span>
+<span class="kt">int</span> <span class="nf">sem_post</span><span class="p">(</span><span class="n">sem_t</span> <span class="o">*</span><span class="n">Sem</span><span class="p">);</span>
+
+<span class="c1">// free all memory associated with semaphore Sem</span>
+<span class="kt">int</span> <span class="nf">sem_destroy</span><span class="p">(</span><span class="n">sem_t</span> <span class="o">*</span><span class="n">Sem</span><span class="p">);</span>
+
+<span class="c1">// controls access to shared files</span>
+<span class="kt">int</span> <span class="nf">flock</span><span class="p">(</span><span class="kt">int</span> <span class="n">FileDesc</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Operation</span><span class="p">);</span>
+
+<span class="c1">// open two file descriptors</span>
+<span class="c1">// fd[0] is opened for reading, fd[1] is opened for writing</span>
+<span class="kt">int</span> <span class="nf">pipe</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+<span class="c1">// opens a process by creating a bidirectional pipe, forking, and invoking the shell Cmd</span>
+<span class="kt">FILE</span> <span class="o">*</span><span class="nf">popen</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">Cmd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Mode</span><span class="p">);</span>
+
+<span class="c1">// create a new message queue, or open existing one</span>
+<span class="n">mqd_t</span> <span class="nf">mq_open</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">Name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Flags</span><span class="p">);</span>
+
+<span class="c1">// finish accessing message queue MQ</span>
+<span class="kt">int</span> <span class="nf">mq_close</span><span class="p">(</span><span class="n">mqd_t</span> <span class="o">*</span><span class="n">MQ</span><span class="p">);</span>
+
+<span class="c1">// adds message Msg to message queue MQ with a given priority Prio</span>
+<span class="kt">int</span> <span class="nf">mq_send</span><span class="p">(</span><span class="n">mqd_t</span> <span class="n">MQ</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Msg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Size</span><span class="p">,</span> <span class="n">uint</span> <span class="n">Prio</span><span class="p">);</span>
+
+<span class="c1">// removes highest priority message from queue MQ</span>
+<span class="kt">int</span> <span class="nf">mq_receive</span><span class="p">(</span><span class="n">mqd_t</span> <span class="n">MQ</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">Msg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Size</span><span class="p">,</span> <span class="n">uint</span> <span class="o">*</span><span class="n">Prio</span><span class="p">);</span>
+
+<span class="c1">// creates a socket with a Domain, Type and Protocol</span>
+<span class="kt">int</span> <span class="nf">socket</span><span class="p">(</span><span class="kt">int</span> <span class="n">Domain</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Type</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Protocol</span><span class="p">);</span>
+
+<span class="c1">// associates an open socket with an address</span>
+<span class="kt">int</span> <span class="nf">bind</span><span class="p">(</span><span class="kt">int</span> <span class="n">Sockfd</span><span class="p">,</span> <span class="n">SockAddr</span> <span class="o">*</span><span class="n">Addr</span><span class="p">,</span> <span class="n">socklen_t</span> <span class="n">AddrLen</span><span class="p">);</span>
+
+<span class="c1">// wait for connections on socket Sockfd</span>
+<span class="c1">// allow at most Backlog connections to be queued up</span>
+<span class="kt">int</span> <span class="nf">listen</span><span class="p">(</span><span class="kt">int</span> <span class="n">Sockfd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Backlog</span><span class="p">);</span>
+
+<span class="c1">// Sockfd has been created, bound and is listening</span>
+<span class="kt">int</span> <span class="nf">accept</span><span class="p">(</span><span class="kt">int</span> <span class="n">Sockfd</span><span class="p">,</span> <span class="n">SockAddr</span> <span class="o">*</span><span class="n">Addr</span><span class="p">,</span> <span class="n">socklen_t</span> <span class="o">*</span><span class="n">AddrLen</span><span class="p">);</span>
+
+<span class="c1">// connects the socket Sockfd to address Addr</span>
+<span class="kt">int</span> <span class="nf">connect</span><span class="p">(</span><span class="kt">int</span> <span class="n">Sockfd</span><span class="p">,</span> <span class="n">SockAddr</span> <span class="o">*</span><span class="n">Addr</span><span class="p">,</span> <span class="n">socklen_t</span> <span class="n">AddrLen</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="exam-tips">Exam Tips</h2><a href="https://lukakerr.github.io/uni/1521-notes#exam-tips" class="markdown-link" style="margin-top: 10px"><svg height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>
+
+<p>Use <code class="language-plaintext highlighter-rouge">man</code> for looking up system calls, unix variables etc</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>User commands</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>System calls</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>C Library Functions</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Devices and Special Files</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>File Formats and Conventions</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Games and Screensavers</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Misc</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>System Administration tools and Daemons</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Use <code class="language-plaintext highlighter-rouge">apropos &lt;search_term&gt;</code> to search for man pages</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">man -K &lt;search_term&gt;</code> to brute force search man pages for a specific keyword</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">bc (1)</code> To Convert Between Bases</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ibase is the input base, obase is the output base, &lt;string&gt; is the input string</span>
+<span class="nb">echo</span> <span class="s1">'obase=2; ibase=16; &lt;string&gt;'</span> | bc
+
+<span class="c"># converting hex to binary</span>
+<span class="nb">echo</span> <span class="s1">'obase=2; ibase=16; ABC123'</span> | bc
+
+<span class="c"># converting octal to binary</span>
+<span class="nb">echo</span> <span class="s1">'obase=2; ibase=8; 12345'</span> |  bc
+
+<span class="c"># converting hex to decimal - leave out the obase</span>
+<span class="nb">echo</span> <span class="s1">'ibase=16; ABC123'</span> | bc
+</code></pre></div></div>
+
+    </div>
+  </main>
+  <div id="disqus_thread"><iframe id="dsq-app8229" name="dsq-app8229" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./1521-luka_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 394px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+    <script>
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lukakerr-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3"><ul class="social-media-list"><li><a href="https://github.com/lukakerr"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">lukakerr</span></a></li></ul>
+</div>
+      <div class="footer-col footer-col-4">
+        Let me know how you found my site, <a href="mailto:luka.kerr@icloud.com?subject=How%20I%20Found%20lukakerr.github.io&amp;body=How%20I%20found%20lukakerr.github.io:">send me an email!</a>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script src="./1521-luka_files/anchor.js.download"></script>
+<script>
+  renderMathInElement(document.body, {delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false},
+  ]});
+
+  document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+    el.outerHTML = katex.renderToString(el.textContent.replace(/%.*/g, ''), { displayMode: true });
+  });
+
+  document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+    el.outerHTML = katex.renderToString(el.textContent.replace(/%.*/g, ''), { displayMode: true });
+  });
+</script>
+<iframe style="display: none;" src="./1521-luka_files/saved_resource(1).html"></iframe></body></html>

@@ -120,8 +120,74 @@ The simplest way would be set aside a bit for the sign - maybe the first bit (0 
 
 All of this can be handled, and some processors actually use this representation, but there's a simpler approach which most processors use - 2's complement.
 
+The system we actually use is 2's complement.
 
 
-**The system we actually use is 2's complement.**
 
-Here the first bit is set to 1.
+# Floating point numbers.
+
+Since there are an infinite number of real numbers, all of them just cannot be represented. Floating point numbers model a tiny subset of reals, so almost all real values have no exact representation (ex. 1/3). But whats interesting is that the numbers closer to 0 have more precision because these numbers would be used more often.
+
+C has a few floating point types - float (32-bits), double (64-bits), and long doubles (128-bits). Doubles are the thing we'd be using the most often because it has enough precision and isn't as clunky as long doubles, and floats and doubles are quite standard so unlike ints whose size kinda depends on the system, doubles use a standard (IEEE 754).
+
+
+
+## The IEEE 754
+
+The IEEE 754 can represent a floating point number with the scientific notation. The number has a fraction `F` and exponent `E`. Numbers have the representation $$(1 + F) \times 2^{E - bias}$$, where F and E can be negative. The fraction part `F` is normalised with scientific notation $$1.2345 \times 10^2$$ rather than $$123.45$$.
+
+The first bit or the highest bit (31st on 32-bit for ex. because there is a bit 0) is kept for the sign - 0 for positive, and 1 for negative. 
+
+The next two sections are for the exponent and then the fraction. This fraction is what makes the representation more or less precise.
+
+We do 1 + F because if we had zero in the left, we would be wasting memory because we could've just shifted the whole thing left.
+
+The fractional part from binary is calculated by doing $$2 ^ {- (position\ of\ 1)}$$, position of 1 is the bit where 1 comes up in the fractional part, starting the count from 1.
+
+The bias is calculated as $$bias = 2^{nbits - 1} - 1$$
+
+
+
+*   Converting binary to decimal.
+
+```pseudocode
+0 10000010 01000000000000000000000
+
+sign = 0 (positive)
+exp = 10000010 = 130
+bias = 2^(8 - 1) - 1 = 127
+exp - bias = 130 - 127 = 3
+frac = 01000000000000000000000, position of 1 = 2, frac = 2^(-2) = 1/4 = 0.25
+
+number = + (1 + 0.25) x 2^3
+number = + 1.25 x 8
+= +10
+```
+
+
+
+*   converting decimal to binary.
+
+    ```pseudocode
+    150.75
+    
+    150 = 10010110
+    .75 = 11
+    
+    = 10010110.11
+    
+    normalising ...
+    = 1.001011011 x 2^(number of places point shifted)
+    = 1.001011011 x 2^7
+    
+    frac = 001011011
+    sign = 0 (positive)
+    7 = exp - bias
+    exp = 7 + bias
+    bias = 2^(8 - 1) = 127
+    exp = 7 + 127 = 134
+    
+    = 0 10000110 00101101100000000000000 (fill the fraction with 0s for remaining bits)
+    ```
+
+    

@@ -104,9 +104,9 @@ when 000001 gets shifted left with 1 (<< 1) 00001? What will be in the question 
 
 ![image-20200602133641121](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\bitwise.assets\image-20200602133641121.png)
 
-Its used when we need to multiply or divide. (<< to multiply and >> to divide)
+**Its used when we need to multiply or divide. (<< to multiply and >> to divide)**
 
-It will be multiplied by 2 ^ number of shifts.
+**It will be multiplied by 2 ^ number of shifts.**
 
 ```ps
 345 >> 4 => 345 * 2^4
