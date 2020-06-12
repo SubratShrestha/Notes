@@ -209,6 +209,44 @@ Something that's very confusing is when we use multiplication, the `*` is a shel
 
 **which:** this will just return the location of the program. `which expr` will return `/bin/expr`
 
+
+
+**curl:** its a tool meant for scraping the web. Something to be weary about is that since urls are quite long most of the time, it may contain special shell symbols which can cause problems. So always use quotes. 
+
+Curl can also be used to send data into servers, get and send cookies, etc. So the `man curl` might be a little frightning.
+
+```shell
+# this will download the contents of the url into some filename.
+curl -o <filename> <URL>
+
+# -O will actually take the filename portion from the url.
+# -s will run the curl command silently.
+# & at the end will exeucte the curl command in the background. 
+```
+
+
+
+**xargs:** will take a command name and then wait for input. All of the inputs are then passed into the program we initially provided. One of the many uses would be if we're getting some output from a program and want to provide those as arguments to another program.
+
+xargs also assumes that the program we provide can be run multiple times, because when there are too many arguments (25+), xargs will run the program with the limit, and then with the rest.
+
+We tell xargs to stop taking args by `ctrl + d`.
+
+```shell
+xargs echo
+a
+b
+c
+a b c
+
+# more realistic case.
+find linux-5.7 -type f | xargs rm		# this will find all files in the directory and rm everything.
+```
+
+
+
+
+
 ## Examples.
 
 ```shell
