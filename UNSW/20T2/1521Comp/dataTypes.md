@@ -126,7 +126,7 @@ The system we actually use is 2's complement.
 
 # Floating point numbers.
 
-Since there are an infinite number of real numbers, all of them just cannot be represented. Floating point numbers model a tiny subset of reals, so almost all real values have no exact representation (ex. 1/3). But whats interesting is that the numbers closer to 0 have more precision because these numbers would be used more often.
+Since there are an infinite number of real numbers, all of them just cannot be represented. Floating point numbers model a tiny subset of reals, so almost all real values have no exact representation (ex. 1/3). But whats interesting is that the numbers closer to 0 need to have more precision because these numbers would be used more often.
 
 C has a few floating point types - float (32-bits), double (64-bits), and long doubles (128-bits). Doubles are the thing we'd be using the most often because it has enough precision and isn't as clunky as long doubles, and floats and doubles are quite standard so unlike ints whose size kinda depends on the system, doubles use a standard (IEEE 754).
 
