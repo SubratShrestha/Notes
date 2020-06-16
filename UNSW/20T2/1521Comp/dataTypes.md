@@ -128,7 +128,7 @@ The system we actually use is 2's complement.
 
 Since there are an infinite number of real numbers, all of them just cannot be represented. Floating point numbers model a tiny subset of reals, so almost all real values have no exact representation (ex. 1/3). But whats interesting is that the numbers closer to 0 need to have more precision because these numbers would be used more often.
 
-C has a few floating point types - float (32-bits), double (64-bits), and long doubles (128-bits). Doubles are the thing we'd be using the most often because it has enough precision and isn't as clunky as long doubles, and floats and doubles are quite standard so unlike ints whose size kinda depends on the system, doubles use a standard (IEEE 754).
+C has a few floating point types - float (32-bits), double (64-bits), and long doubles (128-bits). Doubles are the thing we'd be using the most often because it has enough precision and isn't as clunky as long doubles, and floats and doubles are quite standard so unlike ints whose size kinda depends on the system, doubles use a standard (IEEE 754). Doubles and floats are almost always represented using 32 and 64 bits 
 
 
 
@@ -138,7 +138,7 @@ The IEEE 754 can represent a floating point number with the scientific notation.
 
 The first bit or the highest bit (31st on 32-bit for ex. because there is a bit 0) is kept for the sign - 0 for positive, and 1 for negative. 
 
-The next two sections are for the exponent and then the fraction. This fraction is what makes the representation more or less precise.
+The next two sections are for the exponent and then the fraction. This fraction is what makes the representation more or less precise. When dealing with numbers, the computer will always first normalise the number like $$678.9e34 = 6.789e+36$$. 
 
 We do 1 + F because if we had zero in the left, we would be wasting memory because we could've just shifted the whole thing left.
 
@@ -184,10 +184,52 @@ number = + 1.25 x 8
     sign = 0 (positive)
     7 = exp - bias
     exp = 7 + bias
-    bias = 2^(8 - 1) = 127
+    bias = 2^(8 - 1) - 1 = 127
     exp = 7 + 127 = 134
     
-    = 0 10000110 00101101100000000000000 (fill the fraction with 0s for remaining bits)
+    = 0 10000110 001011011 00000000000000 (fill the fraction with 0s for remaining bits)
     ```
 
+     
+
+### Special representations.
+
+Infinity in IEEE754 has a special representation, it has a reserved bit pattern:
+
+`infinity = 0 | 11111111 | 00000000000000000000000` and of course
+
+`-infinity = 1 | 11111111 | 00000000000000000000000`
+
+This ofcourse is only for doubles, if we divide ints by 0 or something, the OS or compiler will probably terminate the program.
+
+
+
+Values that make no sense like $$0.0/0.0$$ are Not A Number or NaN. This also has a special representation,
+
+`0 | 11111111 | 10000000000000000000000` or `1 | 11111111 | 00000000000000000000000`
+
+
+
+To identify these numbers (or not numbers), we can use macros like `isnan(d)` or `isinf(d)`.
+
+
+
+### Catastrophic  cancellation / Compounding Errors.
+
+Even with the 64 bit representations of doubles, there can actually be a significant amount of error in our code when these tiny errors compound up to produce a significant error.
+
+Ex. We know that $$cos(1) \approx 1$$
+
+```c
+int main(void) {
+    double x = 0.000000011;
+    double y = (1 - cos(x)) / (x ** x);
     
+    printf("correct answer ~= 0.5 but y = %lf\n", y);
+    // this line produces:
+    // correct answer =~ 0.5 but y = 0.917540 which is off by a factor of almost 2.
+}
+```
+
+This isn't because the doubles have error in them, they do but that's not what causes this. The real reason is that the values like cos(x) or $$x^2$$ don't have real representations, and so a value close to the real value is chosen and that's what causes the tiny error. These tiny errors compound to make a large error. 
+
