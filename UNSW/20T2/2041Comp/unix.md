@@ -222,7 +222,30 @@ curl -o <filename> <URL>
 # -O will actually take the filename portion from the url.
 # -s will run the curl command silently.
 # & at the end will exeucte the curl command in the background. 
+
+
+# Example to check for vacancies in the unsw website for 2041.
+# This will search the site every 20 seconds for a number that's not 0 in the 
+# COMP2041 part of the site. 20s here is a bit too often and of course, we need
+# to look through the html formatting to find the best way to extract info..
+
+#!/bin/sh
+
+course="$1"
+url="$2"
+
+while true
+do
+	if curl -s "$url" | egrep "$course" | egrep -v ">0<" >/dev/null
+	then
+		echo You can enroll now.
+		exit
+	fi
+	sleep 20
+done
 ```
+
+But in unix systems, there is a special program whose entire purpose is to run certain programs in the background periodically. We can add this shell script to it.
 
 
 
@@ -242,6 +265,25 @@ a b c
 # more realistic case.
 find linux-5.7 -type f | xargs rm		# this will find all files in the directory and rm everything.
 ```
+
+
+
+**basename:** this will just remove certain parts of a filename, and this is something we would want to use quite often with shell scripts, Ex. when we want to compile every .c file in a directory and give the filename without the extension part as the executable name.
+
+```shell
+basename <filename> <what we want removed> # this will remove whatever we provide.
+
+or
+
+basename <directory> # this will remove everything and return the last bit.
+
+basename extract_bits_range.c .c
+>> extract_bits_range
+```
+
+
+
+ 
 
 
 
