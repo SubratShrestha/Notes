@@ -263,6 +263,10 @@ fi
 
 Very much like loops in python.
 
+A special thing to remember is that loops in shell can also be piped, which can come in handy.
+
+One thing to be very careful of while doing this is that since all the programs in a pipeline run on seperate shells, the variables we create don't transfer over.
+
 
 
 ### For loops.
@@ -295,7 +299,8 @@ done
 ### while loops.
 
 ```shell
-# program to monitor a certain file, and check if it exists every 2s (of course a real program would check a lot less often)
+# Program to monitor a certain file, and check if it exists every 2s 
+# (of course a real program would check a lot less often)
 #!/bin/sh
 
 while test -r file.c
@@ -305,6 +310,22 @@ do
 done
 
 echo Argh!! its gone!
+
+
+# example for piping after a loop.
+# notice the value of i in the end.
+#!/bin/sh
+
+i=0
+while [ $i -lt 40 ]
+do
+	echo $i
+	i=$((i + 1))
+done |
+grep -E '[6-9]' |
+sort -r 
+
+echo i = $i  # i = 0, this is because the value of i will not transfer over.
 
 ```
 
@@ -365,7 +386,7 @@ which [
 
 
 
-Although if we need to do a lot of arithmetic 
+Although if we need to do a lot of arithmetic, we should probably shift to using a much more powerful scripting language like python.
 
 # Testing.
 
@@ -391,3 +412,55 @@ Many testing features available. There are many many more features available [he
     `-f` if file is a file and not a dir, `-x` if file is executable, `-r` readable, `-e` if file exists.
 
 *   boolean operators (`-a -o !`)
+
+
+
+
+
+## Examples.
+
+```shell
+# Program to compile every single .c file in directory and save the executable name as filename but without the .c
+# also deals with case when some files don't have a main function, and when there
+# is a seperate .h file that the .c file includes.
+
+#!/bin/sh
+
+for c_file in *.c
+do
+	if grep -w main "$c_file" >/dev/null
+	then
+		binary="$(basename "$c_file" .c)"
+		arguments="$c_file"
+		if grep some_h_file.h "$c_file" >/dev/null
+		then
+			arguments="$arguments some_h_file.h"
+		fi
+		
+		gcc $arguments -o "$binary"
+	fi
+done
+
+
+
+# Example to check for vacancies in the unsw website for 2041.
+# This will search the site every 20 seconds for a number that's not 0 in the 
+# COMP2041 part of the site. 20s here is a bit too often and of course, we need
+# to look through the html formatting to find the best way to extract info..
+
+#!/bin/sh
+
+course="$1"
+url="$2"
+
+while true
+do
+	if curl -s "$url" | egrep "$course" | egrep -v ">0<" >/dev/null
+	then
+		echo You can enroll now.
+		exit
+	fi
+	sleep 20
+done
+```
+
