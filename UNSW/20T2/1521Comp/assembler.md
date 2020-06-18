@@ -83,7 +83,7 @@ The MIPS CPU has :
 *   32 memory registers, but not all of them can be used to store things.
 *   16/32 floating point registers for floats and doubles.
 *   PC which is 32-bit register and cannot be changed.
-*   HI, LO for storing the results of multiplication and division.
+*   HI, LO for storing the results of multiplication and division. Its a weird way of doing 64 bit operations on a 32 bit machine.
 
 The registers can be refered to by their number, so $0 ..to 31, or they also have symbolic names just like variables.
 
@@ -114,7 +114,90 @@ The instructions can have multiple formats - they could be maybe
 
 
 
+## Setting Register.
+
+`li` stands for "lead immediate" and its used to store a value into a register. It is a pseudo instruction meaning that when we type in li, its not actually an instruction but the assembler does 1 or 2 instructions after we do li.
+
+Here "immediate" means some constant.
+
+For example, li `$7, 15` might be translated to `addi $7, $0, 15`. If the numbers are large, the assembler will need to do 2 instructions.
+
+```assembly
+li $8, 42 or
+li $24, 0x2a or
+li $15, '*'
+```
 
 
-## Data and Addresses.
+
+`la` is similar to li but instead of a value, we put an address into a register.
+
+`move` will move the value of one register to another. There is no move instruction on the mips so what the assembler does is - we provide two registers to it and the assembler takes the sum of one register and $0 and assigns that value to the register we wanted moved.
+
+```assembly
+syntax: move $dest $src
+move $8, $9 // assign the value of $9 to $8
+```
+
+
+
+
+
+## Accessing Memory.
+
+These instructions move data between memory and CPU. 1, 2 and 4-bytes (8, 16 and 32 bit) quantities can be moved. Firstly there is something called a **word**, and a word is a specific sized chunk of data and the size of it used to be hardcoded into a system. Nowadays though a word has a size of 32 bits.
+
+So a word is basically a chunk of 32 bit data.
+
+```assembly
+lw addr				load word from addr in memory (32 bits)
+sw addr				store word into addr in memory (32 bits)
+lh addr				load half word from addr in memory (16 bits)
+sh addr				store half word into addr in memory (16 bits)
+lb addr				load byte into addr in memory (8 bits)
+sb addr				store byte into addr in memory (8 bits)
+```
+
+
+
+## Arithmetic Operations.
+
+These are the standard arithmetic operations in assembly.
+
+```assembly
+add src, num1, num2			src = num1 + num2
+add src, num1, imm			src = num1 + imm
+sub src, num1, num2			src = num1 - num2
+mul src, num1, num2			src = num1 * num2
+div src, num1, num2			src = num1 / num2
+rem src, num1, num2			src = num1 % num2
+neg src, num1			    src = -num1
+```
+
+
+
+## Logic Operations.
+
+These are the standard logic operations.
+
+```assembly
+and src num1 num2			src = num1 & num2
+and src num1 imm			src = num1 & imm
+
+or src num1 num2
+
+not src num1
+
+xor src num1 num2			src = num1 ^ num2
+```
+
+
+
+## Bit Operations.
+
+```assembly
+sll src num1 num2		 	src = num1 << num2
+srl src num1 num2			src = num1 >> num2
+
+```
 
