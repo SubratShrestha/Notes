@@ -442,7 +442,7 @@ do
 done
 
 
-
+__________________________________________________________________________
 # Example to check for vacancies in the unsw website for 2041.
 # This will search the site every 20 seconds for a number that's not 0 in the 
 # COMP2041 part of the site. 20s here is a bit too often and of course, we need
@@ -464,6 +464,7 @@ do
 done
 
 
+__________________________________________________________________________
 # Example to rename all upper case filenames to lower case in a directory.
 # this probably won't work in wsl or macOS because of case insensitivity, works fine on linux though.
 
@@ -486,7 +487,7 @@ do
 done
 
 
-
+__________________________________________________________________________
 # Example for a plagiarism detector which goes through a directory of C files and determines which two 
 # files are the same.
 
@@ -507,8 +508,40 @@ do
 	for file2 in "$@"
 	do
 		test "$file1"="$file2" && continue
-		sed "$transform" "$file1" | sort
+		# since the order of the functions don't really matter, and can be interchanged, we sort the lines.
+		sed "$transform" "$file1" | sort >$TMP1
+		sed "$transform" "$file2" | sort >$TMP2
+		if diff -iBw $TMP1 $TMP2 >/dev/null
+		then
+			echo "$file1 "$file2" are the same
+		fi
 	done
 done
+
+rm $TMP1 $TMP2
+
+# ========= A better approach.
+# Something to note beforehand is that the hash of two files that are the same will be the same.
+# We can first remove variables and comments and sort the file like before but then instead of doing an
+# O(n^2) search, we can hash the files and if their hashes are the same, we know the contents of 
+# the files are also the same.
+
+#!/bin/sh
+
+transform='s/\/\/.*//g;s/[a-zA-Z_0-9]*/var/g'
+
+for file in "$@"
+do
+	# md5sum is the hashing algorithm, not the most secure hashing algorithm in terms of cryptography now, but 
+	# it produces a hash that can't be replicated very easily, so it gets the job done just fine.
+	hash=$(sed "$transform" "$file" | sort | md5sum)
+	echo $hash $filename
+done |
+sort |
+
+# this uniq command is off the man page, it compares the first 32 chars of the previous output (only the hash)
+# and also reports duplicates seperately.
+uniq -w32 -d -all-repeated=seperate
+
 ```
 
