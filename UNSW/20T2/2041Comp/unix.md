@@ -91,6 +91,16 @@ Often the whitespace within the text is confusing because we don't know if the t
 
 
 
+**mv:** just moves files from source to destination. Also used to rename things.
+
+```shell
+mv filename1 filename2
+```
+
+
+
+
+
 ---
 
 ## GREP.
@@ -408,6 +418,7 @@ ls fred.c 2> error > output
 
 a.out < test_data
 >> when we have some data to be analysed by a program we wrote.
+
 ```
 
 

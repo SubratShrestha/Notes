@@ -462,5 +462,27 @@ do
 	fi
 	sleep 20
 done
+
+
+# Example to rename all upper case filenames to lower case in a directory.
+# this probably won't work in wsl or macOS because of case insensitivity, works fine on linux though.
+
+#!/bin/sh
+
+for file in "$@"
+do
+	new_filename=$(echo "$file" | tr A-Z a-z)
+	test "$file" = "$new_filename" && continue
+	
+	if test -e "$new_filename"rm *
+	then
+		echo "$new_filename already exists, exiting program."
+		exit 1
+	fi
+	
+	# The double dash after any command in unix means everything that follows is an argument and not flags. 
+	# Its here to prevent mv from treating a file named "-some_name" as an argument and not a flag.
+	mv -- "$file" "$new_filename"
+done
 ```
 
