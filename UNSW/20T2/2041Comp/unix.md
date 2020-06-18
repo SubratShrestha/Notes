@@ -205,6 +205,15 @@ Something to be careful about is that just like grep, sed has a limited set of t
 
 `s/RegExp/Replace/g` will search for and replace **all** occurances of the regexp. 
 
+Two sed commands can be seperated by semicolons, and this can come in handy when writing full scripts.
+
+```shell
+transform='s/\/\/.*//;s/[a-zA-Z][0-9]'
+sed $transform
+```
+
+
+
 
 
 **printf:** Exact same as printf in C, only in shell, just without the parantheses, same formattin, etc. Just of laughs.
@@ -327,6 +336,16 @@ seq -w 1 1000000 | sed 's/^/very_long_file_/' | xargs touch
 # to make a directory called tmp outside the current directory and copy everything in current directory to tmp for backup.
 mkdir ../tmp | rsync -a ./ ../tmp
 ```
+
+
+
+**diff:** its a program that checks for differences in files or outputs, etc. Exits with status 1 if there are differences and 0 if the files/outputs are the same. Comes with many options - `-i` to ignore case, `-B` to ignore blank lines, `-w` to ignore whitespace.
+
+```shell
+diff -iBw "filename1" "filename2"
+```
+
+
 
 
 

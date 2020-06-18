@@ -484,5 +484,31 @@ do
 	# Its here to prevent mv from treating a file named "-some_name" as an argument and not a flag.
 	mv -- "$file" "$new_filename"
 done
+
+
+
+# Example for a plagiarism detector which goes through a directory of C files and determines which two 
+# files are the same.
+
+#!/bin/sh
+
+# this transform to get rid of all comments (lines starting with /), and replacing all things that look 
+# like variable names to 'var'.
+transform='s/\/\/.*//g;s/[a-zA-Z_0-9]*/var/g'
+
+# temporary files within the tmp directory to store the two files in question in.
+# the $$ indicates the process number the program is currently running with, and this to prevent a clash when 
+# two instances of the same program are run at the same time.
+TMP1=/tmp/find_copies$$
+TMP2=/tmp/find_copies2$$
+
+for file1 in "$@"
+do
+	for file2 in "$@"
+	do
+		test "$file1"="$file2" && continue
+		sed "$transform" "$file1" | sort
+	done
+done
 ```
 
