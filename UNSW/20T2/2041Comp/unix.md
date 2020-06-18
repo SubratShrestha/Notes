@@ -264,6 +264,10 @@ a b c
 
 # more realistic case.
 find linux-5.7 -type f | xargs rm		# this will find all files in the directory and rm everything.
+
+# removing all files in a directory with millions of files.
+# we do this because rm has a limit, and it wont delete a huge number of files at once. The limit can be changed though.
+ls | xargs rm
 ```
 
 
@@ -283,9 +287,36 @@ basename extract_bits_range.c .c
 
 
 
- 
+**file:** takes a filename as argument and tells us what kind of file it is, doesn't just look at the file extension and make a guess, it actually goes into the file and peeks at the first few bytes. Doesn't go through the entire file.
+
+```shell
+# gives the list of all files whose description says executable.
+file * | grep -E executable | sed 's/.*://'
+
+# to delete all of them maybe.
+rm `file * | grep -E executable | sed 's/.*://'`
+
+# we could use xargs to do the same.
+file * | grep -E executable | sed 's/.*://' | xargs rm
+```
 
 
+
+**seq:** produces a sequence of numbers from a start to finish. Very useful for certain things like making a huge number of files. Use `-w` to have a constant number of digits, so when producing numbers from 1 to 100, 1 would be 001, 002... This makes the sorted list the same numerically and alphabetically.
+
+```shell
+# pipeline to make a million files with the name very_long_filename_0000001...
+seq -w 1 1000000 | sed 's/^/very_long_file_/' | xargs touch
+```
+
+
+
+**rsync:** tool for file copying, very efficient way to copy files to a backup directory or a remote host. Use the `-a` to say archive and then the directory name.
+
+```shell
+# to make a directory called tmp outside the current directory and copy everything in current directory to tmp for backup.
+mkdir ../tmp | rsync -a ./ ../tmp
+```
 
 
 
