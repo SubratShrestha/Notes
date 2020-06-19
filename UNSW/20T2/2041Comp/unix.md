@@ -214,6 +214,41 @@ sed $transform
 
 
 
+Capture groups:
+
+They are a more complicated way of replacing strings. We can have the shell capture the pattern we specified and put it back when we need. What we want the shell to capture is done by `\( whatever we want to capture \)`.
+
+```shell
+## to capture leading zeroes from a number.
+# first instinct is to do ...
+sed 's/^0*//'
+>> 001
+>> 1
+
+>> 000
+>> 
+
+# this did work but when we had a bare 0, just the 0 and nothing else, it replaced it with nothing.
+# to fix this, we need to use a capture group and capture a pattern.
+
+# this thing is saying after some number of 0s, if there is a number from 1 - 9, capture it
+# and replace the entire string with the first thing you captured (\1 at the end.)
+# of course, if there is nothing for us to capture (bare 0s), leave the string alone.
+sed 's/^0*\([1-9]\)/\1/'
+>> 001
+>> 1
+>> 0
+>> 0
+
+
+## swapping two chars in a string.
+# this thing is saying capture two chars in the string (it will always capture the first two), and replace 
+# that entire thing with the second thing you captured followed by the first.
+sed 's/\(.\)\(.\)/\2\1/'
+```
+
+
+
 
 
 **printf:** Exact same as printf in C, only in shell, just without the parantheses, same formattin, etc. Just of laughs.
@@ -347,7 +382,7 @@ diff -iBw "filename1" "filename2"
 
 
 
-
+**time:** Its a program that times the execution of other programs. After the other program has completed execution, time will let us know how long the whole thing took. It gives 3 things, the real time, user time and the sys time. The real and user time is all we're interested in most of the time which the actual clock time, the sys time is the OS time.
 
 ## Examples.
 

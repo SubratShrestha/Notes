@@ -415,6 +415,27 @@ Many testing features available. There are many many more features available [he
 
 
 
+Testing usually involves making test data that we work on. Something that's very useful for this is the `<<eof`. This means until you see the `eof` string, everything that's within is outputted into a file.
+
+Here the 'eof' can be anything, it doesn't matter at all but the quotes around it does.
+
+**When there is a quote around it, the variables inside ($i) will not be expanded.**
+
+but without quotes, everything with the $ sign will be expanded and treated like a shell variable.
+
+```shell
+cat >main.c <<'eof'
+#include <stdio.h>
+int main(void) {
+	return 0;
+}
+eof
+```
+
+
+
+
+
 
 
 ## Examples.
@@ -543,5 +564,49 @@ sort |
 # and also reports duplicates seperately.
 uniq -w32 -d -all-repeated=seperate
 
+__________________________________________________________________________
+# Shell script to make 100,000 C program files for testing.
+
+#!/bin/sh
+
+n_files=99
+# creating 100 files with a function and a return.
+for i in $(seq -w 0 $n_files)
+do
+	cat >file$i.c <<eof
+int f$i(int a) {
+return a;
+}
+eof
+done
+
+cat >main.c <<'eof'
+#include <stdio.h>
+int main(void) {
+int i = 0;
+eof
+
+for $i in $(seq -w 0 $n_files)
+do
+	cat >>main.c <<eof
+extern int f$i(int);
+eof
+done
+
+for $i in $(seq -w 0 $n_files)
+do
+	# notice here that we use the append sign (>>).
+	cat >>main.c <<eof
+	# getting rid of leading 0s. But we can't do 's/^0*//' because it will turn the number '0' to nothing.
+	$j=$(sed 's/^0*\([1-9]\)/\1/')
+i += f$i($j);
+eof
+done
+
+cat >>main.c <<'eof'
+	printf("%d\n", i);
+	return 0;
+}
+eof
 ```
 
