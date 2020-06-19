@@ -28,3 +28,80 @@ perl -e 'print "Hello world\n"; '
 ```
 
 Its always advisable to use the `-w` to switch warnings on, and this is something that could be switched off and not something that could be switched on. We can also use strict mode.
+
+Very interesting feature of the warning system is that it can detect possible typos of the programmer. Not foolproof though of course.
+
+
+
+## Syntax.
+
+**We can also always install and run perldoc to get more information about some command in perl.**
+
+**Special characters.**
+
+| Char | kind       | desc                                    |
+| ---- | ---------- | --------------------------------------- |
+| #    | comment    | comment                                 |
+| $    | scalar     | variable containing a single value      |
+| @    | array      | list of values, integer indexed         |
+| %    | hash       | set of values, string indexed (hashmap) |
+| &    | subroutine | callable perl code                      |
+
+
+
+**Semicolons** after statements.
+
+**Brackets** on function calls are optional.
+
+<STDIN> to get input from stdin. Like all languages, there is a special character at the end of these variables to indicate the end (`\n` for most), and some languages keep them, some don't. Perl keeps them and this is the better choice for more subtle things.
+
+To get rid of those endlines, we use the `chomp $var;` command.
+
+**$ sign** to indicate a scalar value, which is just a single value.
+
+**Always quote your strings.** It does work unquoted but the warning system will say that the string could be a reseved word in the future and that will break the code, and this is a good warning.
+
+**Single quotes** are for just strings, the variables within single quotes are not expanded.
+
+
+
+
+
+## Examples.
+
+```perl
+## Pythagoras theorem in Perl.
+
+#!/usr/bin/perl -w
+print "Enter x: ";
+$x = <STDIN>
+chomp $x;
+
+print "Enter y: ";
+$y = <STDIN>
+chomp $y;
+
+$pyth = sqrt $x * $x + $y * $y;
+print "The root of $x squared + $y squared is $pyth\n";
+
+__________________________________________________________
+## program to sum up everything in stdin using while loops.
+
+#!/usr/bin/perl -w
+while ($line = <STDIN>) {
+	$sum += $line;
+}
+print "sum = $sum\n";
+
+
+## strings vs. numbers in Perl.
+
+#!/usr/bin/perl
+
+# all of this will print 42.
+# the last one only works without warnings.
+$sum =  "22" + '20';
+$sum =  "22" + 20;
+$sum = "22" + "20 cause error?";
+```
+
