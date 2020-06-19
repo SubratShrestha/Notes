@@ -214,6 +214,10 @@ sed $transform
 
 
 
+There is a `-i` flag that's not very well supported but it stands for inplace it just does the replacement inplace and outputs it, without actually changing the file. Another way of doing this is to just create a temp file in the beginning of our script, and once we're sure add a `rm` command at the bottom.
+
+
+
 Capture groups:
 
 They are a more complicated way of replacing strings. We can have the shell capture the pattern we specified and put it back when we need. What we want the shell to capture is done by `\( whatever we want to capture \)`.
