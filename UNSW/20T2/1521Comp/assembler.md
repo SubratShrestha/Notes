@@ -140,7 +140,7 @@ li $15, '*'
 
 ```assembly
 syntax: move $dest $src
-move $8, $9 // assign the value of $9 to $8
+move $8, $9 # assign the value of $9 to $8
 ```
 
 
@@ -241,17 +241,17 @@ jr register
 For things like ifs, for loops, while loops, etc. we can use branch instructions. They are conditional, like do some instruction in some register if the value of two registers are the same.
 
 ```assembly
-// branch on equal and not equal.
-beq reg1 reg2 location			// if reg1 == reg2, go to location.
-bne reg1 reg2 location			// if reg1 != reg2, go to location.
+# branch on equal and not equal.
+beq reg1 reg2 location			# if reg1 == reg2, go to location.
+bne reg1 reg2 location			# if reg1 != reg2, go to location.
 
-// branch on < and <=
-blt reg1 reg2 location			// if reg1 < reg2
-ble reg1 reg2 location			// if reg1 <= reg2
+# branch on < and <=
+blt reg1 reg2 location			# if reg1 < reg2
+ble reg1 reg2 location			# if reg1 <= reg2
 
-// branch on > and >=
-bgt reg1 reg2 location			// if reg1 > reg2
-bge reg1 reg2 location			// if reg1 >= reg2
+# branch on > and >=
+bgt reg1 reg2 location			# if reg1 > reg2
+bge reg1 reg2 location			# if reg1 >= reg2
 ```
 
 
@@ -273,3 +273,21 @@ The SPIM emulator gives I/O and memory allocation with something called the sysc
 They have numbers (n in the table below), and some of them have parameters but most of them don't.
 
 ![image-20200620153118939](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\assembler.assets\image-20200620153118939.png)
+
+
+
+## Examples.
+
+```assembly
+# example to write hello MIPS!
+
+main:
+	la $a0, msg					# load the string into register $a0 (string)
+	li $v0, 4					# load the syscall (4 for print string in table above)
+	syscall						# perform syscall (print the string)
+	jr $ra						# return to caller (__start)
+	
+	.data						# the data segment
+msg: .asciiz "Hello MIPS!\n"	  # msg is the label (var), .asciiz is the directive, followed by the string.
+```
+
