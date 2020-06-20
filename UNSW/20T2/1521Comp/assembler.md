@@ -145,7 +145,13 @@ move $8, $9 // assign the value of $9 to $8
 
 
 
+## Pseudo-instructions.
 
+So when we write our MIPS code, that code will not actually be running in the silicon, because MIPS is the more readable version, so the MIPS actually gets converted into machine code. Of course this is only for pseudo-instructions like li, la, bge, blt, etc.
+
+![image-20200620132052341](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\assembler.assets\image-20200620132052341.png)
+
+The la example above actually has an address (label) that is greater than 16 bits, so the assembler carries out that instruction in two steps - lui (same as la) the top 16 bits, and then OR that register with the lower 16 bits of the address. Note the use of $at register for intermediate results, this is one of the registers we can't use because the machine needs to use it for this kind of thing.
 
 ## Accessing Memory.
 
@@ -169,12 +175,12 @@ sb addr				store byte into addr in memory (8 bits)
 These are the standard arithmetic operations in assembly.
 
 ```assembly
-add src, num1, num2			src = num1 + num2
-sub src, num1, num2			src = num1 - num2
-mul src, num1, num2			src = num1 * num2
-div src, num1, num2			src = num1 / num2
-rem src, num1, num2			src = num1 % num2
-neg src, num1			    src = -num1
+add src num1 num2			src = num1 + num2
+sub src num1 num2			src = num1 - num2
+mul src num1 num2			src = num1 * num2
+div src num1 num2			src = num1 / num2
+rem src num1 num2			src = num1 % num2
+neg src num1			    src = -num1
 ```
 
 
@@ -185,11 +191,8 @@ These are the standard logic operations.
 
 ```assembly
 and src num1 num2			src = num1 & num2
-
 or src num1 num2			src = num1 | num2
-
 not src num1				src = !num1
-
 xor src num1 num2			src = num1 ^ num2
 ```
 
@@ -251,3 +254,22 @@ bgt reg1 reg2 location			// if reg1 > reg2
 bge reg1 reg2 location			// if reg1 >= reg2
 ```
 
+
+
+
+
+## MIPS vs. SPIM.
+
+MIPS is the actual machine architecture and SPIM is the emulator for it. SPIM can read text files containing instructions, converts machine code and loads into "memory", but also provides debugging capabilities. They also provide a very simple OS to work on.
+
+But it is quite old and its a command line tool but there are other programs which provide a GUI and more debugging like qtspim and xspim.
+
+
+
+## System Calls.
+
+The SPIM emulator gives I/O and memory allocation with something called the syscall instruction. They are the specific requests we can make to the OS like write or read a int, float, double, string, char, exit the program, or sbrk which is like malloc but lower level.
+
+They have numbers (n in the table below), and some of them have parameters but most of them don't.
+
+![image-20200620153118939](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\assembler.assets\image-20200620153118939.png)
