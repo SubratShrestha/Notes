@@ -85,11 +85,15 @@ The MIPS CPU has :
 *   PC which is 32-bit register and cannot be changed.
 *   HI, LO for storing the results of multiplication and division. Its a weird way of doing 64 bit operations on a 32 bit machine.
 
-The registers can be refered to by their number, so $0 ..to 31, or they also have symbolic names just like variables.
 
-*   register 0 or $0 is just like `/dev/null`, it always has the value 0 and cannot be changed.
-*   register $1 is used specifically by the system to store whatever it needs to and we can't write to it.
-*   registers $26 and 27 are also for the system to use for extra external things that come up. It can however be written to and our program may work for a few seconds but as soon as something happens and the system needs to write to these registers, our program will break.
+
+## Integer Registers.
+
+The registers can be refered to by their number, so $0 ..to 31, or they also have symbolic names just like variables. But we can't use all of them anytime we want, because some of them have some specific functions and can't be written to.
+
+![image-20200620124632731](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\assembler.assets\image-20200620124632731.png)
+
+8-16 have the convention that nobody expects any set values to them, so we can use them however. 16-23 have the convention that after we're done using them, we put the old values back, all of this is so that things like function calls won't mess things up when lots of them are running.
 
 
 
@@ -116,11 +120,11 @@ The instructions can have multiple formats - they could be maybe
 
 ## Setting Register.
 
-`li` stands for "lead immediate" and its used to store a value into a register. It is a pseudo instruction meaning that when we type in li, its not actually an instruction but the assembler does 1 or 2 instructions after we do li.
+`li` stands for "lead immediate" and its used to store a value into a register. Here the "immediate" just means a constant. 
 
-Here "immediate" means some constant.
+`li` is a pseudo instruction meaning that when we type in li, its not actually an instruction but the assembler does 1 or 2 instructions after we do li.
 
-For example, li `$7, 15` might be translated to `addi $7, $0, 15`. If the numbers are large, the assembler will need to do 2 instructions.
+For example, li `$7, 15` might be translated to `addi $7, $0, 15`. If the numbers are large, the assembler will need to do 2 instructions. Usually any constant that can be expressed in 16 bits can be done in 1, and anything greater needs 2 instructions.
 
 ```assembly
 li $8, 42 or
@@ -145,9 +149,9 @@ move $8, $9 // assign the value of $9 to $8
 
 ## Accessing Memory.
 
-These instructions move data between memory and CPU. 1, 2 and 4-bytes (8, 16 and 32 bit) quantities can be moved. Firstly there is something called a **word**, and a word is a specific sized chunk of data and the size of it used to be hardcoded into a system. Nowadays though a word has a size of 32 bits.
+These instructions move data between memory and CPU. 1, 2 and 4-bytes (8, 16 and 32 bit) quantities can be moved. Firstly there is something called a **word**, and a word is a specific sized chunk of data and the size of it used to be hardcoded into a system. Nowadays though a word has a size of 32 bits or maybe 64 bits.
 
-So a word is basically a chunk of 32 bit data.
+So a word is basically a chunk of 32 bit data. There are also half words, and bytes.
 
 ```assembly
 lw addr				load word from addr in memory (32 bits)
@@ -160,13 +164,12 @@ sb addr				store byte into addr in memory (8 bits)
 
 
 
-## Arithmetic Operations.
+## Arithmetic Instructions.
 
 These are the standard arithmetic operations in assembly.
 
 ```assembly
 add src, num1, num2			src = num1 + num2
-add src, num1, imm			src = num1 + imm
 sub src, num1, num2			src = num1 - num2
 mul src, num1, num2			src = num1 * num2
 div src, num1, num2			src = num1 / num2
@@ -176,28 +179,75 @@ neg src, num1			    src = -num1
 
 
 
-## Logic Operations.
+## Logic Instructions.
 
 These are the standard logic operations.
 
 ```assembly
 and src num1 num2			src = num1 & num2
-and src num1 imm			src = num1 & imm
 
-or src num1 num2
+or src num1 num2			src = num1 | num2
 
-not src num1
+not src num1				src = !num1
 
 xor src num1 num2			src = num1 ^ num2
 ```
 
 
 
-## Bit Operations.
+## Bit Instructions.
 
 ```assembly
 sll src num1 num2		 	src = num1 << num2
 srl src num1 num2			src = num1 >> num2
+sra src num1 num2			src = num1 >> num2 but for addresses.
+rol src num1 num2			src = rotate_left(num1, num2)
+ror	src num1 num2			src = rotate_right(num1, num2)
+```
 
+
+
+## Jump Instructions.
+
+Jump Instructions just mean go to a particular location in the code, so just jump through the control flow of the program. There are different options that come in handy.
+
+We can simply jump to a location.
+
+```assembly
+j location
+```
+
+We can also jump to a location and remember where we came from, this will be useful for function calls. This is called jump and link. The location of where we came from will be stored in some register.
+
+```assembly
+jal location
+```
+
+We can also jump to whatevers in some register. This is how we would return after completing some function.
+
+```assembly
+jr register
+```
+
+
+
+
+
+## Branch Instructions.
+
+For things like ifs, for loops, while loops, etc. we can use branch instructions. They are conditional, like do some instruction in some register if the value of two registers are the same.
+
+```assembly
+// branch on equal and not equal.
+beq reg1 reg2 location			// if reg1 == reg2, go to location.
+bne reg1 reg2 location			// if reg1 != reg2, go to location.
+
+// branch on < and <=
+blt reg1 reg2 location			// if reg1 < reg2
+ble reg1 reg2 location			// if reg1 <= reg2
+
+// branch on > and >=
+bgt reg1 reg2 location			// if reg1 > reg2
+bge reg1 reg2 location			// if reg1 >= reg2
 ```
 
