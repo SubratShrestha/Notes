@@ -95,6 +95,8 @@ The registers can be refered to by their number, so $0 ..to 31, or they also hav
 
 8-16 have the convention that nobody expects any set values to them, so we can use them however. 16-23 have the convention that after we're done using them, we put the old values back, all of this is so that things like function calls won't mess things up when lots of them are running.
 
+Most of the time we'd be using the s0 - s7 (16 - 23) registers which are preserved across function calls, and use the t0 - t7 (8 - 16) for intermediate values.
+
 
 
 ## MIPS Instructions.
