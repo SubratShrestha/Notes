@@ -138,6 +138,8 @@ li $15, '*'
 
 `la` is similar to li but instead of a value, we put an address into a register.
 
+There actually is no difference between li and la, the difference is only syntactical and its just that mips, qtspim and assembler just insist we use them for addresses or constants. But constants hold some value in bits and there its the same for addresses, they are also just some values at the lowest level.
+
 `move` will move the value of one register to another. There is no move instruction on the mips so what the assembler does is - we provide two registers to it and the assembler takes the sum of one register and $0 and assigns that value to the register we wanted moved.
 
 ```assembly
@@ -282,6 +284,10 @@ They have numbers (n in the table below), and some of them have parameters but m
 
 ## Examples.
 
+
+
+*   **Add 17 and 25 and print result.** 
+
 ```assembly
 # add 17 and 25 and print result.
 
@@ -301,10 +307,14 @@ main:
 
     li $v0, 0
     jr $ra
-    
 
-______________________________________________________________________________________________________
+```
 
+
+
+*   **Example to write hello MIPS!**
+
+```assembly
 # example to write hello MIPS!
 
 main:
@@ -327,9 +337,13 @@ msg:
 # the string, and this is something that .ascii does not do.
 # .ascii would be useful if we're calculating the length of the string later, but we need the null terminator 
 # to print things, so we'll use .asciiz.
+```
 
-______________________________________________________________________________________________________
 
+
+*   **Translate a C program that takes in a number and decides if its odd or even into MIPS assembler.**
+
+```assembly
 # Translate a C program that takes in a number and decides if its odd or even into MIPS assembler.
 # Only use the bitwise operators to decide odd or even.
 
@@ -348,8 +362,13 @@ main:
 	li $v0, 5							# scanf is syscall 5, and leaves scanned var in $v0.
 	syscall
 	
+	# might seem like a waste because we could just continue with the value in v0
+	# but the assembler relies on v0 for the number of syscall, so we'd making a lot harder
+	# on ourselves by not doing this move.
+	move $s0, $v0
+	
 	# if (x & 1 == 0)
-	and $s1, $v0, 1
+	and $s1, $s0, 1
 	beq $s1, 0, even
 	
 	# printf("Odd.\n");
@@ -378,7 +397,58 @@ odd_string:
 	.asciiz "Odd.\n"
 even_string:
 	.asciiz "Even.\n"
+```
 
 
+
+*   **Program to loop through and print the first 10 numbers.**
+
+    for this, it really helps if we convert the C code to a simpler version with gotos and labels instead
+    of normal loops.
+
+```c
+# the actual C code:
+for (int i = 1; i <= 10; i++) {
+	printf("%d\n", i);
+}
+
+# this can be simplified with gotos and labels, instead of loops.
+int i = 1;
+
+loop_start:
+	if (i > 10) goto loop_end;
+	printf("%d", i);
+	printf("\n");
+	i++;
+	goto loop_start;
+
+loop_end:
+	return 0;
+```
+
+```assembly
+# i in $s0
+main:
+	li $s0, 1						# int i = 1
+	b loop_start
+
+loop_start:
+	bgt $s0, 10, loop_end			# if (i > 10) goto loop_end
+	
+	move $a0, $s0					# printf("%d", i);
+	li $v0, 1
+	syscall
+	
+	li $v0, 11						# printf("%c", '\n');
+	li $a0, '\n'
+	syscall
+	
+	add $s0, $s0, 1					# i++;
+	b loop_start					# goto loop_start
+
+loop_end:	
+	li $v0, 0						# return 0;
+	jr $ra
+	
 ```
 
