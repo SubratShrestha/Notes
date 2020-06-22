@@ -95,7 +95,7 @@ The registers can be refered to by their number, so $0 ..to 31, or they also hav
 
 8-16 have the convention that nobody expects any set values to them, so we can use them however. 16-23 have the convention that after we're done using them, we put the old values back, all of this is so that things like function calls won't mess things up when lots of them are running.
 
-Most of the time we'd be using the s0 - s7 (16 - 23) registers which are preserved across function calls, and use the t0 - t7 (8 - 16) for intermediate values.
+Most of the time we'd be using the s0 - s7 (16 - 23) registers which are preserved across function calls, and use the t0 - t7 (8 - 16) for intermediate values. So when there are variables in a C program, something whose value needs to stay the same throughout the computation, until ofc we change it should be kept in s0 - s7, but intermediates whose values we won't need later (because we do need to store them somewhere) can be stored in t0 - t7.
 
 
 
@@ -256,7 +256,7 @@ bgt reg1 reg2 location			# if reg1 > reg2
 bge reg1 reg2 location			# if reg1 >= reg2
 ```
 
-
+These are all branch-if-condition statements. If we need to branch on some part of our code no matter what, we say just `b`. This will branch our code if the value in the zero register is 0, and the value of the zero register is always 0.
 
 
 
@@ -268,9 +268,11 @@ But it is quite old and its a command line tool but there are other programs whi
 
 
 
-## System Calls.
+## System Calls (syscall) .
 
 The SPIM emulator gives I/O and memory allocation with something called the syscall instruction. They are the specific requests we can make to the OS like write or read a int, float, double, string, char, exit the program, or sbrk which is like malloc but lower level.
+
+These are instructions directly to the OS, and the OS will check the priveleges we have and decide whether to perform them or not.
 
 They have numbers (n in the table below), and some of them have parameters but most of them don't.
 
@@ -281,15 +283,102 @@ They have numbers (n in the table below), and some of them have parameters but m
 ## Examples.
 
 ```assembly
+# add 17 and 25 and print result.
+
+main:
+    li $t0, 17					# put 17 in register t0 (this will be 11 in hex).
+    li $t1, 25					# put 25 in register t1.
+
+    add $t2, $t0, $t1			 # put the sum of t0 and t1 in t2.
+
+    move $a0, $t2				 # move the value in t2 to a0 (syscall will print whats in a0 later).
+    li $v0, 1				     # v0 takes the instruction number (1 for printing ints).
+    syscall 					# prints the sum.
+
+    li $a0, '\n'				# puts char \n in a0.
+    li $v0, 11					# puts instruction to print char (11) in v0.
+    syscall						# prints newline char.
+
+    li $v0, 0
+    jr $ra
+    
+
+______________________________________________________________________________________________________
+
 # example to write hello MIPS!
 
 main:
-	la $a0, msg					# load the string into register $a0 (string)
+	la $a0, msg					# load the string msg into a0 so we can print later.
 	li $v0, 4					# load the syscall (4 for print string in table above)
 	syscall						# perform syscall (print the string)
 	jr $ra						# return to caller (__start)
 	
-	.data						# the data segment
-msg: .asciiz "Hello MIPS!\n"	  # msg is the label (var), .asciiz is the directive, followed by the string.
+# the lines after the .data means we're editing the data segment, and this bit is executed first.
+	.data   				
+msg: 
+	.asciiz "Hello MIPS!\n"	  
+	# msg is the label (like label for goto in C), .asciiz is the directive that will return the ascii
+	# of some string.
+
+
+# so what we're doing is we're setting aside some memory for some string, in our data component.
+# we have msg in line 26 which acts like a goto in C, so it will jump to a label (msg).
+# The .asciiz returns the ascii bits of a string. .asciiz also puts in the null terminating 0 at the end of
+# the string, and this is something that .ascii does not do.
+# .ascii would be useful if we're calculating the length of the string later, but we need the null terminator 
+# to print things, so we'll use .asciiz.
+
+______________________________________________________________________________________________________
+
+# Translate a C program that takes in a number and decides if its odd or even into MIPS assembler.
+# Only use the bitwise operators to decide odd or even.
+
+### Here its very helpful to add the C code as comments and translate it line by line.
+### Its also very helpful to use the first line to comment out the registers we'll be using for each
+### C variable.
+
+# number $s0, bottom_bit $s1
+main:
+	# printf("Enter a number: ");
+	la $a0, string0						# careful here, this is la not li.
+	li $v0, 4
+	syscall
+	
+	# scanf("%d");
+	li $v0, 5							# scanf is syscall 5, and leaves scanned var in $v0.
+	syscall
+	
+	# if (x & 1 == 0)
+	and $s1, $v0, 1
+	beq $s1, 0, even
+	
+	# printf("Odd.\n");
+	la $a0, odd_string					# la not li.
+	li $v0, 4
+	syscall
+
+# note here that if we don't include b end here, the execution will continue to the even label.
+	b end
+
+# note here that we don't need to include b end here, because it will continue to the end label anyway.
+even:
+	# printf("Even.\n");
+	la $a0, even_string					# la not li.
+	li $v0, 4
+	syscall
+	
+end:
+	li $v0, 0
+	jr $ra
+    
+	.data
+string0:
+	.asciiz "Enter a number: "
+odd_string:
+	.asciiz "Odd.\n"
+even_string:
+	.asciiz "Even.\n"
+
+
 ```
 
