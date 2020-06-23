@@ -65,6 +65,146 @@ To get rid of those endlines, we use the `chomp $var;` command.
 
 
 
+## Logical operators.
+
+All the logical operators are the same as C but with some extra. We can use the words `and`, `or` and `not`, just like python. But they have different precedence.
+
+
+
+## Arrays (lists).
+
+They're very similar when accessing values of the array, but can differ when defining them.
+
+The arrays in Perl are dynamic and don't need to be declared. They grow as needed. The missing values in an array are just undefined, and if you try and print it, we get an empty string.
+
+```perl
+@a = ("first thing", "second one", 123);
+
+print $a[0];
+
+# this is to get the last element of an array.
+print "The number of elements in this array = ", $#a+1, "\n";
+```
+
+```perl
+# this program will just accept a value into any index and the array grows as needed.
+# this can happen until it runs out of memory in which case "Out of memory!" will printed.
+while (1) {
+	print "Enter array index: ";
+	$n = <STDIN>
+	# when STDIN can't read the input (ctrl+D), that will be "undefined".
+	# if (!$n) would also work but then a 0 with no newline is treated as false as well.
+	if (!defined $n) {
+		# this is the same as break in C.
+		last;
+	}
+	
+	chomp $n;
+	$a[$n] = 42;
+	print "Array element in $n now contains $a[$n]\n";
+	printf ("Array size is now %d\n", $#a+1);
+}
+```
+
+```perl
+# this will re-assign the first 4 values of the array.
+@nums = (4, 12, 5, 7, 2, 9);
+($a, $b, $c, $d) = @nums;
+```
+
+```perl
+# this will swap the values of x and y.
+($x, $y) = ($y, $x);
+```
+
+
+
+### Slicing:
+
+There is array slicing in Perl, much like python, only the syntax is different.
+
+```perl
+@list = (1, 3, 5, 7, 9);
+print "@list[0,2]"			# "1 5"
+print "@list[0..2]"			# "1 3 5"
+print "@list[4, 2, 3]"		# "9 5 7"
+```
+
+
+
+### push/pop and shift/unshift.
+
+there's support for push and pop like a lot of other languages.
+
+```perl
+@nums = (1, 2, 3);
+push @nums, 7;			# array becomes: 1, 2, 3, 7
+$x = pop @nums;			# x = 7
+
+shift(@nums);			# x = 1
+unshift(@a, 23);		# array becomes: 23, 1, 2, 3 
+```
+
+
+
+### argv / argc:
+
+argv and argc are similar to shell than to C, the name of the program is stored in `$0` and the array of arguments is stored in `@ARGV`.
+
+Of course since we're no longer in C, we can just use `$#ARGV +1` or even something like `scalar(@ARGV)`
+
+
+
+## Loops in Perl.
+
+Loops have the same syntax as any other language, just with some special characters for varibles and stuff. But there is the `foreach` which was new at the time, and this works just like the for loops in python, where we have a variable for each instance of a "list".
+
+```perl
+foreach $arg (@ARGV) {
+	print "$arg ";
+}
+print "\n";
+
+# this is kinda dumb because it can be written as:
+print "@ARGV\n";			# because the default delimiter in this case is space.
+
+
+
+# Perl also comes with the join function, also taken by python.
+$string = join ", ", @ARGV;
+print "$string\n";
+
+# something like this would also work just fine.
+print join(", ", @ARGV), "\n";
+```
+
+
+
+
+
+## Context.
+
+This is a rather strange feature of Perl, and its that the value of something depends on the context of the line.
+
+```perl
+# the context is the left hand side of a line.
+@a = ("abc", 123, "x");
+
+# scalar context gives length of array.
+$n = @a;							# gives 3
+
+# scalar context gives space seperated elements.
+$s = "@a"							# gives "abc 123 x"
+
+# we can also concatenate strings with the dot operator.
+$t = @a.""							# gives "3". Here the array is concatenated with empty string.
+
+# list context gives joined elements.
+print @a;							# gives "abc123x"
+```
+
+
+
 
 
 ## Examples.
@@ -103,5 +243,26 @@ print "sum = $sum\n";
 $sum =  "22" + '20';
 $sum =  "22" + 20;
 $sum = "22" + "20 cause error?";
+
+__________________________________________________________
+## Program to just count the number of lines in input.
+
+$count = 0;
+while (1) {
+	$line = <STDIN>
+	# backwards form of an if statement, also taken by python.
+	last if !defined $line;
+	$count++
+}
+print "$count lines.\n";
+
+## this can be shortened by a lot.
+@lines = <STDIN>;
+print $#lines +1, " lines\n";
+
+## this can also be written as:
+() = <STDIN>;
+print "$. lines\n";				# the $. here is just a count of how many inputs have been collected.
+							  # weird syntax.
 ```
 

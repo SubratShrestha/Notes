@@ -388,6 +388,10 @@ diff -iBw "filename1" "filename2"
 
 **time:** Its a program that times the execution of other programs. After the other program has completed execution, time will let us know how long the whole thing took. It gives 3 things, the real time, user time and the sys time. The real and user time is all we're interested in most of the time which the actual clock time, the sys time is the OS time.
 
+
+
+**ln:** Its a symbolic link to some other directory or file. This just makes a shortcut in some directory that leads to some other directory or file.
+
 ## Examples.
 
 ```shell
