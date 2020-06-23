@@ -12,8 +12,6 @@ But even if we write webapps in js and stuff, understanding how these high level
 
 Typical moder CPUs have:
 
-
-
 ### Registers.
 
 These are basically variables. They store some data, maybe some numbers. 15 50 100 registers in a CPU, one of them is the program counter which is a register that tracks execution.
@@ -280,9 +278,73 @@ They have numbers (n in the table below), and some of them have parameters but m
 
 ![image-20200620153118939](C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\assembler.assets\image-20200620153118939.png)
 
+# Memory.
+
+Recall that we can load words, or half words, or just bytes. The thing with half words and bytes is that we need to have a special unsigned version of it because the actual 32 bits of memory may have signs (in the first bits) and so the unsigned variable will have some special convention. We'll mostly be using 32 bit words though.
+
+We use the `lw`, `sw` instructions and the `.data` directive to access the memory. The `.word` directory to specify that the value we want to store needs 32 bits.
+
+Things like global variables need to be stored and initialized to 0 beforehand. The C compiler does this automatically, but that's not true in assembler. We also know why we probably shouldn't use global variables anyway. This is because we need to store them anyway, whether or not we use them. With local variables in functions, they get destroyed when the scope is over, and the memory can be reused.
+
+Since the `lw` and `sw` load and store in the memory from a register, we first need to load or store the values into a register so that the value of the register can be stored in memory. So this will be two instructions. This is where registers like `$t0` would come in handy.
+
+```assembly
+# This is how we'd store some value (17) into a global variable.
+li $t0, 17
+sw $t0, x
+
+.data
+x:
+	.word 0
+```
+
+
+
+Arithmetic, like storing values, needs to be done to registers, NOT addresses. So to do some arithmetic with values in memory, we first need to load the values in the addresses into registers, do the arithmetic with those registers, and then maybe store the result in memory.
+
+```assembly
+# This is how we store 2 values, add those values and store the sum somewhere.
+
+# storing value 17 into x.
+li $t0, 17
+sw $t0, x
+
+# storing value 25 into y. Notice how we can reuse the same register, because we
+# have already stored the value we need.
+li $t0, 25
+sw $t0, y
+
+# loading the values of x and y into $t0 and $t1, adding $t0 and $t1 into $t2,
+# then storing the value in $t2 into z.
+lw $t0, x
+lw $t1, y
+add $t2, $t0, $t1
+sw $t2 z
+
+.data
+x:
+	.word 0
+y:
+	.word 0
+z:
+	.word 0
+```
+
+
+
+
+
 
 
 ## Examples.
+
+Usually what we do is we first code up what we need to do in C and not just any C, a simplified C with gotos instead of loops and what not, and this is definitely not good C code because its way less readable but it will be much easier for translation. We then translate that to assembler. 
+
+Break down every big expression such that there's only one or two operations, and make new variables to do it.
+
+Comment what variables will be in what register, this is source of a lot of bugs because people forget what variables are in what registers, so make that very clear.
+
+With the course, we'll just be doing translation as well because writing assembler directly will just be too much to handle and will most likely have a lot of bugs.
 
 
 
