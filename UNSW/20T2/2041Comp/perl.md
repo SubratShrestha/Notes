@@ -100,6 +100,8 @@ They're very similar when accessing values of the array, but can differ when def
 
 The arrays in Perl are dynamic and don't need to be declared. They grow as needed. The missing values in an array are just undefined, and if you try and print it, we get an empty string.
 
+Perl arrays are very well made, almost all operations on perl arrays are of O(1), so operations like push, pop, shift, unshift are all done in constant time, independent of the size of the array.
+
 ```perl
 @a = ("first thing", "second one", 123);
 
@@ -167,6 +169,51 @@ $x = pop @nums;			# x = 7
 shift(@nums);			# x = 1
 unshift(@a, 23);		# array becomes: 23, 1, 2, 3 
 ```
+
+
+
+### Reversing arrays.
+
+There is a reverse function that reverses an array for us.
+
+```perl
+@lines = <STDIN>;
+print reverse @lines;
+
+# we can also do:
+print reverse <STDIN>;
+
+# we can also do this with push and pop.
+
+# yes, we could do this in one line, but a while loop is just so much more flexible.
+# maybe we want to do something to the lines, maybe skip some, etc.
+while ($line = <STDIN>) {
+	push @lines $line;
+}
+
+while (@lines) {
+	print pop @lines;				# shift would print the array in order.
+}
+
+# another way:
+while ($line = <STDIN>) {
+	unshift @lines, $line;			# inserting in reverse order.
+}
+print @lines;
+```
+
+
+
+### sorting arrays.
+
+sorting is very similar to the sort in the shell.
+
+```perl
+@lines = <STDIN>;
+print sort @lines;
+```
+
+
 
 
 
@@ -294,6 +341,25 @@ system "date;echo hi perl.";
 
 
 
+## Pipe mode.
+
+We can also use the pipes from the shell in a perl script. 
+
+We use `-|` to say take the stream of bytes coming the stdout of some program, and we use `|-` to get the stream of bytes that will go into the stdin of some program. That would let us give some stream of bytes that get put into the stdin of the program.
+
+Doing both introduces some problems, so the best way to handle that is to write all our inputs into a file and run the program taking input from that file. 
+
+The problem is called "deadlock", research that when you get some time.
+
+```perl
+# something more complex can easily be put here since its passed to a shell.
+open my $f, "-|", "date";
+$date = <$f>;
+print "Date is $date\n"
+```
+
+
+
 
 
 ## Examples.
@@ -313,6 +379,8 @@ chomp $y;
 $pyth = sqrt $x * $x + $y * $y;
 print "The root of $x squared + $y squared is $pyth\n";
 ```
+
+
 
 ```perl
 ## program to sum up everything in stdin using while loops.
@@ -335,6 +403,8 @@ $sum =  "22" + 20;
 $sum = "22" + "20 cause error?";
 ```
 
+
+
 ```perl
 ## Program to just count the number of lines in input.
 
@@ -356,6 +426,8 @@ print $#lines +1, " lines\n";
 print "$. lines\n";				# the $. here is just a count of how many inputs have been collected.
 							  # weird syntax.
 ```
+
+
 
 ```perl
 ## Program like cp that copies every line from one file to another.
