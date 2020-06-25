@@ -65,6 +65,29 @@ To get rid of those endlines, we use the `chomp $var;` command.
 
 
 
+### True and false in Perl.
+
+Almost everything in Perl is set to true, strings, non-zero numbers, newline characters, etc. 
+
+Empty strings in Perl are considered false, and anything that resembles a zero is also set to false.
+
+Weirdly though `0, 0.0, "", "0"` are all false, but then `"0.0"` is true.
+
+Be careful though because if someone enters 0 as a number from STDIN, that will be treated as false, that's why we need to use the `defined` keyword.
+
+```perl
+$a = 0.0;
+print "a = $a\n"
+
+if ($a) {
+	print "This is true\n"; 
+} else {
+	print "This is false\n";
+}
+```
+
+
+
 ## Logical operators.
 
 All the logical operators are the same as C but with some extra. We can use the words `and`, `or` and `not`, just like python. But they have different precedence.
@@ -207,6 +230,72 @@ print @a;							# gives "abc123x"
 
 
 
+## File Handling.
+
+We need a variable that holds a stream of bytes, specify input or output, and then specify a pathname.
+
+```perl
+# input / output just like shell.
+open my $in, '<', $ARGV[0];
+
+
+# that's all good but always check if any request to the OS failed or succeeded.
+# you will sleep better at night.
+# to do that, we can use the 'or' operator, which btw is different to '||'.
+
+open my $in, '<', $ARGV[0] or die "$0: open failed: $!";
+while ($line = <$in>) {
+	print $line;
+}
+
+# the die command exits the program with some message.
+# $0 is the current filename (useful when dealing with multiple files).
+# #! is a special variable that holds the error message given by the OS.
+```
+
+```perl
+$infile = ARGV[0];
+$outfile = ARGV[1];
+
+open my $in, '<', $infile or die "$0: open of $infile failed: $!\n";
+
+open my $out, '>', $outfile or die "$0: open of $outfile failed: $!\n";
+
+while ($line = <$in>) {
+	# printing every line from input into output file.
+	print $out $line;
+}
+
+close $out;
+close $in;
+```
+
+
+
+## External Programs.
+
+We can run any external program we want from Perl, which is very powerful, because we have all the tools that unix provides.
+
+Be very careful providing external strings (from other files you didn't write) being passed into the `system` keyword, because everything that's passed into the `system` keyword is passed into a shell.
+
+Just don't put anything that's not trustworthy into the `system` keyword.
+
+Another reason why script files are not executable by default.
+
+```perl
+system "date";
+>> some date.
+
+# note that perl meta characters are expressed in the quotes.
+system "date;echo hi perl.";
+>> some date.
+>> hi perl.
+```
+
+
+
+
+
 ## Examples.
 
 ```perl
@@ -223,8 +312,9 @@ chomp $y;
 
 $pyth = sqrt $x * $x + $y * $y;
 print "The root of $x squared + $y squared is $pyth\n";
+```
 
-__________________________________________________________
+```perl
 ## program to sum up everything in stdin using while loops.
 
 #!/usr/bin/perl -w
@@ -243,8 +333,9 @@ print "sum = $sum\n";
 $sum =  "22" + '20';
 $sum =  "22" + 20;
 $sum = "22" + "20 cause error?";
+```
 
-__________________________________________________________
+```perl
 ## Program to just count the number of lines in input.
 
 $count = 0;
@@ -264,5 +355,35 @@ print $#lines +1, " lines\n";
 () = <STDIN>;
 print "$. lines\n";				# the $. here is just a count of how many inputs have been collected.
 							  # weird syntax.
+```
+
+```perl
+## Program like cp that copies every line from one file to another.
+
+# note the use of context here, since @ARGV (entire array) is being compared to a 
+# scalar, perl treats @argv as a scalar which ends up being the number of elements.
+die "Usage: cp.pl <source> <destination>\n" if @ARGV != 2;
+
+$infile = ARGV[0];
+$outfile = ARGV[1];
+
+open my $in, '<', $infile or die "$0: open of $infile failed: $!\n";
+
+open my $out, '>', $outfile or die "$0: open of $outfile failed: $!\n";
+
+while ($line = <$in>) {
+	# printing every line from input into output file.
+	print $out $line;
+}
+
+close $out;
+close $in;
+
+
+## we could also do this instead of lines 14-18.
+# but of course this wouldn't work for large files like TBs worth of text. 
+@lines = <$in>;
+print $out @lines;
+
 ```
 
