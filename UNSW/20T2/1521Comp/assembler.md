@@ -332,6 +332,19 @@ z:
 
 
 
+There are many other directives:
+
+```assembly
+.data		# this just accesses the memory.
+.word		# this will store whatever's on the right as a 32-bit value in memory.
+.space		# this will only set aside some memory, won't assign it any value.
+.asciiz		# this will just assign the word next to it in memory followed by '\0'.
+.align
+.byte		# this will set aside 1 byte and assign it the value next to it.
+```
+
+
+
 
 
 
