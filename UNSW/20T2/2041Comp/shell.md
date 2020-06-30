@@ -61,7 +61,7 @@ To do this, we say `#!` followed by the path to the interpreter we want to use.
 
 The OS will know that the commands are for some program in some location, and will pass it on to that program.
 
-For shell, that would be:
+For shell, that would be: 
 
 ```shell
 #!/bin/sh
