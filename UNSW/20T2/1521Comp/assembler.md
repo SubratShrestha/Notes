@@ -345,10 +345,6 @@ There are many other directives:
 
 
 
-
-
-
-
 ## Examples.
 
 Usually what we do is we first code up what we need to do in C and not just any C, a simplified C with gotos instead of loops and what not, and this is definitely not good C code because its way less readable but it will be much easier for translation. We then translate that to assembler. 
