@@ -451,7 +451,7 @@ while ($line = <$in>) {
 close $out;
 close $in;
 
-
+system
 ## we could also do this instead of lines 14-18.
 # but of course this wouldn't work for large files like TBs worth of text. 
 @lines = <$in>;
