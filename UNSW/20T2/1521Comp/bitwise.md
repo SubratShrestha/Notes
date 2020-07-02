@@ -179,6 +179,10 @@ There are plenty of ways to solve this but we can't do something like `uint32_t 
 int high_bit = ((uint32_t)1 << 31) & i;			// or
 int high_bit = (1u << 31) & i;				   // and this is just shorthand for the same thing.
 
+// probably the cleanest way.
+uint32_t mask = (1u << 31);
+int high_bit = mask & i;
+
 // this is just riddiculous but hey, it still works and its just as valid.
 uint32_t one = 1;
 int high_bit = (one << 31) & i;
