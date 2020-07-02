@@ -137,13 +137,50 @@ int main(void) {
 }
 ```
 
-
-
 # Possible Exam Qs.
 
 ```ps
 if a = 0x0159, b = 0x02a6
 what is 
 ~a	a & b 	a | b 	a ^ b 	a >> c 	a << c.
+```
+
+
+
+## Undefined behaviour sanitisation
+
+This is a way that some compilers will stop actions that are undefined. Many things can trigger it and its a good thing because these actions will result in something that's undefined and this leads to a lot of bugs in the program, bugs which are not immediately apparent.
+
+They also cause many security risks because this kind of program may not be so important but when other more important programs use this buggy code, they can cause a lot of security issues. Common example was the img converter program which had such a bug and was pointed out by other people but the developers thought it was a niche problem and that normal use of the program (what was intended) would not break it. Until this program started being used in many websites for their images and started breaking everything because the security issue was public.
+
+A common thing that happens with compilers is that they try and check for this behaviour earlier on so that they can be avoided as soon as possible.
+
+An example that's relavant here:
+
+``` c
+int high_bit = (1 << 31) & i;
+if (high_bit) {
+    printf("high bit is 1\n");
+} else {
+    printf("high bit is 0\n");
+}
+return 0;
+```
+
+This code here runs just fine with `gcc` but it breaks with `dcc`, and this program even works with `gcc` as expected.
+
+But the problem is that unlike perl, C does not have "contexts", so evey little expression written in C is its own thing and does not care about what's around it. That `1` on line 1 like every bare number without a decimal point in C is an `int`, and its a `signed int` and the bit operations on signed values is not defined in the C standard (yet).
+
+Since the value of a signed integer bitshifted is undefined, the compiler can basically do anything it wants, and it really just depends on the compiler. This is definitely not something we want when dealing with more important things like banking and what not, but its still something we need to keep in mind remembering the situation with the image converter.
+
+There are plenty of ways to solve this but we can't do something like `uint32_t high_bit = (1 << 31) & i`, this still does not work, again because the expression `(1 << 31)` does not care what's around it, it will be casted as `uint32_t` later but the expression is still undefined and that's all that matters. To solve this we can do:
+
+```c
+int high_bit = ((uint32_t)1 << 31) & i;			// or
+int high_bit = (1u << 31) & i;				   // and this is just shorthand for the same thing.
+
+// this is just riddiculous but hey, it still works and its just as valid.
+uint32_t one = 1;
+int high_bit = (one << 31) & i;
 ```
 
