@@ -142,7 +142,7 @@ There actually is no difference between li and la, the difference is only syntac
 
 ```assembly
 syntax: move $dest $src
-move $8, $9 # assign the value of $9 to $8
+move $8, $9              # assign the value of $9 to $8
 ```
 
 
@@ -335,12 +335,12 @@ z:
 There are many other directives:
 
 ```assembly
-.data		# this just accesses the memory.
-.word		# this will store whatever's on the right as a 32-bit value in memory.
-.space		# this will only set aside some memory, won't assign it any value.
-.asciiz		# this will just assign the word next to it in memory followed by '\0'.
+.data              # this just accesses the memory.
+.word              # this will store whatever's on the right as a 32-bit value in memory.
+.space             # this will only set aside some memory, won't assign it any value.
+.asciiz            # this will just assign the word next to it in memory followed by '\0'.
 .align
-.byte		# this will set aside 1 byte and assign it the value next to it.
+.byte              # this will set aside 1 byte and assign it the value next to it.
 ```
 
 
@@ -363,18 +363,18 @@ With the course, we'll just be doing translation as well because writing assembl
 # add 17 and 25 and print result.
 
 main:
-    li $t0, 17					# put 17 in register t0 (this will be 11 in hex).
-    li $t1, 25					# put 25 in register t1.
+    li $t0, 17                   # put 17 in register t0 (this will be 11 in hex).
+    li $t1, 25                   # put 25 in register t1.
 
-    add $t2, $t0, $t1			 # put the sum of t0 and t1 in t2.
+    add $t2, $t0, $t1            # put the sum of t0 and t1 in t2.
 
-    move $a0, $t2				 # move the value in t2 to a0 (syscall will print whats in a0 later).
-    li $v0, 1				     # v0 takes the instruction number (1 for printing ints).
-    syscall 					# prints the sum.
+    move $a0, $t2                # move the value in t2 to a0 (syscall will print whats in a0 later).
+    li $v0, 1                    # v0 takes the instruction number (1 for printing ints).
+    syscall                      # prints the sum.
 
-    li $a0, '\n'				# puts char \n in a0.
-    li $v0, 11					# puts instruction to print char (11) in v0.
-    syscall						# prints newline char.
+    li $a0, '\n'                 # puts char \n in a0.
+    li $v0, 11                   # puts instruction to print char (11) in v0.
+    syscall                      # prints newline char.
 
     li $v0, 0
     jr $ra
@@ -389,10 +389,10 @@ main:
 # example to write hello MIPS!
 
 main:
-	la $a0, msg					# load the string msg into a0 so we can print later.
-	li $v0, 4					# load the syscall (4 for print string in table above)
-	syscall						# perform syscall (print the string)
-	jr $ra						# return to caller (__start)
+	la $a0, msg        # load the string msg into a0 so we can print later.
+	li $v0, 4          # load the syscall (4 for print string in table above)
+	syscall            # perform syscall (print the string)
+	jr $ra             # return to caller (__start)
 	
 # the lines after the .data means we're editing the data segment, and this bit is executed first.
 	.data   				
@@ -425,12 +425,12 @@ msg:
 # number $s0, bottom_bit $s1
 main:
 	# printf("Enter a number: ");
-	la $a0, string0						# careful here, this is la not li.
+	la $a0, string0                 # careful here, this is la not li.
 	li $v0, 4
 	syscall
 	
 	# scanf("%d");
-	li $v0, 5							# scanf is syscall 5, and leaves scanned var in $v0.
+	li $v0, 5                       # scanf is syscall 5, and leaves scanned var in $v0.
 	syscall
 	
 	# might seem like a waste because we could just continue with the value in v0
@@ -443,7 +443,7 @@ main:
 	beq $s1, 0, even
 	
 	# printf("Odd.\n");
-	la $a0, odd_string					# la not li.
+	la $a0, odd_string             # la not li.
 	li $v0, 4
 	syscall
 
@@ -453,7 +453,7 @@ main:
 # note here that we don't need to include b end here, because it will continue to the end label anyway.
 even:
 	# printf("Even.\n");
-	la $a0, even_string					# la not li.
+	la $a0, even_string            # la not li.
 	li $v0, 4
 	syscall
 	
@@ -500,25 +500,25 @@ loop_end:
 ```assembly
 # i in $s0
 main:
-	li $s0, 1						# int i = 1
+	li $s0, 1                   # int i = 1
 	b loop_start
 
 loop_start:
-	bgt $s0, 10, loop_end			# if (i > 10) goto loop_end
+	bgt $s0, 10, loop_end       # if (i > 10) goto loop_end
 	
-	move $a0, $s0					# printf("%d", i);
+	move $a0, $s0               # printf("%d", i);
 	li $v0, 1
 	syscall
 	
-	li $v0, 11						# printf("%c", '\n');
+	li $v0, 11                  # printf("%c", '\n');
 	li $a0, '\n'
 	syscall
 	
-	add $s0, $s0, 1					# i++;
-	b loop_start					# goto loop_start
+	add $s0, $s0, 1             # i++;
+	b loop_start                # goto loop_start
 
 loop_end:	
-	li $v0, 0						# return 0;
+	li $v0, 0                   # return 0;
 	jr $ra
 	
 ```

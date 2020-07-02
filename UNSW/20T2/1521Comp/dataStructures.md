@@ -53,7 +53,7 @@ int main(void) {
 
 Now to get the third index of this array, we need the address of the array (first index), then we need to add $$3 * size\ of\ type$$ because the size of one index is unknown to us, could be a million bytes.
 
-Something that's interesting is that pointer arithmetic is discouraged in most beginner programming courses and that's because pointer arithmetic is not defined for anything that's not an array. So even in arrays, after we reach the border of the array, the operation becomes undefined and what "undefined" means is that the compiler can produce literally anything, could be random. So even with arrays, you better know the range of the array.
+Something that's interesting is that pointer arithmetic is discouraged in most beginner programming courses and that's because pointer arithmetic is not defined for anything that's not an array. So even in arrays, after we reach the border of the array, the operation becomes undefined and what "undefined" means is that the compiler can produce anything, it may work sometimes but that may change even in the same system . So even with arrays, you better know the range of the array.
 
 ```assembly
 main:
