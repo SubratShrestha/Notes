@@ -4,19 +4,33 @@ local variables like chars ints or double can be stored in registers as we've se
 
 Also because something like a char or int or double can be stored as a byte, 4 bytes and 8 bytes respectively, and this can be done with 32 bit registers. A float though need to be stored in a special type of registers.
 
+In MIPS, when data needs to be stored, it is first initialized with 0. Its a simple system so there is no uninitialized value. So everything in the data segment in the MIPS will have 0 initially.
+
+```assembly
+# uninitialized storage (well initialized with 0)
+val: .space 8
+str: .space 20
+
+# initialized storage
+arr: .word 9, 8, 7, 6
+msg: .asciiz "Hello\n"
+```
+
+
+
 
 
 ## Global / Static variables.
 
-These need some number of bytes in the data part. Because they won't be used immediately and they need to be available at any time during the execution, they just need to be stored in memory. To do this we need to specify how much space they will need.
+These are usually not stored in registers because global variables need to be accessed from anywhere in the program including being accessible from different functions and chaging from functions can change the values of registers, so we need to store them in the memory / the data segment. To do this we need to specify how much space they will need.
 
 ```assembly
-val: .space 8				# double val;
-str: .space 20				# char str[20];
-vec: .space 80				# int vec[20];
+val: .space 8              # double val;
+str: .space 20             # char str[20];
+vec: .space 80             # int vec[20];
 
-arr: .word 9, 8, 7, 6		# int arr[4] = {9, 8, 7, 6};
-msg: .asciiz "Hello\n"		# char msg[7] = "Hello\n";
+arr: .word 9, 8, 7, 6      # int arr[4] = {9, 8, 7, 6};
+msg: .asciiz "Hello\n"     # char msg[7] = "Hello\n";
 ```
 
 
@@ -39,18 +53,20 @@ int main(void) {
 
 Now to get the third index of this array, we need the address of the array (first index), then we need to add $$3 * size\ of\ type$$ because the size of one index is unknown to us, could be a million bytes.
 
+Something that's interesting is that pointer arithmetic is discouraged in most beginner programming courses and that's because pointer arithmetic is not defined for anything that's not an array. So even in arrays, after we reach the border of the array, the operation becomes undefined and what "undefined" means is that the compiler can produce literally anything, could be random. So even with arrays, you better know the range of the array.
+
 ```assembly
 main:
-	li $t0, 3			    # we know the index we want.
-	mul $t1, $t0, 4		    # get the size * index value.
+	li $t0, 3                  # we know the index we want.
+	mul $t1, $t0, 4            # get the size * index value.
 	
-	la $t1, x			    # load the address of the memory allocated by line 11.
-	add $t2, $t1, $t0		# add the value to the address of x.
-	li $t3, 17				# store the value we want the index to have into a register.
-	sw $t3, ($t2)			# store that value into the index we wanted.
+	la $t1, x                  # load the address of the memory allocated by line 11.
+	add $t2, $t1, $t0          # add the value to the address of x.
+	li $t3, 17                 # store the value we want the index to have into a register.
+	sw $t3, ($t2)              # store that value into the index we wanted.
 	
 .data
-x: .space 40			   # store 40 bytes (sizeof(int) * number of elements (10))
+x: .space 40                   # store 40 bytes (sizeof(int) * number of elements (10))
 ```
 
 
@@ -74,7 +90,39 @@ int main(void) {
 
 
 
-```assembly
+Here we see that the array must be initialized, this happens in the data segment.
 
+```assembly
+# print 5 numbers
+# i in $s0
+# j in $s1
+
+main:
+	li $s0, 0                            # int i = 0;
+loop:
+	bge $s0, 5, end                      # if (i > 5) goto end;
+	
+	la $t0, numbers                      # loading base address.
+	mul $t1, $s0, 4                      # getting offset value.
+	add $t2, $t1, $t0                    # adding offset to base address.
+	
+	lw $s1, ($t2)                        # storing value at index to $s1. 
+	move $a0, $s1                        # moving to $a0 for printing.
+	
+	li $v0, 1                            # loading instruction to print int.
+	syscall                              # printing int.
+	
+	li $a0, '\n'                         # loading newline to $a0 for printing.
+	li $v0, 11                           # loading intruction to print char.
+	syscall                              # printing newline.
+	
+	add $s0, $s0, 1                      # i++;
+	b loop                               # goto loop.
+end:
+	li $v0, 0
+	jr $ra
+
+.data
+numbers: .word 3, 9, 27, 81, 243         # the .word here means 4 byte quantities like the int (badly named).
 ```
 
