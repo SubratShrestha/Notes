@@ -403,6 +403,70 @@ foreach $val (values %myHash) {
 
 
 
+## Perl Regex.
+
+They are very important to the language, and they can be used anywhere like conditional statements or loops.
+
+```perl5
+if ($name =~ /[0-9]/) {
+	print "name contains a digit."
+}
+```
+
+
+
+sed and tr are also back.
+
+```perl
+$name =~ s/Mc/Mac/;
+$string =~ tr/a-z/A-Z/;
+```
+
+
+
+Perl also extends the POSIX standard with character classes.
+
+```perl
+\d                  # matches any digit.
+\D                  # matches any non-digit.
+\w                  # matches any "word" char like [a-zA-Z_0-9].
+\W                  # matches any non "word" char like [^a-zA-Z_0-9].
+\s                  # matches any whitespace like [\t\n\r\f].
+\S                  # matches any non-whitespace.
+
+\b                  # is a word boundry, like 
+                    # \bi -> starts with i
+                    # i\b -> ends with i
+                    # \bi\b -> matches words with just i 
+                    # (all this is wordwise so -i counts because 
+                    # '-' is not a word char) (look at \w for word chars).
+```
+
+
+
+misc. additions
+
+```perl
+patt*               # will match 0+ occurances of patt.
+patt+               # will match 1+ occurances of patt.
+patt?               # will match 0 or 1 occurance of patt.
+patt{n, m}          # will match between n and m occurances of patt.
+```
+
+
+
+capture groups in perl are just `()`, without escape characters like in `sed`.
+
+```perl
+# matches anything with 8 word chars, followed by some whitespace (whatever that may be), followed by anything really.
+# also always put `die` after pattern matches because pattern matches almost always fail at some point.
+$line =~ /(\w{8})\s+(.*)/ or die "help";
+```
+
+
+
+
+
 ## Examples.
 
 * Pythagoras theorem in Perl.
