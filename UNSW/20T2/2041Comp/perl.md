@@ -362,11 +362,52 @@ print "Date is $date\n"
 
 
 
-## Examples.
+## Associative Arrays (Hashes).
+
+Perl calls this hashes, python calls it dicts, objects in js, they're hashmaps with key-value pairs.
 
 ```perl
-## Pythagoras theorem in Perl.
+%days = ( "Sun" => "Sunday",
+		 "Mon" => "Monday");
 
+$days{"Sun"}
+$days{"hello"}                             # undefined (interpreted as "").
+$days{"hello"} = "hello and welcome";      # adding pairs.
+```
+
+
+
+use `keys` to get the keys for a hash.
+
+```perl
+foreach $x (keys %g) {
+	print "$x => $g{$x}\n";				# prints Anne => red or something.
+}
+```
+
+
+
+getting only keys or values
+
+```perl
+foreach $key (keys %myHash) {
+	print "($key)\n";
+}
+
+foreach $val (values %myHash) {
+	print "($val)\n";
+}
+```
+
+
+
+
+
+## Examples.
+
+* Pythagoras theorem in Perl.
+
+```perl
 #!/usr/bin/perl -w
 print "Enter x: ";
 $x = <STDIN>
@@ -382,9 +423,9 @@ print "The root of $x squared + $y squared is $pyth\n";
 
 
 
-```perl
-## program to sum up everything in stdin using while loops.
+* program to sum up everything in stdin using while loops.
 
+```perl
 #!/usr/bin/perl -w
 while ($line = <STDIN>) {
 	$sum += $line;
@@ -405,9 +446,9 @@ $sum = "22" + "20 cause error?";
 
 
 
-```perl
-## Program to just count the number of lines in input.
+* Program to just count the number of lines in input.
 
+```perl
 $count = 0;
 while (1) {
 	$line = <STDIN>
@@ -429,11 +470,11 @@ print "$. lines\n";				# the $. here is just a count of how many inputs have bee
 
 
 
-```perl
-## Program like cp that copies every line from one file to another.
+* Program like cp that copies every line from one file to another.
 
-# note the use of context here, since @ARGV (entire array) is being compared to a 
-# scalar, perl treats @argv as a scalar which ends up being the number of elements.
+* note the use of context here, since @ARGV (entire array) is being compared to a scalar, perl treats @argv as a scalar which ends up being the number of elements.
+
+```perl
 die "Usage: cp.pl <source> <destination>\n" if @ARGV != 2;
 
 $infile = ARGV[0];
@@ -459,3 +500,30 @@ print $out @lines;
 
 ```
 
+
+
+* storing every course code and name in `course_codes`.
+
+```perl
+#!/usr/bin/perl -w
+
+open my $f, '<', "course_codes" or die "$0 cannot open: $!\n";
+
+while ($line = <$f>) {
+	chomp $line
+	$code = substr($line, 0, 8);        # slicing string from 0 - 8th character.
+	$name = substr($line, 9);           # slicing string from 9th - last character.
+	$course{$code} = $name;
+}
+
+while ($enrollment = <>) {              # reading from file.
+	$code = substr($enrollment, 0, 8);
+	$enrollments{$code}++;
+}
+
+for $code (sort keys %enrollments) {    # almost always use sort keys because below.
+	print "$code $enrollments{$code}\n";
+}
+```
+
+We almost always use `sort keys` because using just `keys` produces indeterminant outputs because the location in memory is always shuffled around to prevent malicious behaviour that depends on knowing exactly where something will be stored.
