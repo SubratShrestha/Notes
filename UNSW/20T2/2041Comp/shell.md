@@ -110,6 +110,34 @@ A handy side effect of this is that we can just move some our custom scripts int
 
 
 
+Another thing that catches a lot of people is when we run other scripts from a script file.
+
+```shell
+# in /some/dir/set
+cat a.sh
+#!/bin/sh
+./b.sh
+
+cat b.sh
+#!/bin/sh
+echo hello
+
+./a.sh
+>> hello
+
+
+# renaming directory "set" to "scripts"
+./a.sh
+>> set/b.sh not found.
+
+
+# fixing it
+```
+
+
+
+
+
 ### Pathname Expansion (GLOB).
 
 The pathname in shell uses GLOB for pathnames which is similar to regex but not quite and much simpler. Only a couple symbols to know.
@@ -181,6 +209,61 @@ echo ${something}23
 | $@       | all command line arguments (seperately). |
 | $?       | exit status of most recent command.      |
 | $$       | process ID of this shell.                |
+
+
+
+## Passing variables within shell files.
+
+To set some variable between shell scripts, we use the `export` program. Every shell file used after this program will have the same variables as the current shell.
+
+
+
+## Variable Scope.
+
+By default, the variables in functions are actually **global**. This is not good at all, but it is what it is.
+
+```shell
+even() {
+	n=$1
+	remainder=$((n % 2))
+	if test $remainder = 0
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
+remainder=42
+
+even $2
+
+echo $remainder                     # this will print 0
+```
+
+
+
+We can use a widely accepted keyword `local` to make a variable local to the function.
+
+```shell
+even() {
+	n=$1
+	local remainder
+	remainder=$((n % 2))
+	if test $remainder = 0
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
+remainder=42
+
+even $2
+
+echo $remainder                     # this will print 42
+```
 
 
 
@@ -434,17 +517,93 @@ eof
 
 
 
+## Functions.
+
+Very similar syntax to C. They have return values, but they are quite simple being non-zero for error and 0 for success with `return` but if there is no return statement, the return value is the return value of the last command in the function.
+
+```shell
+#!/bin/sh
+
+repeat_message() {
+	n=$1
+	message=$2
+	
+	for i in $(seq 1 in $n)
+	do
+		echo "$i: $message"
+	done
+}
+
+repeat_message 5 "Hello."
+```
+
+
+
+* function to determine odd or even.
+
+```shell
+#!/bin/sh
+
+even() {
+	n=$1
+	remainder=$((n % 2))
+	if test $remainder = 0
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
+## even could be:
+even() {
+	return $(($1 % 2))
+}
+
+for i in $(seq 1 20)
+do
+	if even $i
+	then
+		echo $i is even
+	else
+		echo $i is odd
+	fi
+done
+```
+
+
+
+We cannot return a string or something, only numbers. To return strings, we just need to use `echo`.
+
+```shell
+#!/bin/sh
+
+even() {
+	if test $(expr $1 % 2) -eq 0
+	then
+		echo even
+	else
+		echo odd
+	fi
+}
+
+for i in $(seq 1 20)
+do
+	echo $i is $(even $i)
+done
+```
+
 
 
 
 
 ## Examples.
 
-```shell
-# Program to compile every single .c file in directory and save the executable name as filename but without the .c
-# also deals with case when some files don't have a main function, and when there
-# is a seperate .h file that the .c file includes.
+* Program to compile every single `.c` file in directory and save the executable name as filename but without the `.c`
 
+* also deals with case when some files don't have a main function, and when there is a seperate `.h` file that the `.c` file includes.
+
+```shell
 #!/bin/sh
 
 for c_file in *.c
@@ -461,14 +620,16 @@ do
 		gcc $arguments -o "$binary"
 	fi
 done
+```
 
 
-__________________________________________________________________________
-# Example to check for vacancies in the unsw website for 2041.
-# This will search the site every 20 seconds for a number that's not 0 in the 
-# COMP2041 part of the site. 20s here is a bit too often and of course, we need
-# to look through the html formatting to find the best way to extract info..
 
+* Example to check for vacancies in the unsw website for 2041.
+* This will search the site every 20 seconds for a number that's not 0 in the 
+* COMP2041 part of the site. 20s here is a bit too often and of course, we need
+* to look through the html formatting to find the best way to extract info..
+
+```shell
 #!/bin/sh
 
 course="$1"
@@ -483,12 +644,14 @@ do
 	fi
 	sleep 20
 done
+```
 
 
-__________________________________________________________________________
-# Example to rename all upper case filenames to lower case in a directory.
-# this probably won't work in wsl or macOS because of case insensitivity, works fine on linux though.
 
+* Example to rename all upper case filenames to lower case in a directory.
+* this probably won't work in wsl or macOS because of case insensitivity, works fine on linux though.
+
+```shell
 #!/bin/sh
 
 for file in "$@"
@@ -506,12 +669,13 @@ do
 	# Its here to prevent mv from treating a file named "-some_name" as an argument and not a flag.
 	mv -- "$file" "$new_filename"
 done
+```
 
 
-__________________________________________________________________________
-# Example for a plagiarism detector which goes through a directory of C files and determines which two 
-# files are the same.
 
+* Example for a plagiarism detector which goes through a directory of C files and determines which two files are the same.
+
+```shell
 #!/bin/sh
 
 # this transform to get rid of all comments (lines starting with /), and replacing all things that look 
@@ -563,10 +727,13 @@ sort |
 # this uniq command is off the man page, it compares the first 32 chars of the previous output (only the hash)
 # and also reports duplicates seperately.
 uniq -w32 -d -all-repeated=seperate
+```
 
-__________________________________________________________________________
-# Shell script to make 100,000 C program files for testing.
 
+
+*  Shell script to make 100,000 C program files for testing.
+
+```shell
 #!/bin/sh
 
 n_files=99
