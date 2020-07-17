@@ -126,3 +126,16 @@ end:
 numbers: .word 3, 9, 27, 81, 243         # the .word here means 4 byte quantities like the int (badly named).
 ```
 
+
+
+
+
+## 2D Arrays
+
+2D arrays are a little more tricky when it comes to indexing elements.
+
+There is simple expression to get the exact indexes in both directions:
+
+$$int\ arr[row][col]\ =\ BA\ +\ ((row\ * rowSize)\ +\ col)\ * sizeof(datatype)$$, 
+
+where BA = Base Address, row = row number, col = column number, rowSize = total number of rows.

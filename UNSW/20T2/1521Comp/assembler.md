@@ -282,7 +282,7 @@ They have numbers (n in the table below), and some of them have parameters but m
 
 Recall that we can load words, or half words, or just bytes. The thing with half words and bytes is that we need to have a special unsigned version of it because the actual 32 bits of memory may have signs (in the first bits) and so the unsigned variable will have some special convention. We'll mostly be using 32 bit words though.
 
-We use the `lw`, `sw` instructions and the `.data` directive to access the memory. The `.word` directory to specify that the value we want to store needs 32 bits.
+We use the `lw`, `1` instructions and the `.data` directive to access the memory. The `.word` directory to specify that the value we want to store needs 32 bits.
 
 Things like global variables need to be stored and initialized to 0 beforehand. The C compiler does this automatically, but that's not true in assembler. We also know why we probably shouldn't use global variables anyway. This is because we need to store them anyway, whether or not we use them. With local variables in functions, they get destroyed when the scope is over, and the memory can be reused.
 
