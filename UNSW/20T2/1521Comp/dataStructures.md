@@ -139,3 +139,56 @@ There is simple expression to get the exact indexes in both directions:
 $$int\ arr[row][col]\ =\ BA\ +\ ((row\ * rowSize)\ +\ col)\ * sizeof(datatype)$$, 
 
 where BA = Base Address, row = row number, col = column number, rowSize = total number of rows.
+
+
+
+
+
+## Structs
+
+Unlike arrays, structs will use different types, they are heterogenous. Now we can sortof guess the space taken by the struct, but the C standard does not guarantee a size inside a struct.
+
+We do know that the values will be stored in the same order, BUT NOT together. They are not arrays, so we cannot assume they will be next to each other in memory.
+
+
+
+```c
+struct details {
+    uint16_t postcode;
+    char first_name[7];
+    uint32_t zid;
+};
+
+struct details student = {2052, "Subrat", 5123456};
+
+int main(void) {
+    printf("%d", student.zid);
+}
+```
+
+```assembly
+POSTCODE = 0
+FIRST_NAME = 2
+ZID = 9
+
+main:
+	la $t0, student              # printf("%d", student.zid);
+	add $t1, $t0, ZID
+	lw $a0, ($t1)
+	li $v0, 1
+	syscall
+	
+	la $t0, student              # printf("%d", student.postcode);
+	add $t1, $t0, POSTCODE
+	lhu $a0, ($t1)               # loading half word unsigned (uint16_t).
+	li $v0, 1
+	syscall	
+
+
+.data
+student:
+	.half 2052
+	.asciiz "Subrat"
+	.word 5123456
+```
+

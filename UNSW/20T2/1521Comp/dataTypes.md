@@ -59,7 +59,7 @@ We're used to base-10 numbers, its a great choice, but its not the only one. In 
 
 ## Base 10.
 
-```ps
+```pseudocode
 4705 can be represented as:
 
 (4 x 10^3) + (7 x 10^2) + (0 x 10^1) + (5 x 10^0)
@@ -73,7 +73,7 @@ The place values are:
 
 ## Base 2.
 
-```ps
+```pseudocode
 In a similar way, the binary number 1011 is:
 
 (1 x 2^3) + (0 x 2^2) + (1 x 2^1) + (1 x 2^0)
@@ -88,7 +88,7 @@ Why base 16? The trouble with binary is that it takes up too much space, one dig
 
 And the trouble with base 10 is that with computers which are binary, 10 is not a power of 2, so its very hard to see what the bits are. With hex, every digit or character corresponds to 4 binary digits, its just more convenient.
 
-```ps
+```pseudocode
 We can interpret hex number 3AF1 as:
 3 x 16^3 + 10 x 16^2 + 15 x 16^1 + 1 x 16^0 = 15089 in decimal.
 
