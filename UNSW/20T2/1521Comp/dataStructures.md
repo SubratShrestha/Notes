@@ -228,3 +228,47 @@ ZID = 12                       # ah, alignment.
 		.word 5123456
 ```
 
+
+
+
+
+Something very weird with padding structs:
+
+```c
+// Needs padding.
+struct s1 {
+    uint8_t c1;          // 0        3 padding
+    uint32_t l1;         // 4
+    uint8_t c2;          // 5        3 padding
+    uint32_t l2;         // 8
+    uint8_t c3;          // 9        3 padding
+    uint32_t l3;         // 12
+    uint8_t c4;          // 13       3 padding
+    uint32_t l4;         // 16    
+    //                               12 bytes of padding
+    //                               16 bytes of 4 byte values
+    //                               4 bytes of 1 byte values
+    //                               32 bytes total
+}
+
+// Does not need padding.
+struct s2 {
+    uint32_t l1;         // 0
+    uint32_t l2;         // 4
+    uint32_t l3;         // 8
+    uint32_t l4;         // 12
+    uint8_t c1;          // 16
+    uint8_t c2;          // 17
+    uint8_t c3;          // 18
+    uint8_t c4;          // 19
+    //                               0 bytes of padding
+    //                               16 bytes of 4 byte values
+    //                               4 bytes of 1 byte values
+    //                               20 bytes total
+    
+}
+
+printf("size of s1 = %d\n", sizeof(s1));     // 32
+printf("size of s2 = %d\n", sizeof(s2));     // 20
+```
+
