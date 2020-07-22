@@ -272,3 +272,79 @@ printf("size of s1 = %d\n", sizeof(s1));     // 32
 printf("size of s2 = %d\n", sizeof(s2));     // 20
 ```
 
+
+
+
+
+
+
+## Functions
+
+Functions need some arguments, some local variables, a value to return, an address to return to, and finally some way of manipulating the stack. If we can implement all these in MIPS, we can implement functions in MIPS.
+
+The standard convention is:
+
+* arguments in `$a`
+* local variables in `$t`
+* return value in `$v0` 
+* return address in `$ra`
+* stack arithmetic done to `$sp`
+
+
+
+Each function gets a small section of the stack, called a stack frame. That section will be used for local variables, parameters, etc.
+
+Two things functions must do are called the `prologue` where the function sets up things it will use, like local variables, saving return address, etc, and the `epilogue` where the restoration might occur, like clearing the values in local variables, storing return value to `$v0`, restoring values of the `$s` registers if it used them, etc. 
+
+
+
+To go between functions, all we need are the `jal` and `jr` instructions. 
+
+The `jal` stands for Jump And Link, and all it does is it first stores the address of the next instrcution into `$ra`, and jumps to the function address.
+
+So in the function, we need to do our instructions, and once we're done, store return value into `$v0` and do `jr $ra` and it will go back to instruction after the instruction that called it.
+
+All fine and dandy for leaf functions (just one function that doesn't call any other function), but if we were to branch to another function, we would be changing the value of `$ra`, and suddenly we stop returning to the correct address once the function is done. To branch we need to preserve the value of `$ra`.
+
+
+
+Thunk function example:
+
+```c
+int main(void) {
+    int a = answer();
+    printf("%d", a);
+    return 0;
+}
+
+int answer() {
+    return 42;
+}
+```
+
+
+
+```assembly
+main:
+	sub $sp, $sp, 4            # making space for main's $ra on stack.
+	sw $ra, 0($sp)             # storing the main's $ra into stack.
+	
+	jal answer                 # answer();
+	
+	move $a0, $v0              # a = answer();
+	li $v0, 1                  # printf("%d", a);
+	syscall
+	
+	lw $ra 0($sp)              # restoring main's $ra into $ra.
+	add $sp, $sp, 4            # restoring the state of $sp.
+	
+	li $v0, 0                  # return 0;
+	jr $ra
+	
+	
+answer:
+	li $v0, 42                # return 42;
+	jr $ra
+```
+
+Here main wanted to return to `$ra` but then the `jal` instruction changed it when calling the `answer` function. So we store the main's `$ra` into the stack beforehand, and then later on return to it by restoring it.
