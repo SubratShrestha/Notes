@@ -166,7 +166,10 @@ int main(void) {
 }
 ```
 
+
+
 ```assembly
+# Note this will fail, the example below has fixed this.
 POSTCODE = 0
 FIRST_NAME = 2
 ZID = 9
@@ -190,5 +193,38 @@ student:
 	.half 2052
 	.asciiz "Subrat"
 	.word 5123456
+```
+
+
+
+The example above fails and says "unaligned memory address" or something along those lines, and this is because most architectures require data to be stored in an address that is a multiple of its size.
+
+This is because unaligned addresses will be accessed much slower and some architectures (like the newer intel ones) can deal with unaligned addresses with a penalty of just 10%.
+
+But the C standard requres alignment, and so does the MIPS architecture.
+
+This is all because the CPU accesses memory one "word" at a time, and with unaligned memory, the highest and lowest bytes of a datum (yes, apparently that's a word) are not in the same word or a simple multiple of it (like half word). So the CPU must deal with this by splitting the datum into multiple accesses, etc. All this requires some complex circuitry to generate and this is the reason for the penalty.
+
+Also why a lot of manufacturers mandate aligning memory addresses.
+
+
+
+To fix this "error", or to avoid the penalty, we need to add some empty "padding" or sorts inbetween the datatypes so that they will be alinged to the size.
+
+In the above example, the `ZID` is on byte 9, but its a 32-bit or 4-byte datum. So the multiple of 4 closest to 9 would be 12 (we can't lose data by going to 8, what were you thinking).
+
+So we need to add a padding of 3 between the `FIRST_NAME` and the `ZID` values, and change the 9 to a 12, and that should fix it for us.
+
+```assembly
+POSTCODE = 0
+FIRST_NAME = 2
+ZID = 12                       # ah, alignment.
+
+.data
+	student:
+		.half 2052
+		.asciiz "Subrat"
+		.space 3
+		.word 5123456
 ```
 
