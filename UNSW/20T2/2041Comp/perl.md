@@ -676,4 +676,31 @@ We almost always use `sort keys` because using just `keys` produces indeterminan
 	
 	```
 
+
+
+* Example to find all numbers from a string with words (or just plain numbers), and get the mean and total of them.
+
+	```perl
+	# implementation much better than what I did in the lab for this
+	# because I skipped the lecture and did the lab straight (don't do that).
+	
+	@lines = <>;
+	$input = join "", @lines;
+	
+	@numbers = split /D+/, $input;
+	# I used some whacko shit like:
+	# @nums = $line =~ /[+-]?\d+\.?\d*/g;
+	# that was much more elaborate though, with +-, decimals, etc.
+	
+	foreach $number (@numbers) {
+		next if $number eq "";
+		$total += $number;
+		$n++;
+	}
+	
+	$n = @numbers;
+	exit if !$n;
+	printf "$n numbers: total = $total, mean = %s\n", $total/$n;
+	```
+
 	
