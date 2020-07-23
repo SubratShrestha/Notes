@@ -645,3 +645,35 @@ We almost always use `sort keys` because using just `keys` produces indeterminan
 	```
 
 	
+
+* Example to get the count of occurances of a firstname in every course, print the names that occur more than once in a course code.
+
+	```perl
+	# same data as last example.
+	
+	while ($enrollment = <>) {
+		@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
+		$zid = $fields[1];
+		$name = $fields[2];                  # like cut, but index of arrays.
+		$course_code = $fields[0];
+		
+		next if $seen{$zid};
+		$seen{$zid}++;
+		
+		$name =~ /, (\S+)/;                  # anything but whitespace.
+		$firstname = $1;                     # first thing we captured.
+		
+		$nc{$course_code}{$firstname}++;
+	}
+	
+	foreach $code (sort keys %nc) {
+		foreach $fn (sort keys %{$nc{$code}}) { # the %{  } is a cast into hash.
+			next if $nc{$code}{$fn} < 2;
+			printf("%s has %4d students named %s\n", $code, $nc{$code}{$fn}, $fn);
+		}
+	}
+	
+	
+	```
+
+	
