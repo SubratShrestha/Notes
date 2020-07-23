@@ -57,11 +57,17 @@ Very interesting feature of the warning system is that it can detect possible ty
 
 To get rid of those endlines, we use the `chomp $var;` command.
 
+**<$stream>** will take the input from a stream, could be stdin, or we could open a file and make that the stream.
+
 **$ sign** to indicate a scalar value, which is just a single value.
 
 **Always quote your strings.** It does work unquoted but the warning system will say that the string could be a reseved word in the future and that will break the code, and this is a good warning.
 
 **Single quotes** are for just strings, the variables within single quotes are not expanded.
+
+**<>** is the diamond operator. Without a stream inside is special, it acts like a linux filter. If arguments are given to it, then it treats them like files and we can open them and what not. But when values are given in stdin, it defaults to using them as stdin.
+
+**=~** is how we apply regex to a variable or a bare string. Depending on what we're doing with the regex, it may or may not affect the string. Like a normal matching wouldn't affect the variable or string `($string =~ /\S+/)` but we can also do replacement and what not, which will change the string.
 
 
 
@@ -385,6 +391,10 @@ foreach $x (keys %g) {
 }
 ```
 
+Note that when using the `keys` keyword, we get a non-deterministic order of keys, so almost random order, so using just `keys` isn't the best idea. Always use `sort keys` to get deterministic output. 
+
+
+
 
 
 getting only keys or values
@@ -398,6 +408,8 @@ foreach $val (values %myHash) {
 	print "($val)\n";
 }
 ```
+
+
 
 
 
@@ -591,3 +603,45 @@ for $code (sort keys %enrollments) {    # almost always use sort keys because be
 ```
 
 We almost always use `sort keys` because using just `keys` produces indeterminant outputs because the location in memory is always shuffled around to prevent malicious behaviour that depends on knowing exactly where something will be stored.
+
+
+
+
+
+* Example to make a hashmap out of enrollment data.
+
+	```perl
+	open my $f, '<', "course_codes" or die "$0: cannot open file: $!\n";
+	
+	while ($line = <$f>) {
+		chomp $line;
+		$line = /(\w{8})\s+(.*)/
+		$course{$1} = $2;
+	}
+	```
+
+
+
+* Example to get all the firstnames in enrollment data either from stdin or from a file, avoid duplicates.
+
+	```perl
+	# the data:
+	#    COMP9999|5123456|Lastname, Firstname, Middlenames|3778|COMPA1|WAM|...
+	
+	while ($enrollment = <>) {
+		@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
+		$zid = $fields[1];
+		
+		next if $seen{$zid};
+		$seen{$zid}++;
+		
+		$name = $fields[2];                  # like cut, but index of arrays.
+		$name =~ /, (\S+)/;                  # anything but whitespace.
+		$firstname = $1;                     # first thing we captured.
+		
+		print "name = $name\n";
+		print "first name = $firstname\n";
+	}
+	```
+
+	
