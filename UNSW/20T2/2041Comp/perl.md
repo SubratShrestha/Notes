@@ -681,13 +681,10 @@ We almost always use `sort keys` because using just `keys` produces indeterminan
 * Example to find all numbers from a string with words (or just plain numbers), and get the mean and total of them.
 
 	```perl
-	# implementation much better than what I did in the lab for this
-	# because I skipped the lecture and did the lab straight (don't do that).
-	
 	@lines = <>;
 	$input = join "", @lines;
 	
-	@numbers = split /D+/, $input;
+	@numbers = $input =~ /-?\d+\.\d+?/g;
 	# I used some whacko shit like:
 	# @nums = $line =~ /[+-]?\d+\.?\d*/g;
 	# that was much more elaborate though, with +-, decimals, etc.
@@ -698,9 +695,33 @@ We almost always use `sort keys` because using just `keys` produces indeterminan
 		$n++;
 	}
 	
-	$n = @numbers;
 	exit if !$n;
 	printf "$n numbers: total = $total, mean = %s\n", $total/$n;
+	```
+	
+
+
+
+* Example to find the last number in a line and print it out.
+
+	```perl
+	# input: 32 hello there you look about 46.
+	# >> 46
+	
+	# Normal loop:
+	while ($line = <>) {
+		@numbers = $line =~ /-?\d+\.?\d+?/g;
+		print "$numbers[$#numbers]" if @numbers;
+	}
+	
+	# We can even do this with a single regex.
+	while ($line = <>) {
+	# if there are some numbers, followed by 0 or more non-digit chars, 
+	# and then end of line, then capture it.
+		if ($line =~ /(-?\d+\.?\d+?)\D*$/) {
+			print "$1";
+		}
+	}
 	```
 
 	
