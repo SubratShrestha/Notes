@@ -398,7 +398,80 @@ foreach $filename (@ARGV) {
 
 
 
+We can do this without temp files if by including the '>' line towards the end, so we only replace the file when we're done with computing our replacements and what not. We can also use an array to store the works of the novels, which may seem like a waste of memory, but its really no big deal with the amount of memory and processing power in our devices.
 
+```perl
+foreach $filename (@ARGV) {
+	open my $f, '<', $filename or die "can't open file";
+	@lines = <$f>;
+	
+	$novel = join "", @lines;
+
+	$novel =~ s/Harry/shitcunt/ig;
+	$novel =~ s/Hermione/Harry/ig;
+	$novel =~ s/shitcunt/Harry/ig;
+	
+	open my $g, '>', "$filename" or die "can't open file";
+	print $g, $novel;
+	close $g;
+}
+```
+
+
+
+We can go another step forward, and use a weird perl shortcut, which is the `-i` flag in perl, which can do some inplace changes to files. It makes temporary backups of files behind the scenes.
+
+```perl
+#!/usr/bin/perl -w -i
+
+while ($line = <>) {
+	$line =~ s/Harry/shitcunt/ig;
+	$line =~ s/Hermione/Harry/ig;
+	$line =~ s/shitcunt/Harry/ig; 
+	print $line;
+}
+```
+
+
+
+Going further, the variable `$_` is the default variable in perl, and when variables are missing, perl defaults to using `$_`.
+
+ ```perl
+#!/usr/bin/perl -w -i
+
+while (<>) {
+	s/Harry/shitcunt/ig;
+	s/Hermione/Harry/ig;
+	s/shitcunt/Harry/ig; 
+	print;
+}
+ ```
+
+
+
+`$_` is quite useful, not for readability though.
+
+That loop we used to go through all of the data and print it using the `$_` variable is used very frequently, so much so that perl has a flag for it as well, `-p` writes the standard loop behind the scenes and we only need to provide the replacements, it also prints for us.
+
+```perl
+#!/usr/bin/perl -w -p -i
+
+s/Harry/shitcunt/ig;
+s/Hermione/Harry/ig;
+s/shitcunt/Harry/ig;
+```
+
+
+
+We can just do this much in the command line.
+
+```perl
+perl -pi -e 's/Harry/shitcunt/ig;s/Hermione/Harry/ig;s/shitcunt/Harry/ig;' hp?.txt
+```
+
+
+
+There's also a way to do all that in one regex but that's quite complicated and unreadable, but -pi is right in the perldocs.
 
 
 
