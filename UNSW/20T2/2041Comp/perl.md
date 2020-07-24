@@ -325,6 +325,83 @@ close $in;
 
 
 
+Always be very careful reading and writing from files, its very very easy to lose everything, so always keep backups ready.
+
+Note when we write something like `open my $f, '>', $filename`, the '>' there is the linux truncate '>' which deletes everything in a file as soon as its executed.
+
+Example: Swap every occurance of "Harry" to "Hermione".
+
+```perl
+# This here almost works, but it deletes everything in the files.
+# Because on line 7, we open the file for output, and the '>' will truncate
+# everything, and we won't have any input from the files.
+# Everything is deleted as soon as line 7 executes.
+foreach $filename (@ARGV) {
+	open my $f, '<', $filename or die "can't open file";
+	open my $g, '>', $filename or die "can't open file";
+	
+	while ($line = <$f>) {
+		$line =~ s/Harry/Hermione/g;
+		$line =~ s/Hermione/Harry/g;
+		print $g $line;
+	}
+	close $f;
+	close $g;
+}
+```
+
+
+
+Always use temp files when you need to write to files, unless you're making a new file.
+
+Now lets say we fixed the error and we're using temp files.
+
+```perl
+foreach $filename (@ARGV) {
+	$tmp_filename = "$filename.new";
+	open my $f, '<', $filename or die "can't open file";
+	open my $g, '>', $tmp_filename or die "can't open file";
+	
+	while ($line = <$f>) {
+		$line =~ s/Harry/Hermione/g;
+		$line =~ s/Hermione/Harry/g;
+		print $g $line;
+	}
+	close $f;
+	close $g;
+	rename $tmp_filename, $filename or die "can't rename";
+}
+```
+
+This will still not work, there will be 0 occurances of "Hermione". That's because we're changing "Harry" to "Hermione" on line 7, then changing all "Hermione" to "Harry" (incl. ones we just converted in previous line).
+
+To avoid this, we just change "Harry" to something that doesn't occur in the text, change "Hermione" to "Harry", and change the temp to "Hermione".
+
+```perl
+foreach $filename (@ARGV) {
+	$tmp_filename = "$filename.new";
+	die "temp already exists" if -e $tmp_filename;
+	open my $f, '<', $filename or die "can't open file";
+	open my $g, '>', $tmp_filename or die "can't open file";
+	
+	while ($line = <$f>) {
+		$line =~ s/Harry/shitcunt/ig;
+		$line =~ s/Hermione/Harry/ig;
+		$line =~ s/shitcunt/Harry/ig;
+		print $g $line;
+	}
+	close $f;
+	close $g;
+	rename $tmp_filename, $filename or die "can't rename";
+}
+```
+
+
+
+
+
+
+
 ## External Programs.
 
 We can run any external program we want from Perl, which is very powerful, because we have all the tools that unix provides.
