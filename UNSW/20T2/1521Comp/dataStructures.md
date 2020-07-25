@@ -348,3 +348,11 @@ answer:
 ```
 
 Here main wanted to return to `$ra` but then the `jal` instruction changed it when calling the `answer` function. So we store the main's `$ra` into the stack beforehand, and then later on return to it by restoring it.
+
+
+
+**frame pointer $fp** : is like the stack pointer in that it also points to the stack but the frame pointer points at the start of the stack, where the stack pointer pointed to the end of it (that's why we subtract from it to put something into the stack).
+
+The frame pointer is mostly for debugging purposes though, some compilers don't even use it, but it is useful. Every time we enter a function, (maybe in the prologue), the frame pointer can be changed to point at the function, then if there is some error, we can know what function it occured.
+
+Useful but if we were writing code for a tiny chip in a washmachine, we would probably not use the frame pointer.
