@@ -760,118 +760,118 @@ We almost always use `sort keys` because using just `keys` produces indeterminan
 
 * Example to make a hashmap out of enrollment data.
 
-	```perl
-	open my $f, '<', "course_codes" or die "$0: cannot open file: $!\n";
-	
-	while ($line = <$f>) {
-		chomp $line;
-		$line = /(\w{8})\s+(.*)/
-		$course{$1} = $2;
-	}
-	```
+```perl
+open my $f, '<', "course_codes" or die "$0: cannot open file: $!\n";
+
+while ($line = <$f>) {
+	chomp $line;
+	$line = /(\w{8})\s+(.*)/
+	$course{$1} = $2;
+}
+```
 
 
 
 * Example to get all the firstnames in enrollment data either from stdin or from a file, avoid duplicates.
 
-	```perl
-	# the data:
-	#    COMP9999|5123456|Lastname, Firstname, Middlenames|3778|COMPA1|WAM|...
-	
-	while ($enrollment = <>) {
-		@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
-		$zid = $fields[1];
-		
-		next if $seen{$zid};
-		$seen{$zid}++;
-		
-		$name = $fields[2];                  # like cut, but index of arrays.
-		$name =~ /, (\S+)/;                  # anything but whitespace.
-		$firstname = $1;                     # first thing we captured.
-		
-		print "name = $name\n";
-		print "first name = $firstname\n";
-	}
-	```
+```perl
+# the data:
+#    COMP9999|5123456|Lastname, Firstname, Middlenames|3778|COMPA1|WAM|...
 
+while ($enrollment = <>) {
+	@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
+	$zid = $fields[1];
 	
+	next if $seen{$zid};
+	$seen{$zid}++;
+	
+	$name = $fields[2];                  # like cut, but index of arrays.
+	$name =~ /, (\S+)/;                  # anything but whitespace.
+	$firstname = $1;                     # first thing we captured.
+	
+	print "name = $name\n";
+	print "first name = $firstname\n";
+}
+```
+
+
+​	
 
 * Example to get the count of occurances of a firstname in every course, print the names that occur more than once in a course code.
 
-	```perl
-	# same data as last example.
+```perl
+# same data as last example.
+
+while ($enrollment = <>) {
+	@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
+	$zid = $fields[1];
+	$name = $fields[2];                  # like cut, but index of arrays.
+	$course_code = $fields[0];
 	
-	while ($enrollment = <>) {
-		@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
-		$zid = $fields[1];
-		$name = $fields[2];                  # like cut, but index of arrays.
-		$course_code = $fields[0];
-		
-		next if $seen{$zid};
-		$seen{$zid}++;
-		
-		$name =~ /, (\S+)/;                  # anything but whitespace.
-		$firstname = $1;                     # first thing we captured.
-		
-		$nc{$course_code}{$firstname}++;
+	next if $seen{$zid};
+	$seen{$zid}++;
+	
+	$name =~ /, (\S+)/;                  # anything but whitespace.
+	$firstname = $1;                     # first thing we captured.
+	
+	$nc{$course_code}{$firstname}++;
+}
+
+foreach $code (sort keys %nc) {
+	foreach $fn (sort keys %{$nc{$code}}) { # the %{  } is a cast into hash.
+		next if $nc{$code}{$fn} < 2;
+		printf("%s has %4d students named %s\n", $code, $nc{$code}{$fn}, $fn);
 	}
-	
-	foreach $code (sort keys %nc) {
-		foreach $fn (sort keys %{$nc{$code}}) { # the %{  } is a cast into hash.
-			next if $nc{$code}{$fn} < 2;
-			printf("%s has %4d students named %s\n", $code, $nc{$code}{$fn}, $fn);
-		}
-	}
-	
-	
-	```
+}
+```
 
 
-
+​	
 * Example to find all numbers from a string with words (or just plain numbers), and get the mean and total of them.
 
-	```perl
-	@lines = <>;
-	$input = join "", @lines;
-	
-	@numbers = $input =~ /-?\d+\.\d+?/g;
-	# I used some whacko shit like:
-	# @nums = $line =~ /[+-]?\d+\.?\d*/g;
-	# that was much more elaborate though, with +-, decimals, etc.
-	
-	foreach $number (@numbers) {
-		next if $number eq "";
-		$total += $number;
-		$n++;
-	}
-	
-	exit if !$n;
-	printf "$n numbers: total = $total, mean = %s\n", $total/$n;
-	```
-	
+```perl
+@lines = <>;
+$input = join "", @lines;
+
+@numbers = $input =~ /-?\d+\.\d+?/g;
+# I used some whacko shit like:
+# @nums = $line =~ /[+-]?\d+\.?\d*/g;
+# that was much more elaborate though, with +-, decimals, etc.
+
+foreach $number (@numbers) {
+	next if $number eq "";
+	$total += $number;
+	$n++;
+}
+
+exit if !$n;
+printf "$n numbers: total = $total, mean = %s\n", $total/$n;
+```
+
 
 
 
 * Example to find the last number in a line and print it out.
 
-	```perl
-	# input: 32 hello there you look about 46.
-	# >> 46
-	
-	# Normal loop:
-	while ($line = <>) {
-		@numbers = $line =~ /-?\d+\.?\d+?/g;
-		print "$numbers[$#numbers]" if @numbers;
-	}
-	
-	# We can even do this with a single regex.
-	while ($line = <>) {
-	# if there are some numbers, followed by 0 or more non-digit chars, 
-	# and then end of line, then capture it.
-		if ($line =~ /(-?\d+\.?\d+?)\D*$/) {
-			print "$1";
-		}
-	}
-	```
+```perl
+# input: 32 hello there you look about 46.
+# >> 46
 
-	
+# Normal loop:
+while ($line = <>) {
+	@numbers = $line =~ /-?\d+\.?\d+?/g;
+	print "$numbers[$#numbers]" if @numbers;
+}
+
+# We can even do this with a single regex.
+while ($line = <>) {
+# if there are some numbers, followed by 0 or more non-digit chars, 
+# and then end of line, then capture it.
+	if ($line =~ /(-?\d+\.?\d+?)\D*$/) {
+		print "$1";
+	}
+}
+```
+
+
+​	
