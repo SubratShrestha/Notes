@@ -121,3 +121,20 @@ and non-privileged mode which
 * provides mechanism to make requests to OS
 
 The OS request is the syscall, and it transfers execution back to kernel code in privileged mode.
+
+
+
+## Opening  and closing files
+
+```c
+int open(char *pathname, int flags)
+```
+
+will attempt to open an object at pathname, according to the flags. The flags are actually bit-masks which need to be set to 1. These are defined in the `<fcntl.h>`.
+
+There are flags for reading, writing, appending, reading and writing, creating, and truncating, and these flags can be combined by using the bitwise OR like `O_WRONLY|O_CREAT` which is combining the write only and create flags.
+
+If this is successful, it will return a positive integer representing the file descriptor (number that uniquely identifies an open file in the OS).
+
+`close` will just close the file represented by the file descriptor, and if many files remain open and we don't close them, the OS can run out of file descriptors, used to be a problem but we have thousands of file descriptors in modern systems.
+
