@@ -65,7 +65,7 @@ and 2 chars are not allowed as filenames and that would be "/" and "0", 0 becaus
 
 <img src="C:\Users\subra\Documents\Notes\UNSW\20T2\1521Comp\FileHandling.assets\image-20200726161705650.png" alt="image-20200726161705650" style="zoom:80%;" />
 
-That is the linux/unix file system, and its a graph, not a tree, there can be links between them.
+That is the linux/unix file system, and its a graph, not a tree, there can be links (symbolic links) between them.
 
 Its kinda annoying to be specifying the full absolute pathname every time, so we have a current working directory (cwd) which every program has. The the `.` means current working directory.
 
@@ -76,6 +76,33 @@ Files are arrays of 0 or more bytes and this was a huge revalation with UNIX, be
 The file has some metadata though like access rights (owner name, group owner name), permissions (read write execution), last modified dates, last modified time of the metadata, etc. and these are also configurable, so we don't have to store some of them if we don't want to.
 
 Directories also have these (they are also files, a collection of bytes, they are a set of zero or more files or directories), and these can be changed with something like `chmod`.
+
+
+
+### Metadata in inodes  (index node).
+
+To store the metadata of files, we use inodes. They store:
+
+* location of file in the system
+* type of file (regular file or directory)
+* file size
+* ownership and access permissions
+* timestamps (create, access, update)
+
+There are many optimizations applied to this, and they get quite complicated like very small files may be stored in the inode itself (because the metadata itself may be larger than or a big percentage of the actual file), or optimizations to access times because files were accessed by magnetic tapes or disks, which were horrendously slow (or what we think of now as slow).
+
+So file systems have an array of inodes. The index in this array is the inodes number (called i-number) which is like UNSW zid, so a directory is basically a list of (name, i-number) pairs.
+
+When we search inside a directory, the OS:
+
+* opens dir and scan for name (linear search O(n))
+* if not found, "No such file or directory"
+* if found as (name, ino) access inode table inodes[ino]
+* collect metadata and
+	* check file access permissions, if we don't have them "Permission denied"
+	* collect info about file location and size
+	* update access timestamp
+* use data in inode to access file contents.
 
 
 
