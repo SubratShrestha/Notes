@@ -126,6 +126,12 @@ The OS request is the syscall, and it transfers execution back to kernel code in
 
 ## Opening  and closing files
 
+
+
+### libc version.
+
+---
+
 ```c
 int open(char *pathname, int flags)
 ```
@@ -134,7 +140,63 @@ will attempt to open an object at pathname, according to the flags. The flags ar
 
 There are flags for reading, writing, appending, reading and writing, creating, and truncating, and these flags can be combined by using the bitwise OR like `O_WRONLY|O_CREAT` which is combining the write only and create flags.
 
-If this is successful, it will return a positive integer representing the file descriptor (number that uniquely identifies an open file in the OS).
+If this is successful, it will return a positive integer representing the file descriptor (number that uniquely identifies an open file or a stream of bytes from the file), or -1 if not successful.
+
+The reason for the unsuccessful open will be stored in a global variable `errno`, and there are some tricks done to be able to run 2 instances of it with global variables (bad, very hacky).
+
+
+
+### libc version.
+
+---
+
+```c
+int close(int fileDes)
+```
 
 `close` will just close the file represented by the file descriptor, and if many files remain open and we don't close them, the OS can run out of file descriptors, used to be a problem but we have thousands of file descriptors in modern systems.
+
+When files are deleted after opening, they live in this kinda half-life within the stream created by open. So this feature/bug was used to make some temp files that can't be accessed. So a file was made and opened, then deleted immediately, so the user had no way of accessing it but the stream was still accessible from within the program.
+
+
+
+## Reading from files.
+
+
+
+### libc version.
+
+---
+
+```c
+ssize_t read(int fileDes, void *Buffer, size_t count)
+```
+
+attempts to read `count` bytes from the `fileDes` into `Buffer`. If you want to be happy in life, the size of `Buffer` better be at least `count`, or greater because it does not check whether the `Buffer` contains enough space, it will just go beyond the array boundaries, and we've seen how much trouble that can cause us.
+
+returns the number of bytes read if successful (`NRead`), 0 if EOF reached, so its quite common to read less bytes than you asked for, and -1 and the error reason in `errno` if unsuccessful.
+
+advances the offset (or the pointer into the stream) by the number of bytes read (`NRead`), this is done by `read() write() and lseek()`.
+
+
+
+## Writing to files.
+
+
+
+### libc version.
+
+---
+
+```c
+ssize_t write(int fileDes, void *Buffer, size_t count)
+```
+
+literally the same as read in terms of the return values, it writes `count` bytes from `Buffer` into the `fileDes`.
+
+In `read()`, it was possible to read in less bytes than asked for, but write is different, its all or nothing.
+
+
+
+## Seeking into files.
 
