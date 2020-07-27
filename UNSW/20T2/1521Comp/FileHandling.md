@@ -148,6 +148,10 @@ These won't return the file descriptor or anything, they return a pointer to a s
 
 They can do everything that the libc versions can do, and some more like more friendly operations such as `fscanf()` and `fprintf()`.
 
+The errors in `libc` versions go to the global variable `errno`, and in the stdio versions, which use the libc versions, they have a function `perror` which reads from the global variable and prints it to stderr.
+
+The table of errno can be found with `man errno`, which has all the codes and text explanantions for them.
+
 Generally better to use these instead.
 
 
@@ -198,7 +202,22 @@ int close(int fileDes)
 
 `close` will just close the file represented by the file descriptor, and if many files remain open and we don't close them, the OS can run out of file descriptors, used to be a problem but we have thousands of file descriptors in modern systems.
 
+The closing also happens automatically (done by the OS) when the program exits, but its more important to close after writing to a file, especially with the stdio version of this function because the it uses buffers to write and when the program is forced to exit (before it reaches the `close` or before the `return` from main), it will have those pending writes in the RAM and will be lost, So its good practice to close the file as soon as the write function is complete, rather than in the end (though its unlikely that this kind of thing would happen.).
+
 When files are deleted after opening, they live in this kinda half-life within the stream created by open. So this feature/bug was used to make some temp files that can't be accessed. So a file was made and opened, then deleted immediately, so the user had no way of accessing it but the stream was still accessible from within the program.
+
+So the actual writing to the file actually happens at `close` or `fclose`.
+
+When we do a write instruction:
+
+* `fopen("hello.txt", "w")` opens a file for writing -> 0 bytes.
+* `fputs("Hello Subrat\n")` doesn't actually write yet -> 0 bytes.
+* `fclose()` now the string is written to file -> 14 bytes.
+* `fopen("hello.txt", "a")` opens file for appending -> 14 bytes.
+* `fflush()` flushes (clears) all buffers, so it writes -> 30 bytes.
+* `fopen("hello.txt", "w")` opens file for writing (truncates) -> 0 bytes.
+* `fputs("aight im out")` doesn't write yet -> 0 bytes.
+* if the program is forced to exit here, the file will be empty, and all changes will be lost.
 
 
 
@@ -366,10 +385,111 @@ fwrite(bytes, 1, 15, stdout);
 
 	```c
 	int main(void) {
+	    // c is not a char, and cannot be a char, very common bug.
+	    int c;
 	    
+	    // get byte until that byte is EOF.
+	    while ((c = fgetc(stdin)) != EOF) {
+	        fputc(c, stdout);
+	    }
+	    
+	    return 0;
 	}
 	```
 
 	
+
+	same thing but in line by line which is not something we wanna do unless we have to do it line by line, that's mostly because we can't read binary data because the string would end at the zero byte (\0). There's also a max line size and that's not something we want either. Always better to do it character wise.
+
+	```c
+	int main(void) {
+	    char line[BUFSIZE];
+	    while (fgets(line, BUFSIZE, stdin) != NULL) {
+	        fputs(line, stdout);
+	    }
+	    return 0;
+	}
+	```
+
+
+
+​	A better way of going about reading multiple bytes at a time    	would be
+
+```c
+int main (void) {
+    while (1) {
+        char bytes[4096];
+        
+        ssize_t bytes_read = fread(bytes, 1, 4096, stdin);
+        
+        if (bytes_read <= 0) {
+            break;
+        }
+        
+        fwrite(bytes, 1, bytes_read, stdout);
+    }
+}
+```
+
+
+
+* `cp` with (byte wise) file handling functions (quite efficient way of copying files)
+
+	```c
+	int main(int argc, char *argv[]) {
+	    if (argc != 3) {
+	        fprintf(stderr, "Usage: %s <source> <dest>", argv[0])
+	    }
+	    
+	    // we can write (rb or wb) here to specify that its a binary file,
+	    // but its not strictly needed.
+	    FILE *input_stream = fopen(argv[1], "r");
+	    // we had -1 appearing in the libc versions, if that happens, then our
+	    // file pointer just points to nothing (NULL pointer).
+	    if (input_stream == NULL) {
+	        perror(argv[1]);         // this is where the errno is (in libc).
+	        return 1;
+	    }
+	    
+	    FILE *output_stream = fopen(argv[2], "w") {
+	        if (output_stream == NULL) {
+	            perror(argv[2]);
+	            return 1;
+	        }
+	    }
+	    
+	    int c;                       // again, not a char.
+	    while ((c = fgetc(input_stream)) != EOF) {
+	        fputc(c, output_stream);
+	    }
+	    
+	    fclose(input_stream);
+	    fclose(output_stream);
+	}
+	```
+
+	
+
+* cp line-wise, slightly faster than byte wise, but uses max length of line, etc.
+
+	```c
+	int main(int argc, char *argv[]) {
+	    FILE *read = fopen(argv[1], "r");
+	    FILE *write = fopen(argv[2], "w");
+	    
+	    while (1) {
+	        char bytes[BUFSIZ];
+	        size_t bytes_read = fread(bytes, 1, 4096, read);
+	        
+	        if (bytes_read <= 0) {
+	            break;
+	        }
+	        
+	        fwrite(bytes, 1, bytes_read, write);
+	    }
+	    
+	    return 0;
+	}
+	```
 
 	
