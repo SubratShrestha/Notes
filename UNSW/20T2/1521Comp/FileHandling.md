@@ -91,7 +91,11 @@ To store the metadata of files, we use inodes. They store:
 
 There are many optimizations applied to this, and they get quite complicated like very small files may be stored in the inode itself (because the metadata itself may be larger than or a big percentage of the actual file), or optimizations to access times because files were accessed by magnetic tapes or disks, which were horrendously slow (or what we think of now as slow).
 
-So file systems have an array of inodes. The index in this array is the inodes number (called i-number) which is like UNSW zid, so a directory is basically a list of (name, i-number) pairs.
+So file systems have an array of inodes. The index in this array is the inodes number (called `i-number`) which is like UNSW zid, so a directory is basically a list of (name, `i-number`) pairs.
+
+The `i-number` we're talking about is different to the process number, and they're unique to all files. 
+
+Note that when we `mv` a file into the same file system, the `i-number` remains the same, that's because `mv` within the same file system is an incredibly fast and efficient process, but as soon as we move away to a different file system, all that glory is lost, and when we `cp` a file, the `i-number` changes, even though it has the same content.
 
 When we search inside a directory, the OS:
 
@@ -124,9 +128,21 @@ The OS request is the syscall, and it transfers execution back to kernel code in
 
 
 
+## libc and stdio
+
+All file handling processes have two versions, the `libc` version, which is much closer to the hardware, they use actual syscalls, but they only work with unix/linux OS's and are not at all portable (also works with something like WSL).
+
+There are much "better" and more portable verisons of these file handling functions in the `stdio.h` file. These will work anywhere but are abstracted away from the libc versions.
+
+These won't return the file descriptor or anything, they return a pointer to a struct, and we are abstracted away from the contents of this struct.
+
+They can do everything that the libc versions can do, and some more like more friendly operations such as `fscanf()` and `fprintf()`.
+
+Generally better to use these instead.
+
+
+
 ## Opening  and closing files
-
-
 
 ### libc version.
 
@@ -146,6 +162,22 @@ The reason for the unsuccessful open will be stored in a global variable `errno`
 
 
 
+### stdio version.
+
+---
+
+```c
+FILE *fopen(path, mode)
+```
+
+Opens the file in `path` in one of the modes like "r" for reading, "w" for writing, "a" for appending, etc.
+
+There's no need for bit-masks and all of that stuff, it does all of that for us.
+
+
+
+
+
 ### libc version.
 
 ---
@@ -160,9 +192,21 @@ When files are deleted after opening, they live in this kinda half-life within t
 
 
 
+### stdio version
+
+---
+
+```c
+int fclose(FILE *stream)
+```
+
+closes the stream of files in `stream`, simple.
+
+
+
+
+
 ## Reading from files.
-
-
 
 ### libc version.
 
@@ -180,9 +224,27 @@ advances the offset (or the pointer into the stream) by the number of bytes read
 
 
 
+### stdio version.
+
+---
+
+```c
+char *fgets(char *Buffer, int size, FILE *stream)
+```
+
+puts `size` bytes from the stream into the `Buffer`.
+
+
+
+```c
+int fgetc(FILE *stream)
+```
+
+returns a character from the `stream` (as ascii value in int), and offsets the file pointer by 1.
+
+
+
 ## Writing to files.
-
-
 
 ### libc version.
 
@@ -195,6 +257,24 @@ ssize_t write(int fileDes, void *Buffer, size_t count)
 literally the same as read in terms of the return values, it writes `count` bytes from `Buffer` into the `fileDes`.
 
 In `read()`, it was possible to read in less bytes than asked for, but write is different, its all or nothing.
+
+
+
+### stdio version.
+
+```c
+char *fputs(char *Buffer, FILE *stream)
+```
+
+writes the string in Buffer into the stream, and offsets the value of the file pointer.
+
+
+
+```c
+int fputc(int character, FILE *stream)
+```
+
+writes the `character` into the `stream`.
 
 
 
