@@ -100,13 +100,23 @@ Note that when we `mv` a file into the same file system, the `i-number` remains 
 When we search inside a directory, the OS:
 
 * opens dir and scan for name (linear search O(n))
+
 * if not found, "No such file or directory"
+
 * if found as (name, ino) access inode table inodes[ino]
+
 * collect metadata and
 	* check file access permissions, if we don't have them "Permission denied"
 	* collect info about file location and size
 	* update access timestamp
+	
 * use data in inode to access file contents.
+
+	
+
+Interesting to note that the `EOF` signal we're so used to using is given with the help of the metadata, when we do any of the file handling functions, it looks at the file metadata, and the number of bytes it has, and when the last byte has been processed (reading string, char, etc.), it gives the `EOF` signal.
+
+We could do that ourselves, but not the greatest idea since the file may change, its much better to do this kind of calculation at the exact time we want to read the file (which is done by the stdio file handling functions).
 
 
 
@@ -268,15 +278,98 @@ char *fputs(char *Buffer, FILE *stream)
 
 writes the string in Buffer into the stream, and offsets the value of the file pointer.
 
+Relies on the string being null-terminated, but we can always use the trusty `fprintf()` function instead.
+
+ex.
+
+```c
+char bytes[] = "Hello Subrat\n";
+
+// this only works for null-terminated strings
+fputs(bytes, stdout)
+```
+
+
+
 
 
 ```c
 int fputc(int character, FILE *stream)
 ```
 
-writes the `character` into the `stream`.
+writes the `character` (byte) into the `stream`, and the stream could be something like `stdout` which is also a file pointer (FILE *).
+
+ex.
+
+```c
+char bytes[14] = "Hello Subrat\n";
+
+for (int i = 0; i < 15; i++) {
+    fputc(bytes[i], stdout)
+}
+
+// or until null terminator '\0'
+for (int i = 0; bytes[i] != '\0'; i++) {
+    fputc(bytes[i], stdout);
+}
+
+// or with pointers
+for (char *p = &bytes[0]; *p != '\0'; p++) {
+    fputc(*p, stdout);
+}
+```
+
+
+
+
+
+```c
+int fprintf(FILE *stream, char *string, ...)
+```
+
+outputs the formatted (with `%d %lf` and all the good stuff) `string` into the `stream`. Its just like `printf()`, actually `printf()` is just a wrapper for `fprintf()` with the stream being `stdout`.
+
+```c
+fprintf(stdout, "Hello Subrat\n");
+```
+
+
+
+
+
+```c
+size_t fwrite(void *array, size_t size, size_t num, FILE *stream)
+```
+
+writes `num` elements of `size` bytes each from the `array`, into the `stream`.
+
+```c
+char bytes[] = "Hello Subrat\n";
+
+// would be fwrite(bytes, 4, 15. stdout) for ints.
+fwrite(bytes, 1, 15, stdout);
+```
+
+
 
 
 
 ## Seeking into files.
 
+
+
+
+
+## Examples
+
+* echo with file handling.
+
+	```c
+	int main(void) {
+	    
+	}
+	```
+
+	
+
+	
