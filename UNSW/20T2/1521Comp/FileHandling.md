@@ -140,7 +140,7 @@ The OS request is the syscall, and it transfers execution back to kernel code in
 
 ## libc and stdio
 
-All file handling processes have two versions, the `libc` version, which is much closer to the hardware, they use actual syscalls, but they only work with unix/linux OS's and are not at all portable (also works with something like WSL).
+All file handling processes have two versions, the `libc` version, which is much closer to the hardware, they use actual syscalls (a wrapper for syscalls), but they only work with unix/linux OS's and are not at all portable (also works with something like WSL).
 
 There are much "better" and more portable verisons of these file handling functions in the `stdio.h` file. These will work anywhere but are abstracted away from the libc versions.
 
@@ -377,6 +377,97 @@ fwrite(bytes, 1, 15, stdout);
 
 
 
+### libc version.
+
+---
+
+```c
+off_t lseek(int fileDes, off_t offset, int whence)
+```
+
+It offsets the file pointer in file with `fileDes`, by an offset of `offset` bytes from `whence`.
+
+`Whence` is just the start position from where we want to offset from. It can be either or:
+
+* SEEK_SET -> offset from start of file.
+* SEEK_CUR -> offset from current position.
+* SEEK_END -> offset from end (last byte of file).
+
+The offset can be a negative number to say we wanna go back, going back from SEEK_SET won't move the pointer. We can go forwards from SEEK_END, it will leave "gaps" of 0s, its strange.
+
+
+
+### stdio version.
+
+---
+
+```c
+int fseek(FILE *stream, long int offset, int whence)
+```
+
+The exact same as `lseek()`, but more portable, and should be used most of the time.
+
+
+
+## Efficiency.
+
+An efficient algorithm can make a huge difference in the amount of time a program takes, and we can measure these times using the command `time a.out <args>`. This will show us 3 times,
+
+* `real` is the time that elapses for the program to complete. This is the "wallclock" time.
+* `user` which is the time taken for the code we (the user) wrote took to execute.
+* `sys` is the time taken for the code inside the kernel to execute. This is the time spent executing syscalls.
+
+If we look at the `cp` example below, its using good algorithm, and there isn't much room for improvement because all we're doing is copying the bytes of one file to another, and if we time it, the real time is up to 6s or so for a 128 mb file.
+
+```c
+int main (int argc, char *argv[]) {
+    int read_file = open(argv[1], O_RDONLY);
+    int write_file = open(argv[2], O_WRONLY | O_CREAT, 0644);
+    
+    while (1) {
+        char bytes[16];
+        ssize_t bytes_read = read(read_file, bytes, sizeof bytes);
+        if (bytes_read <= 0) {
+            break;
+        }
+        write(write_file, bytes, bytes_read);
+    }
+    
+    return 0;
+}
+```
+
+If we look at the performance of `/bin/cp`, the time is about 0.2s.
+
+and if we look at the `sys` time, then we will see that most of the time is spent on the syscalls, and this is because we are making too many syscalls, and we'll later learn that syscalls are quite expensive processes, and we're making syscalls of 16 bytes each (line 6), so we're making $$\tfrac{128,000,000}{16} = 8,000,000$$ syscalls, and we can run `strace` to see how many syscalls its making.
+
+We can execute this program to see how much of a difference the buffer size (and so the number of syscalls) can make.
+
+```c
+int main (int argc, char *argv[]) {
+    int read_file = open(argv[1], O_RDONLY);
+    int write_file = open(argv[2], O_WRONLY | O_CREAT, 0644);
+    
+    int bytes_requested = atoi(argv[3]);
+    while (1) {
+        char bytes[bytes_requested];
+        ssize_t bytes_read = read(read_file, bytes, sizeof bytes);
+        if (bytes_read <= 0) {
+            break;
+        }
+        write(write_file, bytes, bytes_read);
+    }
+    
+    return 0;
+}
+```
+
+Running this program with 1 bytes will have us make 128,000,000 syscalls, and it will take longer. Something like 4096 can reduce it down to 31250 syscalls, and powers of 2 will be more efficient for some reason.
+
+This will get us very close to the `cp` version, and we can get even faster if we make just one syscall.
+
+
+
 
 
 ## Examples
@@ -413,7 +504,7 @@ fwrite(bytes, 1, 15, stdout);
 
 
 
-​	A better way of going about reading multiple bytes at a time    	would be
+​	A better way of going about reading multiple bytes at a time would be
 
 ```c
 int main (void) {
@@ -489,6 +580,40 @@ int main (void) {
 	    }
 	    
 	    return 0;
+	}
+	```
+
+	
+
+* get the first byte, 42nd byte, 100th byte and last byte of a file.
+
+	```c
+	int main(int argc, char *argv[]) {
+	    if (argc != 2) {
+	        fprintf(stderr, "Usage: %s <source>\n", argv[0]);
+	        return 1;
+	    }
+	    
+	    FILE *input = fopen(argv[1], "r");
+	    
+	    if (input == NULL) {
+	        fprintf(stderr, "file %s could not be opened", argv[1]);
+	        return 1;
+	    }
+	    
+	    // seeking 1 byte before the end of file (last byte).
+	    fseek(input, -1, SEEK_END);
+	    printf("last byte is 0x%02x\n", fgetc(input));
+	    
+	    fseek(input, 0, SEEK_SET);
+	    printf("first byte is 0x%02x\n", fgetc(input));
+	    
+	    fseek(input, 41, SEEK_SET);
+	    printf("42nd byte is 0x%02x\n", fgetc(input));
+	    
+	    // 58 from 41 is 58 + 41 = 99, and read byte (100th byte).
+	    fseek(input, 58, SEEK_CUR);
+	    printf("100th byte is 0x%02x\n", fgetc(input));
 	}
 	```
 
