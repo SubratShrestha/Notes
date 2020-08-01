@@ -468,6 +468,58 @@ This will get us very close to the `cp` version, and we can get even faster if w
 
 
 
+This is with the regular `open` and `read` but when we use the stdio versions like `fgetc`, the time is back to the normal fast time. This is because the stdio versions know that reading one byte at a time will be inefficient, so even when we specifically say `char c = fgetc(stream)`, it will still take in 4096 bytes from the stream because it will assume that there will be more calls in the future, which is a reasonable assumption. This is probably stored as an array in the unknown FILE struct, whose contents we don't know. Its contents change based on the implementation, it also comes with plenty of fun comments above it (in the stdio file), and so its best to just heed their warnings, and also we don't have any use for the internal structure.
+
+Very similar story with the output functions, but not as simple. When we say `fputc(c, stream)`, it just ignores it for the moment and waits for other calls. When it counts 4096 calls, it does it all together with one syscall. When the program exits or the stream closes, the stdio functions will flush any remaining bytes out to the file. The `fflush()` function will flush out the bytes without closing the stream.
+
+But there is some cost to this, if the OS terminates the program or the power goes out or the battery dies, etc, and the function did not reach the close instruction, the unwritten bytes in the buffer are lost, and this is the cost of the higher efficency. If every byte is absolutely crutial and running out of power is a real concern, then the libc versions are probably a better fit for the task.
+
+We can see all this happen with `strace`.
+
+
+
+
+
+### Convenience functions.
+
+C comes with plenty of convenience functions that are just easy to write and does the more elaborate things in the background, like `printf` is just `fprintf` with `stdout`,`scanf` is just `fscanf`, `getchar` with `stdin`, `putchar`, `puts`, etc.
+
+There is a "convenience" function `gets` which should just not be used, ever, historically, its been responsible for the most security holes, this is mainly because the function takes a buffer string (technically an array), but no buffer size. The user can easily give a string bigger than the unknown buffer size and make it overwrite many things, including the return addresses of functions and what not.
+
+
+
+```c
+snprintf(char *str, size_t size, const char *format ...);
+```
+
+This is a brilliantly useful function, its like `printf` in terms of the formatting with data going into the string, but the output goes to the buffer string we specify. This is just amazing for something like file paths. 
+
+Should not be confused with the `sprintf` which has the same problems as `gets` in that we can overwrite data.
+
+
+
+```c
+sscanf(char *str, char *format ...);
+```
+
+This will extract information from a formatted string. Takes the string in `str`, and it takes the information and puts them into the variables specified in the format bit.
+
+ex.
+
+```c
+int main () {
+   int day, year;
+   char weekday[20], month[20], dtm[100];
+
+   strcpy( dtm, "Saturday March 25 1989" );
+   sscanf( dtm, "%s %s %d  %d", weekday, month, &day, &year );
+
+   printf("%s %d, %d = %s\n", month, day, year, weekday );
+    
+   return(0);
+}
+```
+
 
 
 ## Examples
