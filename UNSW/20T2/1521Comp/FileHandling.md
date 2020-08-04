@@ -522,6 +522,16 @@ int main () {
 
 
 
+```c
+int stat(const char *pathname, struct stat *statbuf);
+```
+
+stat is kinda like a extra detail version of ls, it gives info about files, more specifically, all the metadata that goes into the files like the inode number, file type, access mode, owner, group, size storage block size, allocated blocks, time of last access, modification, status change.
+
+other versions: `fstat` -> same but gets data via an open file descriptor, `lstat` -> same but doesn't follow symbolic links.
+
+
+
 ## Examples
 
 * echo with file handling.
