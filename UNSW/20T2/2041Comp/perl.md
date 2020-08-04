@@ -45,7 +45,7 @@ Very interesting feature of the warning system is that it can detect possible ty
 | $    | scalar     | variable containing a single value      |
 | @    | array      | list of values, integer indexed         |
 | %    | hash       | set of values, string indexed (hashmap) |
-| &    | subroutine | callable perl code                      |
+| &    | subroutine | address of                              |
 
 
 
@@ -68,6 +68,10 @@ To get rid of those endlines, we use the `chomp $var;` command.
 **<>** is the diamond operator. Without a stream inside is special, it acts like a linux filter. If arguments are given to it, then it treats them like files and we can open them and what not. But when values are given in stdin, it defaults to using them as stdin.
 
 **=~** is how we apply regex to a variable or a bare string. Depending on what we're doing with the regex, it may or may not affect the string. Like a normal matching wouldn't affect the variable or string `($string =~ /\S+/)` but we can also do replacement and what not, which will change the string.
+
+**\\** when next to a variable acts like the **&** operator in C, it gives the address of a variable as well as the type of the varaible. `$r = \@a` will return `ARRAY(0x563abb...)`, and **$$r[3]** will return the 3rd value in array a.
+
+
 
 
 
@@ -624,6 +628,112 @@ capture groups in perl are just `()`, without escape characters like in `sed`.
 # also always put `die` after pattern matches because pattern matches almost always fail at some point.
 $line =~ /(\w{8})\s+(.*)/ or die "help";
 ```
+
+
+
+
+
+## Functions
+
+Functions are defined by keyword `sub`, short for `subroutine` which is a very old term for functions. They return the value of the last evaluated expression by default, which shouldn't ever be used. There is a regualar `return` keyword.
+
+Passed arguments will be stored in special variable `@_`. Passing the arguments in doesn't need the parenthesis, but its just good practice to include them for functions that are user defined. Make sure to give the array of args sensible names with a list assignment, because `$_[2]` is just unreadable.
+
+Be careful with functions in perl, the default scope of a variable is global, no clue why. But we fix this with the `my` keyword before a variable name, but this is pretty much broken as well because the `$my` vaiable makes the scope until the next closing brace (like let in js).
+
+```perl
+sub f {
+	print "values passed: $_[0], $_[1], $_[2]";
+}
+
+($a, $b, $c) = (1, 2, 3);
+f($a, $b, $c);
+
+
+## more readable version.
+sub f {
+	($x, $y, $z) = @_;
+	print "values passed: $_[0], $_[1], $_[2]";
+}
+
+($a, $b, $c) = (1, 2, 3);
+f($a, $b, $c);
+```
+
+
+
+Another great reason not to directly use the `@_` variable is
+
+```perl
+sub f {
+	$_[0] = 42;
+}
+
+$a = 15;
+f($a);
+
+# this will print "a = 42"
+print "a = $a\n";
+```
+
+
+
+Program to sum a list of numbers
+
+```perl
+# this is result in a warning because the variable total will be
+# used only once because the closing brace after line 9 would be used only once.
+# treats the total in line 11 as a seperate global variable.
+# always initialize in the beginning anyway though.
+sub sum_list {
+	my @numbers = @_;
+	
+	foreach $x (@numbers) {
+		my $total += $x;
+	}
+	return $total;
+}
+
+@a = (1..1000);
+$sum = sum_list(@a);
+print "sum = $sum";
+
+#### fixed.
+sub sum_list {
+	my @numbers = @_;
+	my $total = 0;
+	foreach $x (@numbers) {
+		$total += $x;
+	}
+	return $total;
+}
+
+@a = (1..1000);
+$sum = sum_list(@a);
+print "sum = $sum";
+
+### recursive approach.
+sub sum_list {
+	my @numbers = @_;
+	return 0 if !@numbers;
+	my $n = shift @numbers;           # whole lot of bugs if my isn't used.
+	return $n + sum_list(@numbers);
+}
+
+@a = (1..1000);
+$sum = sum_list(@a);
+print "sum = $sum";
+
+
+### another weird way, not a good way though, horribly slow as well.
+sub sum_list {
+	my @numbers = @_;
+	my $s = join "+", @numbers;
+	return eval $s;
+}
+```
+
+
 
 
 
