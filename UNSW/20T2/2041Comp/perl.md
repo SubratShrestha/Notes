@@ -112,6 +112,30 @@ The arrays in Perl are dynamic and don't need to be declared. They grow as neede
 
 Perl arrays are very well made, almost all operations on perl arrays are of O(1), so operations like push, pop, shift, unshift are all done in constant time, independent of the size of the array.
 
+
+
+We can also use the `qw` operator to quote words quickly.
+
+```perl
+@days = ("Sunday", "Monday", "Tuesday" ...);
+@days = qw/Sunday Monday Tuesday Wednesday Thursday Friday Saturday/;
+```
+
+
+
+Use `rand` to get a random index in arrays, its useful sometimes, especially when generating synthetic data.
+
+```perl
+sub random_day {
+	return $days[rand @days]l
+}
+push @random_days, random_day() foreach 1..5;
+```
+
+
+
+
+
 ```perl
 @a = ("first thing", "second one", 123);
 
@@ -214,7 +238,9 @@ print @lines;
 
 
 
-### sorting arrays.
+
+
+## Sorting
 
 sorting is very similar to the sort in the shell.
 
@@ -224,6 +250,39 @@ print sort @lines;
 ```
 
 
+
+Now sorting in perl by default is by dictionary order, so if you did something like `@a = sort @ARGV;`, and gave it a bunch of words, it would dictionary sort them in `a`, but the trouble with perl is that there are no types, so when we give it a bunch of numbers, it will treat them as strings and sort them in dictionary order.
+
+To deal with that, we need to give it some sort of comparison function like with `qsort` in C, but its much easier and shorter (but slower) in perl.
+
+For numerical comparisons, we can use the `<=>` operator which treats two variables as numbers, compares their values, and returns it to the `sort` function.
+
+The string counterpart to `<=>` for comparing strings (which perl chooses by default) is the `cmp` operator.
+
+There are two special variables `$a` and `$b` which are the things perl will compare.
+
+```perl
+# numerical sort.
+@a = sort {$a <=> $b} @ARGV;
+
+# dictionary sort.
+@a = sort @ARGV;  # or
+@a = {$a cmp $b} @ARGV;
+
+```
+
+
+
+Both `<=>` and `cmp` will return a negative number if `second > first`, positive if `first > second`, and 0 if they're equal.
+
+```perl
+# run this to see whats going on behind the scenes.
+@a = sort {print "a = $a | b = $b\n"; $a <=> $b} @ARGV;
+```
+
+
+
+Perl 5.6 and earlier used quicksort, but with some defences against the worst case O(N^2) case with some extra shuffling before sorting in perl 5.8. There's also a mergesort available from perl 5.8 on.
 
 
 
@@ -935,8 +994,50 @@ foreach $code (sort keys %nc) {
 }
 ```
 
-
 ​	
+
+* Example to sort the first name enrollment data by the number of occurances of the first names.
+
+	```perl
+	# same data as last example.
+	
+	while ($enrollment = <>) {
+		@fields = split(/\|/, $enrollment);  # careful, '|' is a metacharacter for alteration.
+		$zid = $fields[1];
+		$name = $fields[2];                  # like cut, but index of arrays.
+		$course_code = $fields[0];
+		
+		next if $seen{$zid};
+		$seen{$zid}++;
+		
+		$name =~ /, (\S+)/;                  # anything but whitespace.
+		$firstname = $1;                     # first thing we captured.
+		
+		$nc{$course_code}{$firstname}++;
+	}
+	
+	foreach $code (sort keys %nc) {
+		# difference here.
+		foreach $fn (sort {$nc{$code}{$a} <=> $nc{$code}{$b}} %{$nc{$code}}) { 
+			next if $nc{$code}{$fn} < 2;
+			printf("%s has %4d students named %s\n", $code, $nc{$code}{$fn}, $fn);
+		}
+	}
+	
+	## in a more readable way in multiple lines:
+	foreach $code (sort keys %nc) {
+		@names = keys %{$nc{$code}};
+		# swap a and b for reverse sort.
+		@sorted_names = sort {$nc{$code}{$a} <=> $nc{$code}{$b}} @names;
+		foreach $fn (@sorted_names) { 
+			next if $nc{$code}{$fn} < 2;
+			printf("%s has %4d students named %s\n", $code, $nc{$code}{$fn}, $fn);
+		}
+	}
+	```
+
+	
+
 * Example to find all numbers from a string with words (or just plain numbers), and get the mean and total of them.
 
 ```perl
@@ -985,3 +1086,35 @@ while ($line = <>) {
 
 
 ​	
+
+
+
+* Example to sort the days in the order -> sun, mon, tue, wed, thu, fri, sat.
+
+	```perl
+	#!/usr/bin/perl -w
+	
+	@days = qw/Sunday Monday Tuesday Wednesday Thursday Friday Saturday/;
+	
+	# the much more readable way of forming a hash of days and their numbers:
+	%d = (Sunday => 0, Monday => 1, Tuesday => 2, 
+	      Wednesday => 3, Thursday => 4, Friday => 5, Saturday => 6);
+	
+	# a shorter, much prettier way to do this mapping is with a slice
+	# of a hash, given by symbol "@", not to be confused for an array,
+	# its not an array.
+	@d{@days} = (0..6);
+	
+	sub random_day {
+	    return $days[rand @days];
+	}
+	
+	push @random_days, random_day() foreach 1..5;
+	print "Random days:\n @random_days\n";
+	
+	@sorted_days = sort {$d{$a} <=> $d{$b}} @random_days;
+	
+	print "\nSorted days:\n@sorted_days\n";
+	```
+
+	
