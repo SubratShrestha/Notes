@@ -45,7 +45,7 @@ Very interesting feature of the warning system is that it can detect possible ty
 | $    | scalar     | variable containing a single value      |
 | @    | array      | list of values, integer indexed         |
 | %    | hash       | set of values, string indexed (hashmap) |
-| &    | subroutine | address of                              |
+| &    | subroutine | evaluate perl (subroutine)              |
 
 
 
@@ -788,8 +788,6 @@ f($b, @a);
 
 
 
-
-
 ```perl
 sub f {
 	print "values passed: $_[0], $_[1], $_[2]";
@@ -906,6 +904,32 @@ sub f (\@\@) {
 # the address of these arrays.
 @p = f @a @b;
 ```
+
+
+
+
+
+### Function pointers (kinda).
+
+We can pass in subroutines in perl, and we can execute them using the `&`.
+
+```perl
+sub print_odd {
+	my ($selector, @list) = @_;
+	
+	foreach $val (@list) {
+		$_ = $val;
+		print "$val\n" if &$selector;
+	}
+}
+
+@numbers = (1..10);
+print_odd sub {$_ % 2 == 1}, @numbers;
+```
+
+
+
+
 
 
 
@@ -1279,6 +1303,21 @@ while ($line = <>) {
 	}
 	
 	@a = my_split("[,:;]+", "2,,,4;;;8::::16");
+	```
+
+	
+
+* Make your own push function.
+
+	```perl
+	sub my_push(\@@) {
+		my ($aref, @values) = @_;
+		@$aref = (@$aref, @values);
+	}
+	
+	@a = (1..5);
+	my_push @a, 10..15;
+	print "new array: @a\n";
 	```
 
 	
