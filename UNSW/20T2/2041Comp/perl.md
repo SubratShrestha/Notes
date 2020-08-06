@@ -1390,7 +1390,12 @@ while ($line = <>) {
 	# is much better than the ','.
 	
 	sub html_times_table {
+		# when perl does arr->hash, arr taken as [key, val, key, val ...]
+		# we get an error message: "odd number of elements in hash assignment"
+		# for odd number of array elements.
+		# same is true for reverse, hash->arr will make an array [key, val ...]
 		my %args = @_;
+		
 		my %defaults = (min_x=>1, max_x=>10, min_y=>1,
 	                    max_y=>10, bgcolor=>'white', border=>0);
 	    
