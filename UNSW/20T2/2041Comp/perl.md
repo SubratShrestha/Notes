@@ -786,8 +786,6 @@ f($b, @a);
 
 
 
-
-
 ```perl
 sub f {
 	print "values passed: $_[0], $_[1], $_[2]";
@@ -911,7 +909,7 @@ sub f (\@\@) {
 
 ### Function pointers (kinda).
 
-We can pass in subroutines in perl, and we can execute them using the `&`.
+We can pass in subroutines in perl, and we can execute them using the `&`, that just tells perl that the following object is executable perl.
 
 ```perl
 sub print_odd {
@@ -925,9 +923,45 @@ sub print_odd {
 
 @numbers = (1..10);
 print_odd sub {$_ % 2 == 1}, @numbers;
+
+# shorter
+sub print_odd {
+	my ($selector, @list) = @_;
+	
+	foreach (@list) {
+		print "$_\n" if &$selector;
+	}
+}
+
+@numbers = (1..10);
+print_odd sub {$_ % 2}, @numbers
 ```
 
 
+
+### grep in perl
+
+Grep in perl is a builtin function and its more powerful than the one in the shell, it takes as its arguments, a piece of code, and a list object, and it applies that piece of code and prints the the things that satisfy that code. This will work for arrays, lines, etc.
+
+```perl
+# using grep to get some odd numbers.
+@numbers = (1..10);
+@odd = grep {$_ % 2 == 1} @numbers;
+print join("\n", @odd), "\n";
+
+# using grep to print matching lines.
+@lines = <>;
+@matching = grep {$_ =~ /Subrat/i} @lines;
+print @matching;
+
+# same but shorter
+print grep {/Subrat/i} <>;
+
+# same but with arbitrary regex
+$regex = shift @ARGV;		# if we don't shift it, the <> on next line will treat the regex as a file.
+@lines = <>;
+print grep {/$regex/i} @lines;
+```
 
 
 
@@ -1318,6 +1352,68 @@ while ($line = <>) {
 	@a = (1..5);
 	my_push @a, 10..15;
 	print "new array: @a\n";
+	```
+
+	
+
+* Rename given files with given perl code. 
+
+	`./rename.pl s/txt/TXT/ <files>` to apply some regex
+
+	`./rename.pl '/(\d+)/; $a = $1 - 1; s/\d+/$a/' <files> $(ls|sort -n)` to decrement the digits in the filename. That sort is required because if perl shell gives the files in random order, perl will rename something but that file could already exist.
+
+	`./rename.pl '$_ = lc $_' *` to convert all filenames to lowercase.
+
+	```perl
+	# operation is the regex provided by first argument, but we shift because we
+	# want to loop through the rest of the files.
+	$operation = shift @ARGV;
+	
+	foreach $file (@ARGV) {
+		$_ = $file;                        # old file name.
+		eval $operation;                   # apply the provided regex (stored in $_ by default).
+		$new = $_;                         # $_ has the new filename.
+		next if $new eq $file;
+		die "$new exists\n" if -e $new;
+		rename $file, $new;
+	}
+	```
+
+	
+
+* print a HTML times table where some properties are given as arguments, with some default values that will be assigned if nothing was specified.
+
+	```perl
+	#!/usr/bin/perl -w
+	# we could've used some array and stuff, but using a hash gives
+	# us the more readable and clean function call with the '=>' which
+	# is much better than the ','.
+	
+	sub html_times_table {
+		my %args = @_;
+		my %defaults = (min_x=>1, max_x=>10, min_y=>1,
+	                    max_y=>10, bgcolor=>'white', border=>0);
+	    
+	    my %params = (%defaults, %args);
+	
+	    my $html = "<table border=$params{border} bgcolor=$params{bgcolor}>\n";
+	
+	    foreach $y ($params{min_y}..$params{max_y}) {
+	        $html .= "<tr>";
+	        
+	        foreach $x ($params{min_x}..$params{max_x}) {
+	            $html .= sprintf "<td align=right>%s</td>", $x * $y;
+	        }
+	
+	        $html .= "</tr>\n";
+	    }
+	
+	    $html .= "</table>\n";
+	
+	    return $html;
+	}
+	
+	print html_times_table(max_y=>12, max_x=>12, bgcolor=>"pink");
 	```
 
 	
