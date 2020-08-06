@@ -238,6 +238,22 @@ print @lines;
 
 
 
+### Splitting and joining
+
+Split is kinda like cut in the shell, it will split the string by some delimiter, but its a lot better because it splits with a regex, and not some char like cut.
+
+Join will just join different strings into one with a delimiter.
+
+```perl
+@a = split("[,:;]+", "2,,,4;;;8::::16"); # a = [2,4,6,8]
+```
+
+
+
+### Array sizes
+
+Unlike in C, we actually have access to the size of arrays from just the pointer to it. To get the size of an array from the pointer to it, we can just do `$#$aref`. Not true in C, if we wanna use the size of an array in C, we need to pass the size along into the function, and if we don't, we get a whole bunch of security errors related to overwriting values in memory.
+
 
 
 ## Sorting
@@ -632,6 +648,16 @@ foreach $val (values %myHash) {
 
 They are very important to the language, and they can be used anywhere like conditional statements or loops.
 
+Perl regex by default uses 'greedy' solutions. That means it tries to match as much as possible without being incorrect.
+
+Like the regex `(.*),(.*)` (the parenthesis are the capture characters, the thing in the brackets will be stored in variables `$1, $2, $3...`) for the string "1,2,3,4,5" will be `$1 = 1,2,3,4`, and `$2 = 5`.
+
+The regex matched as many commas as it could without being incorrect, because its a greedy algorithm.
+
+Often we want the opposite behaviour, we can use the symbol `?` to specify this.
+
+`(.*?),(.*)` to string "1,2,3,4,5" will match `$1 = 1, $2 = 2,3,4,5`.
+
 ```perl5
 if ($name =~ /[0-9]/) {
 	print "name contains a digit."
@@ -699,6 +725,70 @@ Functions are defined by keyword `sub`, short for `subroutine` which is a very o
 Passed arguments will be stored in special variable `@_`. Passing the arguments in doesn't need the parenthesis, but its just good practice to include them for functions that are user defined. Make sure to give the array of args sensible names with a list assignment, because `$_[2]` is just unreadable.
 
 Be careful with functions in perl, the default scope of a variable is global, no clue why. But we fix this with the `my` keyword before a variable name, but this is pretty much broken as well because the `$my` vaiable makes the scope until the next closing brace (like let in js).
+
+Another thing to note is the the mapping inside functions (like line 5 in below example). That works really well and its pretty, but we can run into problems if we try and assign two arrays simultaneously, like:
+
+```perl
+sub f {
+	(@a, @b) = @_;
+}
+
+@a = (1,2,3,4,5);
+@b = (6,7,8,9,0);
+f(@a, @b)
+```
+
+All of the `@_` will be assigned to `@a` and nothing to `@b`.
+
+That's a problem with passing multiple arrays into a function in perl, the `@_` will actually combine both of the arrays into one, instead of having an array of 2 arrays.
+
+Many ways to avoid problem, a clean way is to pass the address of an array instead. We can get the address using the `\` operator, and we can derefernce an array with `@`.
+
+```perl
+sub f {
+    ($aref, $bref) = @_;
+    print "a = @$aref\n";	  # dereferencing.
+    print "b = @$bref\n"; 
+}
+
+@a = (1,2,3,4,5);
+@b = (6,7,8,9,0);
+f(\@a, \@b);				# passing addresses to arrays.
+```
+
+Also note that the order is very important:
+
+```perl
+# this will cause an error because all the values in @a and the value $b
+# is in one array, all of which will go into @arr, and $b will be uninitialized.
+sub f {
+    (@arr, $b) = @_;
+    print "a = @arr\n";
+    print "b = $val\n"; 
+}
+
+@a = (1,2,3,4,5)
+$b = -23;
+f(@a, $b);
+
+
+# this will work just fine.
+sub f {
+    ($val, @arr) = @_;
+    print "a = @arr\n";
+    print "b = $val\n"; 
+}
+
+@a = (1,2,3,4,5);
+$b = -23;
+f($b, @a);
+```
+
+
+
+
+
+
 
 ```perl
 sub f {
@@ -794,7 +884,28 @@ sub sum_list {
 
 
 
+### Prototypes in perl.
 
+There are function prototypes in perl, and its not used too often, but it is there, and it will provide some error checking, but not much. 
+
+We can specify the prototype by including the sigils for the kind of data we are expecting.
+
+```perl
+# function expecting 2 scalars.
+sub f ($$) {}
+```
+
+The actual use of prototypes is not the error checking, but for casting.
+
+```perl
+sub f (\@\@) {
+	...
+}
+
+# here, we're putting in the two arrays normally, but the function will take 
+# the address of these arrays.
+@p = f @a @b;
+```
 
 
 
@@ -1087,8 +1198,6 @@ while ($line = <>) {
 
 ​	
 
-
-
 * Example to sort the days in the order -> sun, mon, tue, wed, thu, fri, sat.
 
 	```perl
@@ -1115,6 +1224,61 @@ while ($line = <>) {
 	@sorted_days = sort {$d{$a} <=> $d{$b}} @random_days;
 	
 	print "\nSorted days:\n@sorted_days\n";
+	```
+
+	
+
+* Make your own join function
+
+	```perl
+	sub my_join {
+		# be careful here, if you have two arrays in the paranthesis, perl
+		# will assign all values to one, and none to the other.
+		my ($separator, @list) = @_;
+		
+		# if this line is missing, the first char will be a separator,
+		# we can use a hacky fix and remove the first char of the string
+		# before returning, but that will fail for regex's or multiple 
+		# separators, only problem with shift is for the empty case which
+		# should be handled explicitly.
+		return "" if !@list;
+		my $s = shift @list;
+		
+		foreach $e (@list) {
+			$s = $s . $separator . $e;
+		}
+	}
+	
+	$s = my_join(",", 1..5);
+	```
+
+	
+
+* Make your own split function
+
+	```perl
+	sub my_split {
+		my ($regex, $str) = @_;
+		my @list;
+		
+		# notice the '?' in the regex to disable greedy.
+		# the solution by matching the string
+		while ($str =~ /(.*?)$regex(.*)/) {
+			push @list, $1;
+			$str = $2;
+		}
+		push @list, $string; # don't forget to flush the last bit into the list.
+		
+		# the solution by destroying the string.
+		while ($str =~ s/(.*?)$regex//) {
+			push @list, $1;
+		}
+		push @list, $str if $str ne "";
+		
+		return @list;
+	}
+	
+	@a = my_split("[,:;]+", "2,,,4;;;8::::16");
 	```
 
 	
