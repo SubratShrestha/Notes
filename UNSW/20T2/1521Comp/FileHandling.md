@@ -522,6 +522,8 @@ int main () {
 
 
 
+
+
 ```c
 int stat(const char *pathname, struct stat *statbuf);
 ```
@@ -529,6 +531,72 @@ int stat(const char *pathname, struct stat *statbuf);
 stat is kinda like a extra detail version of ls, it gives info about files, more specifically, all the metadata that goes into the files like the inode number, file type, access mode, owner, group, size storage block size, allocated blocks, time of last access, modification, status change.
 
 other versions: `fstat` -> same but gets data via an open file descriptor, `lstat` -> same but doesn't follow symbolic links.
+
+
+
+
+
+```c
+long int ftell(FILE *stream)
+```
+
+returns a number representing where we are in a file, how many bytes into the file. More convenient than using `stat` and getting the size from the metadata (we get the size of file by seeking to the end and doing `ftell()`). 
+
+
+
+
+
+```c
+int chdir(const char *path);
+```
+
+Changes the working directory of the process, not of the shell. This means if we write chdir and execute the code, and then look at our shell, the directory won't actually change, it only changes the environment variable of the process (the program), and nothing else, we can do something like chdir into a file and write a couple files maybe and make some changes, but not actually change the general working directory.
+
+So then how does cd work? Unlike everything in the shell, cd is not actually a separate program, it uses chdir on the shell itself, so for the process (the shell), the directory changes. 
+
+Its actually using the chdir, we can see this with strace, and this is really cool, you open up two shells, do `ps` on one and get the PID of the shell, then plug that into the `strace` of the other shell we opened. We will be able to see everything the first shell is doing like getting the input, changing directories with chdir, etc. There will be a lot the shell does. We'll also see that the shell does a `stat` of the directory you mention to see if its actually a directory or some sort of file.
+
+We can do `strace -p{PID} -efile` to see only the file operations done by the first shell, where chdir will be.
+
+Yeah, the shell is another program that runs other programs.
+
+
+
+
+
+```c
+char *getcwd(char *buf, size_t size);
+```
+
+This will get the current working directory. The buffer size isn't some set value, so the best thing to do is make a pretty big array, and pass the size of that array into the size parameter of the function. Most unix systems have a limit to the size of the pathname which is 256 and stored in `PATH_MAX`, we can use that as well but its not very portable (depends on the file system), but good enough for most uses.
+
+Gets current working directory and puts it into the buffer variable.
+
+
+
+
+
+```c
+int mkdir (char *dirname, mode_t mode)
+```
+
+Makes a directory with the permissions in the `mode`, usually we do `0755` which is in octal if we want the file to be executable.
+
+
+
+
+
+```c
+int rename(const char *old_filename, const char *new_filename)
+```
+
+Very portable and an atomic process, in that it renames in one indivisible process (no longer a good name for it since subatomic particles were discovered). It doesn't  copy the contents of the file into another file and remove the first or anything, it renames the file in one atomic process. This also guarantees that there is no other processes trying to rename the file, because two renames will not be possible if the renames are atomic. If we used copy and stuff, that might not be strictly true.
+
+It does this by "changing the metadata", which isn't that true because the metadata is actually the exact same just the name bit has changed. We can tell that this is an atomic process because the inode-number of the file will not change.
+
+This is not true with the cp method, it will be a different inode-number, and a different mod time, etc. There is an option to keep the metadata of the original file by doing `cp -p old.txt new.txt` and this will the make the metadata as similar to the original file as possibly, but this will still change the inode number as all files must have a unique inode-number.
+
+There is a way to have two files have the same inode number by doing `ln old.txt new.txt`, but now the two files are literally the same, any changes to one of them will reflect the changes to the other. Kinda like a pointer to some address, multiple pointers can point to the same address.
 
 
 
@@ -676,6 +744,60 @@ int main (void) {
 	    // 58 from 41 is 58 + 41 = 99, and read byte (100th byte).
 	    fseek(input, 58, SEEK_CUR);
 	    printf("100th byte is 0x%02x\n", fgetc(input));
+	}
+	```
+
+
+
+
+* Go to the parent directory at the top.
+
+	```c
+	char pathname[PATH_MAX];
+	while (1) {
+	    if (getcwd(pathname, sizeof pathname) == NULL) {
+	        perror("getcwd");			// if file removed or no permission.
+	        return 1;
+	    }
+	    
+	    printf("getcwd() returned %s\n", pathname);
+	    
+	    // / is the top of the unix file system, nothing above /
+	    if (strcmp(pathname, "/") == 0)
+	      	return 0;
+	    
+	    if (chdir("..") != 0) {
+	        perror("chdir");
+	        return 1;
+	    }
+	}
+	```
+
+	
+
+* get the inode_number - filename pairs of a directory in arguments
+
+	```c
+	#include <dirent.h>
+	
+	int main(int argc, char *argv[]) {
+	    for (int argc = 1; arg < argc; arg++) {
+	        // some unknown struct like FILE
+	        DIR *dirp = opendir(argv[arg]);
+	        
+	        if (dirp == NULL) {
+	            perror(argv[arg]);
+	            return 1;
+	        }
+	        
+	        struct dirent *de;
+	        
+	        while ((de = readdir(dirp)) != NULL) {
+	            printf("%ld %s\n", de->d_ino, de->d_name);
+	        }
+	        closedir(dirp);
+	    }
+	    return 0;
 	}
 	```
 
