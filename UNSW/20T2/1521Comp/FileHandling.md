@@ -596,7 +596,13 @@ It does this by "changing the metadata", which isn't that true because the metad
 
 This is not true with the cp method, it will be a different inode-number, and a different mod time, etc. There is an option to keep the metadata of the original file by doing `cp -p old.txt new.txt` and this will the make the metadata as similar to the original file as possibly, but this will still change the inode number as all files must have a unique inode-number.
 
-There is a way to have two files have the same inode number by doing `ln old.txt new.txt`, but now the two files are literally the same, any changes to one of them will reflect the changes to the other. Kinda like a pointer to some address, multiple pointers can point to the same address.
+There is a way to have two files have the same inode number by doing `ln old.txt new.txt`, but now the two files are literally the same, any changes to one of them will reflect the changes to the other. Kinda like a pointer to some address, multiple pointers can point to the same address. This can be done in C with the link function (`link(oldname, newname);`), we can remove the links, and that won't delete the others. 
+
+These are **hard links**. They have the same inode-number. There are also **soft links** or **symbolic links** (`symlink(new, old)` in C), which just point to a different file, but they have a different inode-number. They are redirects, so anything attempting to access the links will be redirected to the source of the link.
+
+As a crude method to stop people from looping through and making thousands of links pointing to one another, the limit is 40. A file can be soft linked to 40 times.
+
+There can be circular links, and the OS does follow it around 40 times, and then exits, not much fun.
 
 
 
