@@ -136,7 +136,7 @@ numbers: .word 3, 9, 27, 81, 243         # the .word here means 4 byte quantitie
 
 There is simple expression to get the exact indexes in both directions:
 
-$$int\ arr[row][col]\ =\ BA\ +\ ((row\ * rowSize)\ +\ col)\ * sizeof(datatype)$$, 
+$$int\ arr[row][col]\ =\ BA\ +\ ((row\ * colSize)\ +\ col)\ * sizeof(datatype)$$, 
 
 where BA = Base Address, row = row number, col = column number, rowSize = total number of rows.
 
