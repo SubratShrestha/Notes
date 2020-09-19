@@ -141,3 +141,13 @@ When an element has multiple rules with the same property, the cascade will look
 
 
 * **!important**: This overrides all specificity/precedence. But if two or more elements both have !important, then the one with the higher precedence, without the !important will take precedence.
+
+
+
+## Computed Styles.
+
+So we have been giving the browser some styles with CSS, there are also Computed styles that the browser computes as its running.
+
+We can see this section in the inspect page of the browser.
+
+Stuff like the width of a div as the screen-size is being changed.
