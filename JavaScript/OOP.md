@@ -20,7 +20,7 @@ So instead of having multiple objects with similar properties, we can have one c
 
 The constructor is a function that basically creates a new object.
 
-![image-20200517162741406](C:\Users\subra\Documents\New folder\Notes\JavaScript\OOP.assets\image-20200517162741406.png)
+![image-20200517162741406](C:\Users\subra\Documents\Notes\JavaScript\OOP.assets\image-20200517162741406.png)
 
 In practice, a constructor is just a function that takes its properties as arguments and assigns it to a new object. This function uses the `this` keyword to assign values (given by arguments) to new properties of the new object.
 
@@ -81,7 +81,7 @@ If we have an object called Person, that has the properties name, yearOfBirth, j
 
 The athlete object should **inherit** from the person object.
 
-![image-20200517162829346](C:\Users\subra\Documents\New folder\Notes\JavaScript\OOP.assets\image-20200517162829346.png)
+![image-20200517162829346](C:\Users\subra\Documents\Notes\JavaScript\OOP.assets\image-20200517162829346.png)
 
 ## Prototypes
 
@@ -167,7 +167,7 @@ This is a giant object in JS.
 
 This parent Object object also has a bunch of different properties and methods inside its prototype — which is inherited by every object we create, and every instance of that object.
 
-![image-20200517162854139](C:\Users\subra\Documents\New folder\Notes\JavaScript\OOP.assets\image-20200517162854139.png)
+![image-20200517162854139](C:\Users\subra\Documents\Notes\JavaScript\OOP.assets\image-20200517162854139.png)
 
 # Prototype Chain
 
@@ -175,7 +175,7 @@ This is what makes inheritance possible.
 
 When we try to access a certain property or method, JS will first try and find that property or method in that exact object, if it doesn't find it, it will look at it's prototype - which is the prototype property of its parent, and then it's parent's prototype, and on and on until it reaches the `null` object which is the only object in JS that does not have any protoype. If it doesn't find it — `undefined` is returned.
 
-![image-20200517162918501](C:\Users\subra\Documents\New folder\Notes\JavaScript\OOP.assets\image-20200517162918501.png)
+![image-20200517162918501](C:\Users\subra\Documents\Notes\JavaScript\OOP.assets\image-20200517162918501.png)
 
 Here, the john instance can actually call the hasOwnProperty() method. JS will look at john object/instance, then its protype - which is the prototype property of its parent, and so on until it finds the hasOwnProperty() in the Object object, and then its run.
 
