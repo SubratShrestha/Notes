@@ -61,3 +61,6 @@
 		*  raise funds by issuing financial instruments such as commercial paper, medium-term notes and bonds in the money markets and the capital markets.
 		* they use those funds to make loans and provide lease finance to their customers in the household sector and the business sector
 	* unit trusts
+		* raise funds by inviting the public to purchase units in a trust.
+		* The funds obtained from the sale of units are pooled and then invested by funds managers in asset classes specified in the trust deed.
+		* generally specialise in certain categories of investments, including equity trusts, property trusts, fixed-interest trusts and mortgage trusts.
