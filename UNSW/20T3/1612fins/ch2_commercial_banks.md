@@ -139,3 +139,31 @@ International debt issues are typically denominated in foreign currency. The typ
 
 Globalisation means bank's major corporate clients have become more internationalised, increasing business demand for financial services denominated in the currencies of their transactions. That demand provides a further reason for banks to seek foreign currency liabilities.
 
+
+
+## Loan Capital and Shareholder's Equity
+
+Sources of funds that have characteristics of both debt and equity, described as "loan capital" or hybrid securities. Ex. bank may issue subordinated notes, subordinated meaning the holder will only be paid interest payments or have the principal repaid after the entitlements of all other creditors have been paid.
+
+Banks are listed corporations, ie. institution issues equity securities such as ordinary shares that are quoted on a stock exchange. Also banks typically generate profits from their business activities. Some of profit paid to shareholder as dividends, some kept as retained earnings, increasing shareholder's funds. Equity is an imp. source of long-term funds for banks. In fact, banks are req. by the bank regulator to hold minimum levels of equity (capital).
+
+
+
+
+
+# Uses of Funds
+
+Funds used by banks appear as assets on their balance sheets. The majority of bank assets are assets that create an entitement to future cash flows, ex. bank gives customer a loan, the amount outstanding on loan will appear as assets because bank is entitled to receive periodic interest payments plus repayment of principal. We can categorise commercial bank assets into:
+
+* personal and housing finance
+* commercial lending
+* lending to government
+* other bank assets
+
+
+
+## Personal and Housing Finance
+
+Housing Finance is the provision of long-term funds to enable the purchase of a residential property. Its where the bank registers a mortgage - form of security whereby a lender registers an interest over the title of a property. This is an attractive form of lending as the risk of default by borrower is normally low. In theory, borrowers try and meet housing loan commitments bec. if they don't, bank will take possession of house and sell it to recover owing amount.
+
+Commercial banks have traditionally dominated residential housing loan market but new providers of housing finance have entered, increasing competition.
