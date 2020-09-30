@@ -164,6 +164,31 @@ Funds used by banks appear as assets on their balance sheets. The majority of ba
 
 ## Personal and Housing Finance
 
+### Housing.
+
 Housing Finance is the provision of long-term funds to enable the purchase of a residential property. Its where the bank registers a mortgage - form of security whereby a lender registers an interest over the title of a property. This is an attractive form of lending as the risk of default by borrower is normally low. In theory, borrowers try and meet housing loan commitments bec. if they don't, bank will take possession of house and sell it to recover owing amount.
 
-Commercial banks have traditionally dominated residential housing loan market but new providers of housing finance have entered, increasing competition.
+Commercial banks have traditionally dominated residential housing loan market but new providers of housing finance have entered like insurance offices and superannuation funds, increasing competition. **Mortgage originators** - specialist providers of housing finance - have also grown in deregulated market.
+
+Banks and mortgage originators use securitisation for lending acitivities, this is when lender may seek to obtain additional funds to provide new housing loans by selling existing housing loans. Its descirbed as selling of a class of assets, such as housing loans into a trust. The trustee, to raise funds to pay for purchase of these loan assets, will issue new securities to investors, these securitiesmay be bonds that are secured by the housing loans held in the trust. Investors like the securities because under normal circumstances, they are lower risk assets. The trustee will use the interest and principal payments due from the housing loans held in the trust to pay interest and repay principal on the new securities issued.
+
+Term of housing loan varies considerably b/w countries. Major determinant of termis avg. cost of housing coupled with level of interest. In countries where property prices are high, term will be longer, if this wasn't true, people would not be able to afford to repay loan commitments. The repayment schedules also differ, typical owner-occupied loan will require regular **amortised loan instalments** - regular and equal loan instalments that comprise the current interest and part repayment of outstanding principal - over the loan period. Banks offer loans with either fixed or variable interest, but fixed will usually be reset every 5 yrs or less. The interest on variable loans will move from time to time acc. to market.
+
+Another form of housing finance is investment property finance where the bank provides funds to investor who buys property for rental or lending purposes. Again, bank will take registered mortgage over property as security for loan.
+
+
+
+### Personal.
+
+Banks can provide people with a **fixed-term loan** where the loan will have a term to maturity of up to 5 yrs. As with housing finance, interest rates may be fixed or variable, and the bank req. some form of security like a guarantee.
+
+Banks also provide **personal overdraft** facilities, which allows someone to put an account into debit (take money out) from time to time up to an agreed limit. People often need to manage the mismatch in timing of cash flows (income), and the personal overdraft allows them to pay expenses when they are due by putting the overdraft account into debit. Bank expects that the overdraft will be brought back to credit when the person receives income.
+
+A more flexible alternative to overdraft is the **credit card** which can be used for electronic transactions like using ATMs or EFTPOSs by drawing on predetermined credit limit provided by issuer (bank). The bank will allow card user to draw against credit limit. Credit cards typically have high interest on used credit, and range of transaction and other fees may also apply.
+
+
+
+
+
+## Commercial Lending
+
