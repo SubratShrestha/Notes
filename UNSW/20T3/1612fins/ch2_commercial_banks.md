@@ -192,3 +192,39 @@ A more flexible alternative to overdraft is the **credit card** which can be use
 
 ## Commercial Lending
 
+Represents bank assets invested in business sector plus lending to other institutions. Lending to business is essential for economic growth which generates benefits such as increased production, higher level of employment and better living standards in a country.
+
+Since only corporations with good credit can raise funds through direct finance, most businesses borrow from intermediaries and Commercial banks are the principal lenders. Larger corporations still borrow from banks, but they can also borrow directly from the markets.
+
+Main type of loan is **Term loan** with maturities from 3 - 7 years. Businesses can negotiate terms and conditions with bank, and they include the period, interest, security, and timing of interest payments and repayment of principal.
+
+Banks offer short and long term loans which may be based on fixed interest rate or variable set to a specified reference interest rate which is a benchmark rate, ex. **BBSW** in Australia is the Bank Bill Swap Rate which is the average mid-point of bank's bid and offer rates in bank bill secondary market.
+
+Banks also offer businesses Overdraft facilities and the main purpose is to enable a business to manage mismatches in the timing of its cash flows. Businesses often need to pay out funds for expenses before receiving funds back from their business, and the overdraft allows them to borrow the funds it needs. The overdraft is repayable upon demand and so needs to be managed carefully. Banks will charge fees and interest for this very flexible funding arrangement. 
+
+Banks also discount commercial bills (buy for less than face value), which are bills of exchange issued to raise finance for a business, and are discount securities. The banks generally sell the discounted bill into the money market, but they can hold them as assets and are described as Bank Bills Held. These commercial bills are normally drawn for terms like 30 to 180 days, and in order to extend the overall term of this short-term instrument, banks may provide a customer with a **rollover facility** which is an arrangement where a bank agrees to discount new securities over specified period as the existing securities mature. 
+
+Ex. if a business has issued 90-day bills with a two-year rollover facility, the customer is able to redraw new bills every 90 days for the next two years. When the new bills are drawn, the yield on the bills will change to reflect current rates in the market. This means the bills are re-priced every 90 days, thus protecting the bank from the risk that interest rates might change. The bank bills money market is deep and liquid. This allows banks the flexibility initially to provide funding to business borrowers by discounting bills, but with the option to sell those bills easily into the money market to generate more funds for further lending.
+
+Another category of bank finance is **leasing** and that's when the asset is borrowed. Its an arrangement where the owner of an asset (lessor) allows another party (lessee) to use that asset subject to terms and conditions of lease contract. A bank, as lessor, will finance the purchase of an asset and will enter into arrangement with lessee where lessee will make lease payments in return for use of the asset.
+
+
+
+## Lending to Government
+
+Banks lend to government directly by investing in government-issued securities such as Treasure bonds an other public sector securities. They als provide some leans to government agencies in form of term loans and overdraft facilities.
+
+Governments need short-term funds to meet regular commitments like social security benefits and salaries of government employees, and long-term funds for capital expenditures like building hospitals and stuff. If the timing of taxation and other income receipts does not cover intra-year expenses, governments issue short-term securities like **Treasury Notes** - which are short-term discount securities issued by the government - to raise short-term funds. Longer term expenditures are funded through **Treasury Bonds** which are medium to long-term securities issued by the government that pay regular half-yearly interest, and principal repaid at maturity.
+
+Governments are low risk low return securities, so why would banks invest in them? Multiple reasons.
+
+Advantages of lending to government:
+
+* Investment alternative for surplus funds that a bank is holding.
+* source of liquidity because easily sold in secondary markets.
+* provide income streams and capital gains
+* may be used as collateral to support the bank's own borrowings in direct finance markets.
+* may be used for repurchase agreement with central bank in order to raise cleared funds for payments system settlements.
+* improve the quality of balance sheet by holding a group of assets (govt. paper) with lower risk attributes.
+* enable a bank to manage marturity structure of balance sheet by purchasing securities with range of maturities and cash flows.
+* allow a bank to manage interest rate risk by buying/selling securities with different interest rate structures
