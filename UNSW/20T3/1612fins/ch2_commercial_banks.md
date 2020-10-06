@@ -32,7 +32,7 @@ developed with the removal of restrictive regulation. It is the normal practice 
 
 
 
-
+---
 
 # Sources of Funds.
 
@@ -149,7 +149,7 @@ Banks are listed corporations, ie. institution issues equity securities such as 
 
 
 
-
+---
 
 # Uses of Funds
 
@@ -228,3 +228,60 @@ Advantages of lending to government:
 * improve the quality of balance sheet by holding a group of assets (govt. paper) with lower risk attributes.
 * enable a bank to manage marturity structure of balance sheet by purchasing securities with range of maturities and cash flows.
 * allow a bank to manage interest rate risk by buying/selling securities with different interest rate structures
+
+So lending to government through purchase of govt. securities provides bank with flexibility to actively manage its overall asset portfolio, while lowering overall risk.
+
+
+
+## Other Bank Assets
+
+Lending is the core business and the largest allocation of assets, but they accumulate range of assets like receivables, shares in and loans to controlled entities, goodwill property, plant and equipment and unrealised gains from tading activities in derivative products.
+
+
+
+---
+
+# Off-balance-sheet Business
+
+Noted at the beginning of the chapter that banks undertake a substantial volume of business that, by its nature, is not recorded as an asset or liability on the balance sheet. Such off-balance-sheet transactions represent an important source of income for the banks, and are most important in the financial life of businesses and governments.
+
+Main types of off-balance-sheet business conducted by commercial bakns are:
+
+* **Direct Credit Substitutes**
+
+* **Trade- and performance-related Items**
+
+	involve the bank in supporting or guaranteeing the obligation of a client to a third party (both direct credit and trade- and perfomance related).
+
+* **Commitments**
+
+	Relate to a bank's contractual obligations to customers that are yet to be completed.
+
+* **Foreign Exchange, interest rate, and other market-rate-related Contracts.**
+
+	contracts involve the use of derivative products to manage risk of banks and its customers.
+
+
+
+## Direct Credit Substitutes
+
+Direct Credit substitutes are provided by banks to support a client's financial obligations. Bank does not provide finance from its own balance sheet. The direct credit substitutes ensures that the client is able to raise funds directly from the markets.
+
+Ex. direct credit substitute may take form of stand-by letter of credit. This is an undertaking by bank to make payment to specified third party if the bank's client fails to meet financial obligation to that third party. With undertaking, client is able to issue securities and raise funds directly in the markets, since lender is assured that amounts due will be repaid by either borrower or the bank. This sounds similar to a bank-accepted bill but the bank accepted bill is an instrument, but a letter of credit is a mechanism. The letter will set up the conditions that are to be met in order for payment to take place, but the bill is an instrument where seller can discount the bill with the bank and receive payment (bill is discount security).
+
+Other direct credit substitutes include guarantees, indemnities, and letters of comfort issued by a bank that have the effect of guranteeing fin. obligations of a client.
+
+Ex. a bank's client when submitting tender docs. for major construction project may need to provide formal assurance that it has the fin. capacity to complete the project. It would be expected that if the client wins the tender, bank will provide finance for the project.
+
+
+
+## Trade and Performance related Items
+
+
+
+## Commitments
+
+
+
+## Foreign exchange, interest rate and other market-rate related Contracts
+
