@@ -277,9 +277,37 @@ Ex. a bank's client when submitting tender docs. for major construction project 
 
 ## Trade and Performance related Items
 
+Also guarantees made by bank on behalf of its client, but in this case, they are made to support a client's non-financial contractual obligations which may include trade-related undertakings or contractual agreements to provide goods or services. In these circumstances, bank provides guarantee on behalf of client that it will make payment to third party subject to terms of specific commercial contract.
+
+
+
+### Documentary letters of Credit (DLCs)
+
+These are where bank substitutes its credit standard for that of client. The bank, on behalf of client, will authorise payment to a named party against delivery by that party of a shipment of goods.
+
+Ex. an exporter of goods will usually req. the importer to arrange for its bank to provide a DLC to exporter's bank. Once the imported goods arrive, the associated documents are inspected and payment is made b/w banks immediately. The DLC is irrevocable, cannot be cancelled.
+
+
+
+### Perfomance guarantees
+
+These are where bank agrees to provide fin. compensation to third party if client does not complete the terms and conditions of a contract. 
+
+Ex. client may be deemed to have failed to complete the terms of contract if inferior components are used in a major computer system upgrade.
+
 
 
 ## Commitments
+
+They are contractual fin. obligations of bank that are yet to be completed or delivered. These involve a bank in an undertaking to advance funds to a client, or to underwrite debt and equity issues, or to purchase assets at some future date.
+
+Examples of commitments:
+
+* **Outright forward purchase agreements** are where a bank contracts to buy a specified asset like foreign currency from its client at an agreed exchange rate on a specified date.
+* **Repurchase agreements**. A bank sells assets like govt. securities, on the understanding that bank will repurchase them at a specified date.
+* **Underwriting facilities** is when a bank guarantees a client that, subject to range of conditions, it will cover any shortfall in funds received from a primary market issue of debt or equity securities.
+* **Loans approved but not yet drawn down**. Ex. bank has agreed to provide borrower with loan at a future date upon completion of loan documentation.
+* **Credit card limit approvals that have not been used by card holders**. Ex. bank may authorise a credit card limit of \$4000 for a client. If client uses \$1000 of available credit, then that amount will appear on balance shet as asset (loan) and the remaining \$3000 credit remains as off-balance-sheet commitment.
 
 
 
