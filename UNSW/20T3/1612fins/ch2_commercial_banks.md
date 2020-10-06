@@ -313,3 +313,25 @@ Examples of commitments:
 
 ## Foreign exchange, interest rate and other market-rate related Contracts
 
+These involve the use of derivative products like futures, options, swaps and forward contracts. Primarily designed to facilitate hedging - implementing strategies to protect against an identified risk - against risk, ex. the effects of movements in exchange rates, interest rates, equity prices and commodity prices. 
+
+Derivative contracts are also bought and sold by traders in an attempt to make profits from movements in contact prices. Examples of these include:
+
+* **Forward exchange contracts** where a bank contracts to buy or sell at a future date a specified amt. of a foreign currency at an exchange rate that is set today.
+* **Currency swap** where a a bank exchanges principal amt. and ongoing associated interest payments that are denominated in a foreign currency.
+* **Forward rate agreements** is a compensation agreement b/w bank and client based on notional principal amt. One party compensates the other if interest rates move above or below an agreed rate.
+* **Interest rate futures contracts** are exchange traded agreements to buy or sell a specific security at a specific price at a predetermined future date.
+* **Interest rate options contracts** provide the right, but not obligation to buy/sell a specified instrument at an agreed date and price.
+* **Equity contracts** include futures and options contracts based on specified stock prices or stock indices. These lock in the equity price today that will apply at a specified future date.
+
+
+
+## Volume of Off-balance-sheet Business
+
+In Australia, the face value of bank's off-balance-sheet business in 2017 stood at \$37.34 mil. while the total valur of bank's assets stood at \$4.125 mil. i.e the notional value of off-balance-sheet business is 9 times the value of total assets (notional value of many derivative products is significantly greater than actual associated cash flows).
+
+The nature and size of market-rate-related contracts, combined with volatility and speed at which contracts are re-priced in the market has resulted in a no. of extraordinary losses being incurred by both institutions and their clients.
+
+The threat to stability of domestic and global fin. systems that may result from large losses in derivatives markets has been subject of much descussion by regulators.
+
+Of course, during the GFC a number of institutions, including Lehman Brothers and Bear Stearns, collapsed as the direct or indirect result of excessive trading in mortgage-related derivatives. In the end, it is the responsibility of each bank to ensure that it establishes and documents objectives, policies and procedures in relation to its use of derivative products.
