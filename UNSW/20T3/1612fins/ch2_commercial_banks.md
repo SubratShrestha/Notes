@@ -335,3 +335,66 @@ The nature and size of market-rate-related contracts, combined with volatility a
 The threat to stability of domestic and global fin. systems that may result from large losses in derivatives markets has been subject of much descussion by regulators.
 
 Of course, during the GFC a number of institutions, including Lehman Brothers and Bear Stearns, collapsed as the direct or indirect result of excessive trading in mortgage-related derivatives. In the end, it is the responsibility of each bank to ensure that it establishes and documents objectives, policies and procedures in relation to its use of derivative products.
+
+
+
+
+
+# Regulation and prudential supervision of Commercial banks
+
+Regulation directly influences structure, scope, and scale of fin. institutions, instruments and markets.
+
+A banking sector regulatory and supervisory framework should:
+
+* ensure a framework that is able to adjust regulation to maintain the cost effectiveness of a fin. system in a dynamic environment.
+* provide focused and accountable structure that facilitates community expectations for consumer protection and fin. safety.
+* provide efficient and effective regulation of multinational fin. conglomerates.
+* establish consisten regulation and competitive neutrality across fin. system.
+* contribute to effective monitoring and review with aim of establishing more sontestable, efficient and fair fin. markets.
+
+Area of concern for regulators is maintaining soundness and stability of fin. system, and ensuring savers have confidence in commercial banks as safe repositories for funds.
+
+Bank regulation no longer rely heavily on prescribing asset composition of bank's balance sheet, but imposes guidelines allowing banks wide range of options in lending decisions, but forces banks that have higher-risk lending strats. to support their activities with higher amts. of capital or shareholder's funds.
+
+In some countries, central bank acts as banking sector regulator and supervisor, in others, central bank responsible for stability of fin. system and soundness of payments system, while separate authority responsible for regulation and supervision of institutions, for Australia:
+
+* Responsibility for maintenance of fin. system stability and soundness of payments system - central bank (Reserve Bank of Australia)
+* Prudential regulation and supervision of deposit-taking institutions (comm. banks, building socs, and credit unions), insurance offices, super funds, etc - APRA (Australian Prudential Regulation Authority).
+* Regulation and supervision of market integrity and consumer protection within context of Corporations Act, 2001 - ASIC (Australian Securities and Investments Commission).
+* Matters of competition policy (Competition and Consumer Act 2010) - ACCC (Australian Competition and Consumer Commission). Within this, govt. has implemented 'four-pillars' policy which restricts mergers b/w big four comm. banks in Australia.
+
+APRA's approach is that bank's sound operation rests with its own management and board, but there are some aspects of banking operations where APRA is more intrusive and implement prudential guidelines and standards, like with the imposition of min. cap. requirements.
+
+In event of threat to stability of fin. system, RBA resp. for determining whether, and how it might provide emergency liquidity support to fin. system. RBA does not regard its balance sheet as available to support solvency of individual fin. institution that may experience fin. difficulty. Each comm. bank must rely on strength of its own balance sheets.
+
+
+
+
+
+# Background to Capital Adequacy Standards
+
+Capital is cornerstone of bank's fin. strength acc. to APRA. Balance sheet of banks include range of assets funded from liabilities (loans) and shareholder's funds (referred to as capital). Main assets of banks are loans to customers, perc. of loans will default and this is written off against profits, but if losses  > profits, written off against capital and not liabilities bec. they need to repaid. 
+
+Capital has important functions:
+
+* source of equity funds for corporation
+* demonstrates shareholder's commitment to org.
+* enables growth in business and source of future profits.
+* necessary to write off periodic abnormal business losses. 
+
+Deregulation and globalisation, coupled with rapid advances in tech and development of sophisticated fin. products created environment in which there was potential for instability and failure of global fin. system.
+
+Governors and central banks of major insdustrialised countries meet monthly at Bank of International Settlements (BIS) in Basel, Switzerland established committee in 1974 known as Basel Committee on Banking Supervision. Even in 70s, committee recognised prblems involved in regulating internationally diversified banks and recommended that those banks should be treated on globally consolidated basis but should come primarily under regulatory powers of home country.
+
+Committee presented paper to governors of central banks expressing concern aboutn erosion of bank's capital bases and recommended thse to be rebuilt. Committee wanted to develop framework that would maintain soundness of international fin. system that would allow banks to make their own portfolio choices and promote greater competitive equality b/w banks in international markets.
+
+Developed Basel I capital accord, adopted by most countries, it applied standardised approach to measurement of capital adequacy of banks, and was successful in increasing amt. of capital held and created strong foundation to support stability of global fin. system, but became apparent that Basel I didn't fully account for diversity, sophistication or innovation of changing fin. markets. Committee conducted major review and culminated Basel II.
+
+Basel II adopted by bank regulators. Basel III guidelines released in 2010, its goal is to make institutions more resilient to economic shocks that occur in economic system that is characterised by fin. institutions that don't hold reserves that match their liabilities. Basel III initially proposed enhancements to quantity and quality of bank's capital reserves, liquidity ratios and leverage ratios, these were reviewed over time, framework was finalised in December 2017.
+
+
+
+
+
+# Evolution from Basel I to Basel III
+
