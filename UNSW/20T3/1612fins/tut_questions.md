@@ -78,3 +78,26 @@ Negative limits or restricts the business activities or fin. structure of the co
 
 
 Q6. As the owner of a small architectural firm, you approach the Commonwealth Bank to obtain a term loan so that the firm can buy a new computer-aided drawing machine. The bank offers your company a loan of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, payable at the end of each month. Calculate the monthly loan instalment.
+
+RAIN equation:  \$ 901.657 per month (ex. 10.1).
+
+
+
+Q7. The architectural firm owner in Question 6 also approaches the National Australia Bank to obtain a quote on the loan facility. The competitor bank (NAB) also offers the company a fully drawn advance of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, but payable in advance at the beginning of each month. Calculate the monthly loan instalment. Explain why the instalment payment is different from the instalment in Question 6
+
+modified eqn. from above: \$ 895.204261 per month.
+
+Cash flows occurred at the end of each month, so q6 was ordinary annuity, in q7, the instalments were payable in the beginning of each month so its an annuity due. So there is a (1+i) multiplied to the denominator of prev. qn. to adjust for the instalments to occur at the start of each period (month).
+
+
+
+Q9. After three years of excellent business growth, a local mattress manufacturer decides to expand and purchase new business premises costing \$1250000. In addition, establishment expenses of 0.50 per cent of the purchase price, plus estimated legal expenses of ​\$15000 are payable. The total cost to purchase the property will be financed by ​\$225000 of the firm’s own funds plus a mortgage loan from ANZ Bank. The bank offers a mortgage loan at 8.15 per cent per annum. The loan will be amortised by monthly instalments over the next 12 years, payable at the end of each month. What is the amount of each monthly instalment?
+
+total costs = 1,250,000 + 625,000 + 15,000 = 1,890,000
+
+A = 1,890,000 - 225,000 = 1,665,000; i = 0.0815/12 = 0.00679167; n = 12 x 12 = 144
+
+R = 18,160.0608813 per month.  
+
+
+
