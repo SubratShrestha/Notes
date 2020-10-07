@@ -46,3 +46,35 @@ LO 9.5 (pg 310) formula to get $1.4306 Million.
 **Q8.** 
 
 ![image-20200930160547914](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20200930160547914.png)
+
+
+
+
+
+# Chapter 10
+
+Q3. In a variable-rate loan contract, how does a commercial bank allow for higher or lower credit risk on the part of the prospective borrowers? 
+
+a lender will analyse factors such as the total debt-to-equity ratio of the firm, projected future cash flows, the financial strength of the borrower, past loan repayment performance, the projected performance of the industry and the economy generally, forecast interest rates, the management of the firm and the life cycle of the firm’s products.
+
+
+
+Q5. Westpac Banking Corporation is currently writing a loan contract for a medium-sized pharmaceutical company. Within the loan contract Westpac intends to incorporate a number of positive and negative loan covenants. 
+
+* (a) What are loan covenants? 
+
+* (b) Explain why a financial institution would incorporate loan covenants into a loan contract. 
+
+* (c) Discuss the nature of positive and negative covenants and give two examples of each.
+
+(a) A method to protect financial risk exposure, can be specified within loan contract and typically restrict business and financial activities of borrowing firm. Most covenants req. firm to maintain min. level of interest cover - calc. by dividing earnings before interest and taxes by the company's interest payments due.
+
+(b) When granting a loan, the lender will want to protect its fin. risk exposure, the risk that the borrower may default on the loan. If the company breaches a loan conenant, its in default on its loan contract, the lender then has the right within conditions specified in contract to protect its exposure by maybe taking possession of the assets of the company.
+
+(c) Covenants can be positive or negative, positive states certain actions that a company must comply with. ex. maintaining a min. level of working capital. ex2. provision of fin. statements to lender. 
+
+Negative limits or restricts the business activities or fin. structure of the company. ex. a limitation on the amt. of dividend that can be paid to shareholders. ex2. req. that the bank must approve further long-term borrowings by the company.
+
+
+
+Q6. As the owner of a small architectural firm, you approach the Commonwealth Bank to obtain a term loan so that the firm can buy a new computer-aided drawing machine. The bank offers your company a loan of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, payable at the end of each month. Calculate the monthly loan instalment.
