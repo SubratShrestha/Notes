@@ -53,13 +53,15 @@ LO 9.5 (pg 310) formula to get $1.4306 Million.
 
 # Chapter 10
 
-Q3. In a variable-rate loan contract, how does a commercial bank allow for higher or lower credit risk on the part of the prospective borrowers? 
+**Q3.** In a variable-rate loan contract, how does a commercial bank allow for higher or lower credit risk on the part of the prospective borrowers? 
 
 a lender will analyse factors such as the total debt-to-equity ratio of the firm, projected future cash flows, the financial strength of the borrower, past loan repayment performance, the projected performance of the industry and the economy generally, forecast interest rates, the management of the firm and the life cycle of the firm’s products.
 
+![image-20201007152644477](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201007152644477.png)
 
 
-Q5. Westpac Banking Corporation is currently writing a loan contract for a medium-sized pharmaceutical company. Within the loan contract Westpac intends to incorporate a number of positive and negative loan covenants. 
+
+**Q5.** Westpac Banking Corporation is currently writing a loan contract for a medium-sized pharmaceutical company. Within the loan contract Westpac intends to incorporate a number of positive and negative loan covenants. 
 
 * (a) What are loan covenants? 
 
@@ -77,13 +79,13 @@ Negative limits or restricts the business activities or fin. structure of the co
 
 
 
-Q6. As the owner of a small architectural firm, you approach the Commonwealth Bank to obtain a term loan so that the firm can buy a new computer-aided drawing machine. The bank offers your company a loan of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, payable at the end of each month. Calculate the monthly loan instalment.
+**Q6.** As the owner of a small architectural firm, you approach the Commonwealth Bank to obtain a term loan so that the firm can buy a new computer-aided drawing machine. The bank offers your company a loan of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, payable at the end of each month. Calculate the monthly loan instalment.
 
 RAIN equation:  \$ 901.657 per month (ex. 10.1).
 
 
 
-Q7. The architectural firm owner in Question 6 also approaches the National Australia Bank to obtain a quote on the loan facility. The competitor bank (NAB) also offers the company a fully drawn advance of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, but payable in advance at the beginning of each month. Calculate the monthly loan instalment. Explain why the instalment payment is different from the instalment in Question 6
+**Q7.** The architectural firm owner in Question 6 also approaches the National Australia Bank to obtain a quote on the loan facility. The competitor bank (NAB) also offers the company a fully drawn advance of $28500 over a three-year period at a rate of interest of 8.65 per cent per annum, but payable in advance at the beginning of each month. Calculate the monthly loan instalment. Explain why the instalment payment is different from the instalment in Question 6
 
 modified eqn. from above: \$ 895.204261 per month.
 
@@ -91,13 +93,59 @@ Cash flows occurred at the end of each month, so q6 was ordinary annuity, in q7,
 
 
 
-Q9. After three years of excellent business growth, a local mattress manufacturer decides to expand and purchase new business premises costing \$1250000. In addition, establishment expenses of 0.50 per cent of the purchase price, plus estimated legal expenses of ​\$15000 are payable. The total cost to purchase the property will be financed by ​\$225000 of the firm’s own funds plus a mortgage loan from ANZ Bank. The bank offers a mortgage loan at 8.15 per cent per annum. The loan will be amortised by monthly instalments over the next 12 years, payable at the end of each month. What is the amount of each monthly instalment?
+**Q9.** After three years of excellent business growth, a local mattress manufacturer decides to expand and purchase new business premises costing \$1250000. In addition, establishment expenses of 0.50 per cent of the purchase price, plus estimated legal expenses of ​\$15000 are payable. The total cost to purchase the property will be financed by ​\$225000 of the firm’s own funds plus a mortgage loan from ANZ Bank. The bank offers a mortgage loan at 8.15 per cent per annum. The loan will be amortised by monthly instalments over the next 12 years, payable at the end of each month. What is the amount of each monthly instalment?
 
-total costs = 1,250,000 + 625,000 + 15,000 = 1,890,000
+total costs = 1,250,000 + 6,250 + 15,000 = 1,271,250
 
-A = 1,890,000 - 225,000 = 1,665,000; i = 0.0815/12 = 0.00679167; n = 12 x 12 = 144
+A = 1,271,250 - 225,000 = 1,046,250; i = 0.0815/12 = 0.00679167; n = 12 x 12 = 144
 
-R = 18,160.0608813 per month.  
+R = 11,411.39 per month.  
+
+
+
+Q
+
+![image-20201007160100975](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201007160100975.png)
+
+** C is with the first interest rate, and then the different interest rate is applied on the second formula
+
+![image-20201007161631230](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201007161631230.png)
+
+![image-20201007161731409](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201007161731409.png)
+
+![image-20201007163024455](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201007163024455.png)
+
+
+
+
+
+# Chapter 13
+
+Q6. Interest rates play an important role in monetary policy determinations, economic performance and the business cycle, and the cost of funds. Financial market participants must therefore understand the term structure of interest rates. 
+
+(a) Define in detail the term yield and explain how a yield curve is constructed. 
+
+(b) Identify three different types of yield curves. Describe each of these yield curves and draw a fully labelled diagram of each curve. (LO 13.3)
+
+
+
+(a) Yield is the total rate of return on an investment over some period of time. Its a percentage based on the invested amount, and the face value of the security. It includes the interest earned or dividends received from holding the asset. The yield curve is a graph that plots the yield on the vertical axis and term to maturity in the horizontal axis. The slope of the yield curve gives an idea of the future interest rate changes. 
+
+(b) A normal curve has a positive slope so the long-term interest is higher than short-term interest rates, an inverse curve has a negative slope so the short-term interest is higher than the long-term interest rates, and the humped yield curve has variable slope, so it goes from being normal to inverse over time.
+
+
+
+Q7. Market participants observe that the yield curve is normal (upward sloping). Use expectations theory to explain this observation. (LO13.3)
+
+The expectations theory says that long-term interest rates will be equal to the average of the current short-term rate and the expected future short-term rates. According to the expectation theory, the normal yield curve will result from expectations that the future short-term rates will be higher than current short-term rates. Since the market believes that future short-term rates will be higher than current, long-term rates will not fall, and so the yield curve will be upward sloping.
+
+
+
+Q9. The segmented markets theory extends our understanding of factors that influence the determination of interest rates. 
+
+(a) Identify and explain two assumptions of the expectations approach that are challenged by the segmented markets approach to interest rate determination. 
+
+(b) It may be argued that the segmented markets approach is negated by modern risk management practices, arbitrage and speculation. Explain what is meant by this assertion. (LO 13.3)
 
 
 
