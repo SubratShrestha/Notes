@@ -43,3 +43,88 @@ The main functions of exchanges are to:
 
 ## Primary role of Stock exchange
 
+A stock exchange facilitates the efficient and orderly sale/issue of **new** financial securities through:
+
+* **Initial Public Offerings (IPO)** is the initial listing of a corporation on the stock exchange
+* **Rights issue** is the issue of additional shares to existing shareholders on a pro-rata basis
+* **Placements** is the issue of new shares to selected institutional investors
+* **Dividend reinvestment plans** is the reinvestment of dividends into corporations for additional shares. 
+
+
+
+## Secondary role of Stock exchange
+
+* Facilitates trading in existing shares.
+* No new funds are raised by the issuing company
+* An active, liquid, well-organised secondary market increases the appeal of buying new shares in primary market (helps with subsequent raising bec. company has to get ongoing funding).
+* **calculation question that can show up**
+	* Market liquidity = ratio of value of share turnover (trading volume or trading value) to market capitalisation (no. of shares on issue x current share price)
+	* market capitalization gives us a view of the size of the corporation or the exchange itself.
+
+
+
+## Managed product role
+
+* provides a market for trading managed products (unit trusts)
+* equity-based managed products are professionally managed funds
+* the units are bought and sold on the stock exchange in the same way as shares in corporations
+* ex. ETFs, real estate investment trusts (REITs), infrastructure funds
+
+
+
+## Derivative market role
+
+* provides a market for trading equity-related derivative products
+* a derivative is a financial security that **derives** its price from an underlying commodity (like gold) or financial instrument (like shares of BHP or options)
+* They can be:
+	* Exchange traded contracts that are **standardised** financial contracts traded on formal exchange like options, warrants, futures contracts, contracts for difference.
+	* over-the-counter contracts are non-standardised contracts negotiated between writer and buyer.
+
+
+
+## Interest rate market role
+
+market that facilitates issue of debt securities and the subsequent trading of those securities on a formal exchange like Straight corporate bonds, floating rate notes (FRNs), convertible notes, preference shares.
+
+These were over-the-counter contracts (non standardised and not traded in exchanges) but are now listed on exchanges because they add value like:
+
+* transparency because the information about price, yield, maturity and credit rating of debt instruments.
+* ease of entry - electronic trading system facilitates buy and sell orders at minimum cost and time delay at current market prices.
+* liquidity - quotation on a stock exchange provides access to a wider market.
+
+
+
+## Trading and settlement role
+
+Exchanges facilitate the buyer and seller, buyer gives money to exchange, exchange passes it on to seller, seller gives ownership to exchange, and exchange gives ownership to buyer, when all this happens, the trade is settled.
+
+Trades in the ASX are settled in T +2 days with the Clearing House Electronic Sub-register System (CHESS). It provides an electronic sub-register that records the ownership of listed securities.
+
+A CHESS sponsor is a market participant with access to CHESS like a stockbroker.
+
+
+
+## Information role
+
+The confidence in the exchange relies on informational efficiency. The current share prices should reflect all information available in the market, determined by:
+
+* speed at which new info. flows to the market
+* speed at which that info. is absorbed and reflected in the share prices.
+
+Information:
+
+* change in company's financial forecasts
+* appointment of liquidator
+* declaration of a dividend
+* notice of a takeover bid
+* disclosure of director's interests
+
+
+
+## Regulatory role
+
+
+
+
+
+![image-20201014231815873](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\ch4_corporations_exchanges.assets\image-20201014231815873.png)
