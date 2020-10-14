@@ -149,3 +149,58 @@ Q9. The segmented markets theory extends our understanding of factors that influ
 
 
 
+(a) The two assumptions that are challenged are:
+
+- that all bonds are perfect substitutes for one another
+	- bonds that have 1 year to maturity is not a perfect substitute for a bond with 10 years to maturity.
+- that investors don't care about holding instruments with short  and long term to maturity.
+	- segmented markets theory says that some market participants have a preference for short term to maturity securites and some prefer long term to maturity (different segments of the market)
+	- ex. Life insurance companies have long-term liabilities, so they prefer to invest in longer-term to maturity assets. 
+	- ex. bank whose deposit base mainly has short-term deposits, the bank can protect itself from liquidity demands (people asking for their money back) prefer to invest in short-term securities that can be sold quickly in the money markets.
+	- so the segmented markets theory says that the market participants will want to minimise the risk, rather than seeking to get the max. profit.
+
+(b)
+
+![image-20201014154250821](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\tut_questions.assets\image-20201014154250821.png)
+
+# Chapter 4
+
+Q3. (a) Briefly explain the concept of corporate governance within the context of a corporation. 
+
+(b) What is the relationship between corporate governance and the so-called agency problem? (LO 4.1)
+
+(a) Corporate governance in a corporation is the relationship b/w the shareholders, board of directors, and management to ensure accountability and transparency is part of the corporate culture.
+
+Shareholders elect board of directors, board sets the objectives and policies of firm, and appoints executive managers that are responsible for managing day to day business operations and reporting back.
+
+
+
+(b) The agency problem comes from the fact that since managers control business operations and don't own the company, they don't have the incentive to benefit shareholders rather than benefit themselves. Corporate governace can be used to change the rules that the manager operates on so that they have incentives encouraging them to act according to the shareholder's interests like implementing share options that allow managers to buy company shares at discounted price so they are encouraged to raise the value of the shares.
+
+
+
+Q4. Most developed or developing countries seek to establish modern and efficient stock exchanges. 
+
+(a) Identify and discuss the five principal functions of a modern and efficient stock exchange. 
+
+(b) Why is it important to maintain modern and efficient stock exchanges?
+
+
+
+(a) 
+
+* establishment of markets in a range of financial securities 
+* provision of a securities trading system 
+* operation of a clearing and settlements system 
+* regulation and monitoring of the integrity of the exchange’s markets 
+* provision of a well-informed market, to secure the confidence of all participants.
+
+(b) 
+
+
+
+
+
+Q5. Discuss why a strong primary market is important for economic growth within a country and explain how each of the main participants in the primary issue of securities interacts with each other during the share issuance process. 
+
+The primary market role of the stock exchange is to facilitate the issue of new securities by corporations. The primary market issue of net equity is the source of capital funds for the corporations, these funds allow the maintenance andgrowth of a business. Primary market issues facilitate the process of conversion of savings to investment,which theoretically leads to an accumulation of capital capacity, economic growth, increased productionand higher levels of employment. Corporations occupy the central position in the process, receivingfunds from the issuance of securities. Underwriters and advisors guide corporations through theissuance process and funds flow through brokers from individuals, institutions and overseas investorswith surplus funds to invest. The process is facilitated by a stock exchange.
