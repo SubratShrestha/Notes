@@ -123,7 +123,21 @@ Information:
 
 ## Regulatory role
 
+Aim of regulation is to ensure market participants have confidence in the integrity of market operations.
 
+The exchange (ASX)
+
+* ensures listed companies meet specified limited levels of performance standards of info. disclosure so investors can make informed decisions.
+* Prescribes appropriate behaviour of brokers and implement sanctions that include dicipline, penalties, and loss of licence.
+* Electronic surveillance systems monitor trading behaviour and
+	* detect trades that fall outside certain limits
+	* cross-references all trades against information on the relevant company, directors, and associated parties.
+
+The Australian Securities and Investments Commission (ASIC) which oversees the exchanges:
+
+* supervision of Corporations Law and markets in Australia (Corporations Act 2001)
+* market integrity and consumer protection across the financial system, covering investment, insurance and super products
+* supervises the ASX, addresing potential conflicts of interest as a publicly listed corporation.
 
 
 
