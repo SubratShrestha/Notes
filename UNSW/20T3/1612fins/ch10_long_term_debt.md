@@ -1,4 +1,4 @@
-# Chapter 10: Long term debt
+#  Chapter 10: Long term debt
 
 Financing arrangement for a period of more than 1y with different borrower needs like timing of repayment, risk, interest rate structures (variable or fixed), and source of funds.
 
@@ -23,11 +23,27 @@ They are corporate **bonds** issued in the corporate bond market, they specify t
 
 Three ways they can be issued:
 
+* Public issue: issued to the public at large
+* Family issue: issed to existing shareholders and investors
+* Private placement: issued to institutional investors.
+
+Usually issued at face value, but may be issued at a discount or with deferred or zero interest.
+
 
 
 
 
 ## Subordinated debt
+
+More like equity than debt so its called quasi-equity with features of debt and equity (hybrid instruments).
+
+Claims of debt holders are 'subordinated' to all other company liabilities.
+
+Agreement might specify that the debt not be presented for redemption until after a certain period has elapsed.
+
+May be regarded as equity in the balance sheet though. So if you have a negative covenant saying your debt to equity ratio must be at some point, you can get subordinated debt and it won't be counted as debt but as equity.
+
+
 
 # Non-Securities
 
@@ -104,3 +120,79 @@ The providers are commercial banks, building societies, finance companies, and m
 
 
 ## Leasing
+
+
+
+
+
+# Calculations
+
+So for short term discount securities, t is always 1 because there's only 1 cash flow, which is just once at maturity. But for long term, there can be many cash flows like dividends, but for bonds its coupons. Of course bonds can also be zero-coupon bonds which means its the same as discount securities with 1 cash flow at maturity.
+
+Also for short term debt or discount securites, the P < FV. But in long term debt, the debt can be sold in:
+
+* Premium: P > FV (coupon rate (what borrower sets) > yield (what market sets))
+	* since the the borrowing company is offering a coupon rate that's higher than the yield, this is very attractive to lenders, so the Price > FV.
+* Par: P = FV (coupon rate = yield)
+* Discount: P < FV (coupon rate < yield).
+
+
+
+* Price:
+	$$
+	P = PV_{coupons} + PV_{face\ value}\\
+	\\\ \\\ \\
+	PV_{coupons}\ =\ C(\frac{1-(1+i)^{-n}}{i})
+	\\
+	where\ C=coupon\ payment(semi\ annual),\\ i=interest.\\
+	\ \\
+	PV_{face\ value} = A(1+i)^{-n}\\
+	where\ A=principal,\ i=interest, n=no.of\ cashflows\\
+	$$
+
+* When the bond is **sold between coupon dates**, the Price will be:
+
+* $$
+	P=P\times (1+i)^k\\
+	k=\frac{no.of\ days\ since\ last\ coupon\ payment}{no.of\ days\ between\ coupons\ payments\ (181)}.
+	$$
+
+	* here, we calculate P as normal from above formula, but we multiply it by a factor.
+
+* 
+
+* ex. AA+ corporate bond yields in the market at 8% per annum. What is price of an existing AA+ corporate bond with FV of 100000, paying 10% per annum half-yearly coupons, and exactly 6 years to maturity.
+
+* $$
+	FV=\$100000\\
+	C=100000\times \frac{0.10}{2}=\$5000\\
+	i=\frac{0.08}{2}=0.04\\
+	t=6\times2=12\\\ \\\ 
+	PV_{coupons} = 5000(\frac{1-(1+0.04)^{-12}}{0.04})=46925.37\\
+	PV_{face\ value}=100000(1+0.04)^{-12}=62459.70\\
+	Price = 46925.37\ +\ 62459.70=\$109,385.07
+	$$
+
+* ex. Woodside ltd issued 100 mil. of corporate bond, with fixed interest coupon equalt o current interest rates of 7.70% per annum, coupons paid half yearly and a maturity of 10 years.
+
+* When the Coupon rate and interest rate is the same, the price will just be the FV.
+	$$
+	P = 100mil
+	$$
+
+* ex. Corporate bond yields in market at 8% per annum. An existing corporate bond with FV 100000 paying 10% per annum half yearly coupons matures 31 December, 2017 would be sold on 20 May 2011 at what price?
+
+* last coupon payment must have been on 31st of December 2010
+
+* $$
+	FV=100000\\
+	i=\frac{0.08}{2}=0.04\\
+	C=100000\times\frac{0.1}{2}=5000\\
+	n=2017-2011=6\times2=12\\
+	PV_{coupons}= 5000(\frac{1-(1+0.04)^{-12}}{0.04})=46925\\
+	PV_{face\ value}=100000(1+0.04)^{-12}=62459.70\\
+	P=46925.37+62459.70=109385.07\\
+	P_{20\ may\ 2011} = 109385.07\times(1 + 0.04)^{\frac{140}{181}}=\$112,754.27
+	$$
+
+* 
