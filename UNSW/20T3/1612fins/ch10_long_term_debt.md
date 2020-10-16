@@ -113,17 +113,90 @@ form of security for a loan. The borrower (mortgagor) says he wants to buy the l
 
 If the mortgagor defaults, the mortgagee is entitled to foreclose on the property i.e take possession of assets and realise any amount owing to the loan.
 
-Mainly used to finance retain home loans up to 30 year terms and to a lesser degree, commercial property loans up to 10 years as businesses generate cash flows enabling the repayment.
+Mainly used to finance retail home loans up to 30 year terms and to a lesser degree, commercial property loans up to 10 years as businesses generate cash flows enabling the repayment.
 
 The providers are commercial banks, building societies, finance companies, and mortgage originators.
 
+# Leasing
+
+Lease is contract where the owner of asset (lessor) grants someone else the right to use the asset for some time in return for periodic rental payments. Its borrowing the asset instead of borrowing funds to buy the asset.
 
 
-## Leasing
+
+### Advantages for lessee (borrower)
+
+* Conserves capital (don't need to borrow principal)
+* provides 100% financing
+* matches cash flows (rental payments with income generated from asset)
+* less likely to breach any existing loan covenants (because leasing is technically not a debt, so it would not increase D/E ratio for ex.)
+* Rental payments are tax deductible.
+
+### Advantages for lessor (lender)
+
+* Leasing has relatively lower risk as the asset can be repossessed if the lessee defaults
+* Leasing is administratively cheaper than providing loans
+* attractive alternate source of finance to both a business and govt.
 
 
 
+## Types of Leasing
 
+### Operating Lease
+
+* **Short term** lease, lessor may lease the asset to successive lessees (short term).
+* Full-service lease - **maintenance and insurance of asset provided by lessor**
+* minor penalties for lease cancellation
+* obsolescence risk with lessor
+* ex. special events organiser may lease an outdoor sound system for a weekend fest.
+
+
+
+### Finance Leasing
+
+- **Longer term** financing where lessor finances the asset.
+- lessor earns a return from a single lease contract
+- **Net lease** - **lessee** pays for maintenance and repairs, insurance, taxes and stamp duties
+- lessee contracts to make a lump-sum payment representing residual amount due at end of lease period (you pay multiple times throughout the lease and at the end of the period, if the borrower pays the residual amount, the asset becomes the borrower's to own)
+- ownership of asset passes to lessee on payment of residual amount.
+- ex. government department leases a car for 3 years.
+
+
+
+### Sale and Lease back
+
+* Assets owned by a party is sold to raise cash
+* then the assets are leased back from the new owner (owner sells his assets to raise cash, and leases it back from new owner)
+* This removes expensive assets from borrower's (prev owner) balance sheet
+* the lease payments are derived from the income earned from the asset, and the money they initially raised can be used for something else.
+* ex. govt may sell its railway rolling stock to investment company and thenn immediately lease the railway stock back to continue operating the railway service.
+
+
+
+### Cross-border lease
+
+* lessor from one country leases asset to lessee in another country
+* one specific reason may also be that the tax in the other country may be better than the lessor's.
+* ex. airline company like Quantas may lease aircraft from an international finance group or lease surplus aircrafts from British Airways over the summer tourist season.
+
+
+
+### Leveraged Finance
+
+lessor (lender) borrows money to buy an asset and leases that asset to lessee.
+
+* Lessor contributes limited equity and borrows majority of funds req. to buy an asset
+* they have lease managers that:
+	* structure and negotiate the lease and manages it for its life
+	* brings together the lessor (or equity participants), debt parties and lessee
+* lessor gains tax advantages from depreciation of equipment and interest paid to debt parties.
+
+
+
+### Equity Leasing
+
+* same as leveraged lease but the funds needed to buy the asset comes from the lessor directly.
+* its usually smaller than leveraged lease
+* has many characteristics of leveraged lease including formation of partnership to purchase the asset but not the advantage of leverage.
 
 # Calculations
 
