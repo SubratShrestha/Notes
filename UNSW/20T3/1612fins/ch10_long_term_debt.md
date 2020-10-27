@@ -261,9 +261,9 @@ Also for short term debt or discount securites, the P < FV. But in long term deb
 	FV=100000\\
 	i=\frac{0.08}{2}=0.04\\
 	C=100000\times\frac{0.1}{2}=5000\\
-	n=2017-2011=6\times2=12\\
-	PV_{coupons}= 5000(\frac{1-(1+0.04)^{-12}}{0.04})=46925\\
-	PV_{face\ value}=100000(1+0.04)^{-12}=62459.70\\
+	n=7\times2=14\\
+	PV_{coupons}= 5000(\frac{1-(1+0.04)^{-14}}{0.04})=46925\\
+	PV_{face\ value}=100000(1+0.04)^{-14}=62459.70\\
 	P=46925.37+62459.70=109385.07\\
 	P_{20\ may\ 2011} = 109385.07\times(1 + 0.04)^{\frac{140}{181}}=\$112,754.27
 	$$
