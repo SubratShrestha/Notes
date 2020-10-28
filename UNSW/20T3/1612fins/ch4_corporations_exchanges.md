@@ -1,4 +1,4 @@
-# Chapter 4
+# Chapter 4: The Share market and corporations.
 
 # Corporations
 
@@ -89,13 +89,13 @@ A stock exchange facilitates the efficient and orderly sale/issue of **new** fin
 * a derivative is a financial security that **derives** its price from an underlying commodity (like gold) or financial instrument (like shares of BHP or options)
 * They can be:
 	* Exchange traded contracts that are **standardised** financial contracts traded on formal exchange like options, warrants, futures contracts, contracts for difference.
-	* over-the-counter contracts are non-standardised contracts negotiated between writer and buyer.
+	* over-the-counter contracts are **non-standardised** contracts negotiated between writer and buyer.
 
 
 
 ## Interest rate market role
 
-market that facilitates issue of debt securities and the subsequent trading of those securities on a formal exchange like Straight corporate bonds, floating rate notes (FRNs), convertible notes, preference shares.
+market that facilitates issue of **debt securities** and the subsequent trading of those securities on a formal exchange like Straight corporate bonds, floating rate notes (FRNs), convertible notes, preference shares.
 
 These were over-the-counter contracts (non standardised and not traded in exchanges) but are now listed on exchanges because they add value like:
 
