@@ -1,4 +1,4 @@
-# Chapter 11: Interest rate determination
+# Chapter 13: Interest rate determination
 
 2 Approaches to interest rate determination: **macroeconomic context** and **loanable funds** approach.
 
@@ -146,6 +146,10 @@ Corporate bonds are priced using a spread off the government benchmark bond yiel
 The **current short term** interest rate and **expectations** about the **future short term** interest rates are used to explain the shape and changes in shape of the yield curve.
 
 Longer term rates will be equal to the avg. of the short term rates expected over the period.
+$$
+i_{long} = \frac{i_{short} + i_{Expec.\ short}}{2}
+$$
+
 
 Based on **assumptions** that:
 
@@ -201,3 +205,44 @@ But the segmented markets theory denies the existance of investors seeking
 Assumes investors have a preference for shorter term instruments because they have greater liquidity and less maturity and interest rate risk. So the investors need to be compensated for investing in longer term securites, and this compensation is the **liquidity premium**.
 
 ![image-20201027191229277](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\ch11_interest_rate.assets\image-20201027191229277.png)
+
+The formula from expected market theory then becomes
+$$
+i_{long} = \frac{i_{short} + i_{Expec.\ short} + L}{2}
+$$
+where L is the liquidity premium.
+
+
+
+## What determines the Yield curve?
+
+The LHS of the yield curve is manipulated directly by the Central Bank (RBA here, Federal reserve system in US).
+
+The RHS or the long term yield is not determined by one thing, its more indirect, the long term yield drivers are:
+
+* interest rate forecasts
+* long term GDP growth estimates
+* demographics
+* demand for long term borrowing
+* supply of long term lending
+* especially inflation expectations.
+
+Ex. So if bond investors expect that the central bank needs to raise the short term yield, bond investors will lift the yields on the long term end, but short term yields are still low because the central bank hasn't done anything. This results in a very **steep normal yield curve, which is a classic sign of an accelerating economy.** And similarly, **a inverted yield curve is a sign of a bad omen** (worry and fear). This has been tested multiple times and right before every crisis we can find an inverted yield curve. 
+
+We can look at the **Term Premium** which is difference in yield of long term government bonds and short term government bonds. If the Term premium is negative - Icebergs ahead!
+
+Long term bonds have greater risk than short term bonds, and so the term premium is the compensation for that risk, much like liquidity premium.
+
+# Risk Structure of Interest rates
+
+## Default Risk
+
+Default risk is the risk that the borrower will fail to meet its interest payments.
+
+The Commonwealth government bonds are assumed to have zero default risk as they are risk free and offer risk free rate of return.
+
+Other borrowers are not the same, they have a greater default risk (ex. state government or private sector firms) so investors need compensation for the extra risk and we call that the **spread** or **Risk Premium** which is calculated as the difference between yields of the corporate and government bonds.
+
+![image-20201027192829354](C:\Users\subra\Documents\Notes\UNSW\20T3\1612fins\ch11_interest_rate.assets\image-20201027192829354.png)
+
+Treasury bonds are the benchmark.

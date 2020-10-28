@@ -2,11 +2,22 @@
 
 # Corporations
 
-## Advantages of being publically listed
+A corporation is a company whose shares are quoted and traded on a stock exchange, these shares are Ordinary shares which is a form of equity issued by a corporation, which gives a claim to residual cash flows and ownership and voting rights to the buyer of the share.
 
-* obtain large amount of finance for cheap
-* separation of ownership and control
-* perpetual succession - long-term survival of corporation and unaffected by changes in ownership and management
+So in a corporation:
+
+* ownership claims are widespread and easily transferable (shares/ownership can be bought/sold).
+* shareholders don't affect the day-to-day affairs of the company.
+* shareholder's liability is limited to:
+	* issue price of shares of a limited liability company
+	* any partly paid portion of shares of a no-liability company.
+	* (difference between limited liability and no liability company discussed in later chap.)
+
+## Advantages of being publically listed (being corp.)
+
+* **obtain large amount of finance for cheap** 
+* separation of ownership and control (managers and owners), more effective.
+* perpetual succession - long-term survival of corporation and unaffected by change s in ownership (because there are a lot of them and they can be bought/sold) and management
 * large  scale
 * **Evidence**:
 	* Following GFC, many corporations were forced to raise additional capital through the stock market (if companies weren't corporations, they wouldn't be able to do this)
@@ -41,7 +52,7 @@ The main functions of exchanges are to:
 
 # Roles of stock exchange
 
-## Primary role of Stock exchange
+## Primary market role of Stock exchange
 
 A stock exchange facilitates the efficient and orderly sale/issue of **new** financial securities through:
 
@@ -52,23 +63,23 @@ A stock exchange facilitates the efficient and orderly sale/issue of **new** fin
 
 
 
-## Secondary role of Stock exchange
+## Secondary market role of Stock exchange
 
 * Facilitates trading in existing shares.
 * No new funds are raised by the issuing company
-* An active, liquid, well-organised secondary market increases the appeal of buying new shares in primary market (helps with subsequent raising bec. company has to get ongoing funding).
+* An active, liquid, well-organised secondary market increases the appeal of buying new shares in primary market (helps with subsequent raising bec. company has to get ongoing funding, not just IPO).
 * **calculation question that can show up**
 	* Market liquidity = ratio of value of share turnover (trading volume or trading value) to market capitalisation (no. of shares on issue x current share price)
 	* market capitalization gives us a view of the size of the corporation or the exchange itself.
 
 
 
-## Managed product role
+## Managed product (unit trusts/ETFs) role
 
 * provides a market for trading managed products (unit trusts)
 * equity-based managed products are professionally managed funds
-* the units are bought and sold on the stock exchange in the same way as shares in corporations
-* ex. ETFs, real estate investment trusts (REITs), infrastructure funds
+* the units (unit trusts) are bought and sold on the stock exchange in the same way as shares in corporations
+* ex. ETFs, real estate investment trusts (REITs), infrastructure funds.
 
 
 
