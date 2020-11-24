@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Calculator for FINS1612</title>
+</head>
+
+<body>
+    <div class="container">
+        <form name="present_value">
+            <h2>Present value</h2>
+            <input name="cf" type="f" step="0.001" placeholder="CF" />
+            <input name="i" type="number" step="0.001" placeholder="i" />
+            <input name="t" type="number" step="0.001" placeholder="t" />
+            <p id="presentValueAnswer"></p>
+            <button onclick="return presentValue()">Calculate!</button>
+        </form>
+        <form name="price_form">
+            <h2>Price</h2>
+            <input name="cf" type="number" step="0.001" placeholder="CF" />
+            <input name="i" type="number" step="0.001" placeholder="i" />
+            <input name="n" type="number" step="0.001" placeholder="n" />
+            <p id="priceAnswer"></p>
+            <button onclick="return price()">Calculate!</button>
+        </form>
+        <form name="value_right">
+            <h2>Value of rights</h2>
+            <input name="r" type="number" step="0.001" placeholder="cum rights price" />
+            <input name="sub" type="number" step="0.001" placeholder="subscription price" />
+            <input name="n" type="number" step="0.001" placeholder="N" />
+            <p id="rightAnswer"></p>
+            <button onclick="return right()">Calculate!</button>
+        </form>
+    </div>
+</body>
+<script src="./script.js"></script>
+
+</html>
