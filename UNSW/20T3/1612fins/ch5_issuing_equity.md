@@ -229,7 +229,7 @@ If the asset that a company wants is another company (takeover), then the acquir
 
 ### Dividend reinvestment schemes
 
-Shareyholders have the option of reinvesting dividends in additional ordinary shares. Usually issued at a discount b/w 0 and 5% and no brokerage or stamp duty payable.
+Shareholders have the option of reinvesting dividends in additional ordinary shares. Usually issued at a discount b/w 0 and 5% and no brokerage or stamp duty payable.
 
 
 
