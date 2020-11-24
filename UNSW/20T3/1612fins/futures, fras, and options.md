@@ -170,3 +170,96 @@ This makes a perfect hedge impossible in some cases.
 * Initial margin is required when entering into a futures contract.
 * further cash is required if prices move adversely (margin calls).
 * opportunity costs associated with margin requirements.
+
+
+
+### Basis risk
+
+* Initial basis is the difference between the price in the physical market and the futures market at start of a hedging strategy. Ex. from prev. when the current commercial paper yield was 8% and the futures contract was 8.25%, so the initial basis was 0.25%.
+* Final basis is the difference between the price in the physical market and the futures market at completion of a hedging strategy.
+* a perfect hedge requires 0 initial and financial risk.
+
+
+
+### Cross-commodity hedging
+
+* Use of a commodity or fin. instrument to hedge a risk associated with another commodity or instrument, ex. like 90-day commercial paper when maybe 75-day loan is needed.
+* selection of a futures contract that has price movements that are highly correlated with the price of the commodity or instrument to be hedged, ex. maybe you sell wheat and you get rice futures to buy/sell in exchange to make a hedge.
+
+
+
+# Forward Rate Agreement (FRA)
+
+FRAs are over-the-counter (not traded in the exchange, instead its an agreement b/w 2 parties) product enabling management of interest rate risk exposure.
+
+The agree date is when the rate is agreed on, the settlement date is when the rate is applied, and the end date is when the FRA is finished (the contract period is over).
+
+* Agreement b/w parties on some interest rate that will apply at a specified date (NOT standardised, custom to the agreement)
+* Allows lender and borrower to lock in interest rates
+* no exchange of principal, unlike a loan
+* payment b/w the parties involves the difference b/w agreed interest rate and the actual interest rate at settlement
+
+
+
+An FRA includes:
+
+* FRA agree date, fixed at start of agreement
+* notional principal amount of the interest cover (no actual principal)
+* FRA settlement date when compensation is paid
+* contract period on which FRA interest rate cover is based (end date)
+* reference rate to be applied at settlement
+
+
+
+### Disadvantages
+
+* risk of non-settlement (credit risk - counterparty risk)
+* no formal market
+
+
+
+## Formula/e
+
+$$
+Settlement\ Compensation\ Amount = FRA\ settlement\ rate - agreed\ rate\\
+=\frac{365\times P_{notional}}{365 + (days\times i_{settle})}-\frac{365\times P_{notional}}{365 + (days\times i_{agree})}
+$$
+
+* use the number of days in some months if specific dates not provided (180 for 6 months)
+
+
+
+## Pros and Cons
+
+### Advantages
+
+* Custom made agreements providing great flexibility with respect to contract period and the amount of each contract.
+* unlike futures contract, an FRA doesn't have any margin payments, no exchange involved.
+
+
+
+### Disadvantages
+
+* Risk of non-settlement (credit risk - counterparty risk)
+* no formal market exists and concern about difficulty closing out FRA position is overcome by entering into another FRA opposite to the original agreement.
+
+
+
+## Example
+
+On 19 Sept. this year a company wishes to lock in the interest rate on a prospective borrowing of \$5 000 000 for a 6 month period from 19 Apr. next year to 19 Oct. of the same year. An FRA dealer quotes '7Mv13M(19) 13.25 to 20'. On 19 Apr. the BBSW on 180-day money is 13.95% p.a.
+
+Here:
+
+* at t=0 (Sept) company wants to borrow
+* at t=7 (apr) is the settlement date
+* at t=9 (oct) is the end date
+* since the dealer will always seek a profit, the company get quoted the higher rate (13.25), and this is the agreed rate
+* Fra starts in 7 months, the quote related to 6 month money (ie. 7 + 6 = 13 months), 19 is the settlement date dealer is willing to lend at 13.25 and borrow at 13.20 (5 bps spread).
+
+$$
+Settlement=\frac{365\times 5000000}{365+(183\times 0.1395)}-\frac{365\times 5000000}{365+(183\times 0.1325)}\\
+=-\$15379.19.
+$$
+
+As the interest rates have risen over the period, the settlement of \$15,379.19 is paid by the FRA dealer to the company.
