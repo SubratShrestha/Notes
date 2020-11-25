@@ -95,7 +95,7 @@ Like IPOs, they can have underwriters that help the corporation get the amount t
 * Price, Face value:
 
 	* $$\begin{align*}
-		P = \frac{FV}{(1\ +\ r)^t},\ P=price, F=face\ value, r=yield, t=days\ to\ maturity\ /\ 365
+		P = \frac{FV}{(1\ +\ rt)},\ P=price, F=face\ value, r=yield, t=days\ to\ maturity\ /\ 365
 		\end{align*}$$
 	* $$FV = P(1+rt)$$
 

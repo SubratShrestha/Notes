@@ -9,6 +9,7 @@
 
 <body>
     <div class="container">
+        <h1>Issuing Equity</h1>
         <form name="present_value">
             <h2>Present value</h2>
             <input name="cf" type="f" step="0.001" placeholder="CF" />
@@ -17,7 +18,7 @@
             <p id="presentValueAnswer"></p>
             <button onclick="return presentValue()">Calculate!</button>
         </form>
-        <form name="price_form">
+        <form name="equity_price">
             <h2>Price</h2>
             <input name="cf" type="number" step="0.001" placeholder="CF" />
             <input name="i" type="number" step="0.001" placeholder="i" />
@@ -32,6 +33,41 @@
             <input name="n" type="number" step="0.001" placeholder="N" />
             <p id="rightAnswer"></p>
             <button onclick="return right()">Calculate!</button>
+        </form>
+
+        <h1>Discount securities</h1>
+        <form name="discount_price">
+            <h2>Discount securities price</h2>
+            <input name="fv" type="number" step="0.001" placeholder="future value" />
+            <input name="r" type="number" step="0.001" placeholder="rate" />
+            <input name="t" type="number" step="0.001" placeholder="days to maturity" />
+            <p id="discountPriceAnswer"></p>
+            <button onclick="return discountPrice()">Calculate!</button>
+        </form>
+        <form name="discount_fv">
+            <h2>Discount securities future value</h2>
+            <input name="p" type="number" step="0.001" placeholder="price" />
+            <input name="r" type="number" step="0.001" placeholder="rate" />
+            <input name="t" type="number" step="0.001" placeholder="days to maturity" />
+            <p id="discountFvAnswer"></p>
+            <button onclick="return discountFv()">Calculate!</button>
+        </form>
+        <form name="discount_yield">
+            <h2>Discount securities yield</h2>
+            <input name="s" type="number" step="0.001" placeholder="sell" />
+            <input name="b" type="number" step="0.001" placeholder="buy" />
+            <input name="t" type="number" step="0.001" placeholder="days held/maturity" />
+            <p id="discountYieldAnswer"></p>
+            <button onclick="return discountYield()">Calculate!</button>
+        </form>
+        <form name="discount_rate">
+            <h2>Discount rate</h2>
+            <input name="s" type="number" step="0.001" placeholder="sell" />
+            <input name="b" type="number" step="0.001" placeholder="buy" />
+            <input name="fv" type="number" step="0.001" placeholder="future value" />
+            <input name="t" type="number" step="0.001" placeholder="days held/maturity" />
+            <p id="discountRateAnswer"></p>
+            <button onclick="return discountRate()">Calculate!</button>
         </form>
     </div>
 </body>
