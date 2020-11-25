@@ -37,6 +37,28 @@ function right(
     return args ? value : false;
 }
 
+function constantDividend(
+    d = parseFloat(document.forms['constant_dividend']['d'].value),
+    r = parseFloat(document.forms['constant_dividend']['r'].value),
+    args = false
+) {
+    const answer = document.getElementById('constantDividendAnswer');
+    answer.textContent = `${d / r}`;
+    return args ? d / r : false;
+}
+
+function constantDividendGrowth(
+    d = parseFloat(document.forms['constant_dividend_growth']['d'].value),
+    g = parseFloat(document.forms['constant_dividend_growth']['g'].value),
+    r = parseFloat(document.forms['constant_dividend_growth']['r'].value),
+    args = false
+) {
+    const answer = document.getElementById('constantDividendGrowthAnswer');
+    const p = d * ((1 + g) / (r - g));
+    answer.textContent = p;
+    return args ? p : false;
+}
+
 function discountPrice(
     fv = parseFloat(document.forms['discount_price']['fv'].value),
     r = parseFloat(document.forms['discount_price']['r'].value),
@@ -85,6 +107,18 @@ function discountRate(
     const rate = ((s - b) / fv) * (36500 / t);
     answer.textContent = rate;
     return args ? rate : false;
+}
+
+function opportunityCost(
+    d = parseFloat(document.forms['opportunity_cost']['d'].value),
+    l = parseFloat(document.forms['opportunity_cost']['l'].value),
+    e = parseFloat(document.forms['opportunity_cost']['e'].value),
+    args = false
+) {
+    const answer = document.getElementById('opportunityCostAnswer');
+    const op = (d / (100 - d)) * (365 / (l - e));
+    answer.textContent = op;
+    return args ? op : false;
 }
 
 function forexReverse(

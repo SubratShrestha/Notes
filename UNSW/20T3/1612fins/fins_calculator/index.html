@@ -34,6 +34,22 @@
             <p id="rightAnswer"></p>
             <button onclick="return right()">Calculate!</button>
         </form>
+        <form name="constant_dividend">
+            <h2>Constant dividend valuation</h2>
+            <input name="d" type="number" step="0.0001" placeholder="Dividend" />
+            <input name="r" type="number" step="0.0001" placeholder="rate of return" />
+            <p id="constantDividendAnswer"></p>
+            <button onclick="return constantDividend()">Calculate!</button>
+        </form>
+        <form name="constant_dividend_growth">
+            <h2>Constant dividend growth valuation</h2>
+            <input name="d" type="number" step="0.0001" placeholder="initial dividend value" />
+            <input name="g" type="number" step="0.0001" placeholder="dividend growth rate" />
+            <input name="r" type="number" step="0.0001" placeholder="rate of return" />
+            <p id="constantDividendGrowthAnswer"></p>
+            <button onclick="return constantDividendGrowth()">Calculate!</button>
+        </form>
+        <hr />
 
         <h1>Discount securities</h1>
         <form name="discount_price">
@@ -69,6 +85,15 @@
             <p id="discountRateAnswer"></p>
             <button onclick="return discountRate()">Calculate!</button>
         </form>
+        <form name="opportunity_cost">
+            <h2>Opportunity cost</h2>
+            <input name="d" type="number" step="0.0001" placeholder="discount (whole)" />
+            <input name="l" type="number" step="0.0001" placeholder="late (days)" />
+            <input name="e" type="number" step="0.0001" placeholder="early (days)" />
+            <p id="opportunityCostAnswer"></p>
+            <button onclick="return opportunityCost()">Calculate!</button>
+        </form>
+        <hr />
 
         <h1>Foreign exchange</h1>
         <form name="forex_reverse">
