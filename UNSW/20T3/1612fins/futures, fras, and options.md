@@ -169,7 +169,7 @@ This makes a perfect hedge impossible in some cases.
 
 * Initial margin is required when entering into a futures contract.
 * further cash is required if prices move adversely (margin calls).
-* opportunity costs associated with margin requirements.
+* opportunity costs and liquidity risks associated with margin requirements.
 
 
 
@@ -177,7 +177,9 @@ This makes a perfect hedge impossible in some cases.
 
 * Initial basis is the difference between the price in the physical market and the futures market at start of a hedging strategy. Ex. from prev. when the current commercial paper yield was 8% and the futures contract was 8.25%, so the initial basis was 0.25%.
 * Final basis is the difference between the price in the physical market and the futures market at completion of a hedging strategy.
-* a perfect hedge requires 0 initial and financial risk.
+* the longer the term to maturity of a futures contract, the greater the potential for price difference
+* difference appears bec. futres contract pricing includes the expectation of market, so if the market consensus of some security's yield is for it to increase, the futures contract will reflect it, and so it will have a difference to the physical market price at the time.
+* a perfect hedge requires 0 initial and final risk.
 
 
 
@@ -226,6 +228,14 @@ Settlement\ Compensation\ Amount = FRA\ settlement\ rate - agreed\ rate\\
 $$
 
 * use the number of days in some months if specific dates not provided (180 for 6 months)
+
+$$
+Effective\ cost\ of\ funds=\frac{net\ cost}{total\ amt}\times \frac{365}{days}\\
+ex.\\
+E=\frac{FV-discounted\ amt - futures\ profit}{discounted\ amt + futures\ profit}\times\frac{365}{90}
+$$
+
+
 
 
 

@@ -86,3 +86,28 @@ function discountRate(
     answer.textContent = rate;
     return args ? rate : false;
 }
+
+function forexReverse(
+    v1 = parseFloat(document.forms['forex_reverse']['v1'].value),
+    v2 = parseFloat(document.forms['forex_reverse']['v2'].value),
+    args = false
+) {
+    const rev1 = (1 / v2).toFixed(4);
+    const rev2 = (1 / v1).toFixed(4);
+    const answer = document.getElementById('forexReverseAnswer');
+    answer.textContent = [rev1, rev2].join(',');
+    return args ? [rev1, rev2] : false;
+}
+
+function forexForward(
+    s = parseFloat(document.forms['forex_forward']['s'].value),
+    iBase = parseFloat(document.forms['forex_forward']['i_base'].value),
+    iTerm = parseFloat(document.forms['forex_forward']['i_term'].value),
+    t = parseFloat(document.forms['forex_forward']['t'].value),
+    args = false
+) {
+    const answer = document.getElementById('forexForwardPoints');
+    const points = s * (((1 + (iTerm * (t / 360))) / (1 + (iBase * (t / 360)))) - 1);
+    answer.textContent = `Points = ${Math.round(points * 10000)}, Forward rate = ${s + points}`;
+    return args ? points : false;
+}
