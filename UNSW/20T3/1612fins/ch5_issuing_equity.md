@@ -300,7 +300,7 @@ Share price is mainly function of supply and demand for a share.
 * Constant Dividend growth (g)
 
 	* $$
-		P=D\frac{1+g}{r-g}
+		P=D_0\frac{1+g}{r-g}
 		$$
 
 
