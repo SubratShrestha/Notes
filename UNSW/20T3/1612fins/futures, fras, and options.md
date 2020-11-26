@@ -273,3 +273,73 @@ Settlement=\frac{365\times 5000000}{365+(183\times 0.1395)}-\frac{365\times 5000
 $$
 
 As the interest rates have risen over the period, the settlement of \$15,379.19 is paid by the FRA dealer to the company.
+
+
+
+
+
+# Options
+
+Types of options - over the counter, exchange traded (clearing house creates the buy and sell options contracts through 'novation').
+
+The australian options market has:
+
+* options on futures
+* share options
+* low-exercise-price options
+* warrants
+* over the counter options
+
+## Value of Call option
+
+$$
+V_{buyer/long} = max(S - X, 0) - P\\
+V_{writer/seller/short} = P - max(S - X, 0) \\
+X=strike, S=spot, P=premium
+$$
+
+
+
+## Value of Put option
+
+$$
+V_{buyer/long} = max(X-S, 0) - P\\
+V-{seller/short} = P - max(X-S, 0)
+$$
+
+## Black Scholes Option Pricing Model
+
+The value of an option depends on the spot price, strike price and the premium. 
+
+To determine the premium that affects the value of options, the model considers:
+
+* intrinsic value
+	* is whether someone would profit, break even, or just pay premium and be at a loss
+	* intrinsic value is "in-the-money" if
+		* Call option: S > X
+		* Put option: S < X
+	* intrinsic value is "at-the-money" if
+		* Call option: S = X
+		* Put option: S = X
+	* intrinsic value is "out-of-money" if
+		* Call option: S < X
+		* Put option: S > X
+* time value
+	* the longer the time to expiry, the greater the possibility that the option will be able to be exercised for a profit ('in the money').
+	* if the time to expiry is high, then there's a greater chance you'd make a profit, so the premium would be higher
+* price volatility
+	* the greater the volatility of the spot price, the greater the chance of exercising the option for a profit, or a loss (more demand for them).
+* interest rates
+	* +ve relationship b/w interest rates and price of call
+	* -ve relationship b/w interest rates and price of put
+
+
+
+## Using Options
+
+* holding asset and Bearish (expecting fall) about future price:
+	* short call option
+	* if the price does fall, by shorting a call option (selling the right to buy), your loss is offset by the premium the buyer will give you
+* shorting an asset (profit when price is low), but bullish about future price:
+	* buy call option
+	* unlimited profit from option will offset the loss from bullish asset.

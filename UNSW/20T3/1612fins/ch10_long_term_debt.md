@@ -221,8 +221,11 @@ Also for short term debt or discount securites, the P < FV. But in long term deb
 	\ \\
 	PV_{face\ value} = A(1+i)^{-n}\\
 	where\ A=principal,\ i=interest, n=no.of\ cashflows\\
+	\\\
+instalment\ amt = \frac{A}{\frac{1-(1+i)^{-n}}{i}} (when\ paid\ end\ of\ month)\\
+	instalment\ amt = \frac{A}{\frac{1-(1+i)^{-n}}{i}\times(1+i)} (when\ paid\ start\ of\ month)
 	$$
-
+	
 * When the bond is **sold between coupon dates**, the Price will be:
 
 * $$
@@ -268,4 +271,31 @@ Also for short term debt or discount securites, the P < FV. But in long term deb
 	P_{20\ may\ 2011} = 109385.07\times(1 + 0.04)^{\frac{140}{181}}=\$112,754.27
 	$$
 
-* 
+
+
+
+ex. As the owner of a small architectural firm, you approach the Commonwealth Bank to obtain a term loan so that the firm can buy a new computer-aided drawing machine. The bank offers your company a loan of $28 500 over a three-year period  at a rate of interest of 8.65 per cent per annum, payable at the end of each month. Calculate the monthly loan instalment. 
+$$
+A = 28500\\
+n = 3 \times 12 = 36\\
+i = \frac{0.0865}{12} = 0.007208\\
+R = \frac{A}{\frac{1-(1+i)^{-n}}{i}} = \frac{28500}{\frac{1-(1+0.007208)^{-36}}{0.007208}} = 901.65
+$$
+ex. The architectural firm owner in above question also approaches the National Australia Bank to obtain a quote on the loan facility. The competitor bank (NAB) also offers the company a fully drawn advance of $28 500 over a three-year period at a rate of interest of 8.65 per cent per annum, but payable in advance at the beginning of each month. Calculate the monthly loan instalment. Explain why the instalment payment is different from the instalment in above question.
+$$
+A=28500\\
+n = 3 \times 12 = 36\\
+i = \frac{0.00865}{12} = 0.007208\\
+R = \frac{28500}{\frac{1-(1+0.007208)^{-36}}{0.007208}(1+0.007208)}=895.20
+$$
+ 
+
+
+
+ex. After three years of excellent business growth, a local mattress manufacturer decides to expand and purchase new business premises costing \$1 250 000. In addition, establishment expenses of 0.50 per cent of the purchase price, plus estimated legal expenses of \$15 000 are payable. The total cost to purchase the property will be financed by \$225 000 of the firm’s own funds plus a mortgage loan from ANZ Bank. The bank offers a mortgage loan at 8.15 per cent per annum. The loan will be amortized by monthly instalments over the next 12 years, payable at the end of each month. What is the amount of each monthly instalment? 
+$$
+A =1250000+(0.005\times1250000)+15000-225000=1046250\\
+n=12\times12=144\\
+i=\frac{0.0815}{12}=0.0067916\\
+R = 
+$$

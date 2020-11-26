@@ -145,3 +145,36 @@ function forexForward(
     answer.textContent = `Points = ${Math.round(points * 10000)}, Forward rate = ${s + points}`;
     return args ? points : false;
 }
+
+function loanInstalment(
+    a = parseFloat(document.forms['loan_instalment']['a'].value),
+    n = parseFloat(document.forms['loan_instalment']['n'].value),
+    i = parseFloat(document.forms['loan_instalment']['i'].value),
+    ann = document.forms['loan_instalment']['ann'].value,
+    args = false
+) {
+    const answer = document.getElementById('loanInstalmentAnswer');
+    let r = 0;
+    let b = (1 - Math.pow((1 + i), (n * -1))) / i;
+    if (ann === 'end') {
+        r = a / b;
+    } else if (ann === 'start') {
+        r = a / (b * (1 + i));
+        console.log('start');
+    }
+    answer.textContent = r;
+    return args ? r : false;
+}
+
+function loanPrice(
+    a = parseFloat(document.forms['loan_price']['a'].value),
+    n = parseFloat(document.forms['loan_price']['n'].value),
+    i = parseFloat(document.forms['loan_price']['i'].value),
+    c = parseFloat(document.forms['loan_price']['c'].value),
+    args = false
+) {
+    const answer = document.getElementById('loanPriceAnswer');
+    const p = (c * ((1 - Math.pow((1 + i), n * -1)) / i)) + (a * Math.pow((1 + i), n * -1));
+    answer.textContent = p;
+    return args ? p : false;
+}
