@@ -60,11 +60,7 @@ We can use multiple queues for each queue
 
 <img src="D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210301191440187.png" alt="image-20210301191440187" style="zoom:67%;" />
 
-
-
-
-
-## Thread Model
+# Thread Model
 
 Separating execution from the environment.
 
@@ -76,13 +72,72 @@ The process (container for threads) has all the attributes of what we think of a
 
 
 
+**Analogy:** 
+
+In a **single threaded restaurant** where there is only **a single person working**, the work done by the processor/person would look something like:
+
+wait for customer -> customer arrives -> take order -> start cooking fries -> wait for fries -> fries cook -> start on burger -> wait for burger -> burger finishes -> assemble -> serve customer -> repeat.
+
+It would take ages for a single order to finish.
 
 
 
+In a **multithreaded restaurant** where there are **3 people working**, the work might look like: 
+
+Thread #1: wait for customer -> customer arrives -> take order -> assemble order -> serve -> repeat
+
+Thread #2: start fries -> wait for fries -> fries cook -> repeat
+
+Thread #3: start burger -> wait for burger -> burger finishes -> repeat
 
 
 
+## Structure
+
+<img src="D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210302132536875.png" alt="image-20210302132536875" style="zoom:67%;" />
+
+In this example, there is a single process that has 3 threads. Say there is a single matrix multiply function somewhere and each thread is running this function. Each instance of a function has its own local variables but since there are three threads using the same function, they would have the same variables.
+
+This is why each thread needs its own stack so that this data corruption doesn't happen.
+
+* Local variables are per thread and allocated on the thread's stack
+* Global variables are shared between all threads and are allocated in the data section, this brings up a lot of concurrency issues
+* Dynamically allocated memory with something like `malloc()` can be global or local depending on the pointer. If the pointer is local to thread's stack, then the allocated memory is also local, and if the pointer is a global variable, then the allocated memory is also global and will have concurrency issues.
+
+# Fininte-State Machine Model/Event-based Model
+
+There's no reason for a single thread machine to do just one thing at a time, with a finite state machine model, a single threaded processor can do multiple things. 
+
+From the previous analogy, we can have:
+
+![image-20210302125644059](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210302125644059.png)
+
+So **customer arrives**, we take order, start fries, start burger, **another customer arrives**, we take order, start fries ... **fries for customer #1 is done**, still wait, **burger for customer #1 is done**, assemble the order, **burger for customer #2 is done**, still assembling customer #1's order, **assembling done for customer #1**, serve customer #1, etc.
+
+So basically we don't have to sit around and doing nothing, we classify some events as blocking and some as non-blocking which can be done asynchronously. So we don't have to wait for the fries or the burger to finish to take another order.
+
+But we need some extra bookkeeping that identifies the work being done to the customer because everything is happening at once. 
+
+The thread model doesn't need to have explicit bookkeeping.  
 
 
 
+# Summary
 
+| **Model**               | Characteristics                                              |
+| ----------------------- | ------------------------------------------------------------ |
+| Single-threaded process | No parallelism, blocking syscalls                            |
+| Multithreaded process   | Parallelism, blocking syscalls                               |
+| Finite-state machine    | Parallelism, non-blocking syscalls, interrupts but more work |
+
+
+
+**Why threads?**
+
+* Simpler to program than a whole state machine
+* Less resources associated with them than a process
+	* Since the act of creating a process takes a lot of computing resources like bookkeeping, memory, open files, etc., creating/destroying threads is much cheaper, and threads share resources (especially memory) between each other, processes don't.
+* Performance gains
+	* Threads waiting for I/O can be overlapped with computing threads (like a wordprocessor where one thread is dedicated to keyboard input, another thread could do the actual processing, another thread could do autosaving)
+* They can take advantage of the parallism available on machines with more than one CPU
+	* Bad when applications take up only a single processor (like thread_1 can do the logic and thread_2 can do the display stuff), the other processors will be idle and draining power for no reason.
