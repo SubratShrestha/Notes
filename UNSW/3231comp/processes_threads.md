@@ -23,7 +23,7 @@ wasn't always the case, old computers and now, supercomputers always do one thin
 
 If we can only run one process/thread at a time, only one program can be "running" at any time, and the others need to be either "ready" (if chosen), or "blocked" (made some request to OS, but something OS can't do immediately like reading from disk, waiting for network package).
 
-![image-20210222214430509](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210222214430509.png)
+![image-20210222214430509](D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210222214430509.png)
 
 a process has to be running to be blocked, and the only way that the cpu is idle is when every process is blocked, in which case the cpu just waits.
 
@@ -46,19 +46,19 @@ a process has to be running to be blocked, and the only way that the cpu is idle
 
 It chooses a Ready process to run. How it does this depends on the OS, but a simple example would be using a simple queue (a ready queue).
 
-![image-20210301183430723](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210301183430723.png)
+![image-20210301183430723](D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210301183430723.png)
 
 
 
 What about blocked processes? We can have another queue (blocked queue), but in this case since the events could be anything and we'd have to search through the whole blocked queue to find the process thats waiting on that specific event. 
 
-![image-20210301183531362](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210301183531362.png)
+![image-20210301183531362](D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210301183531362.png)
 
 
 
 We can use multiple queues for each queue
 
-<img src="D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210301191440187.png" alt="image-20210301191440187" style="zoom:67%;" />
+<img src="D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210301191440187.png" alt="image-20210301191440187" style="zoom:67%;" />
 
 # Thread Model
 
@@ -68,7 +68,7 @@ With the thread keeping track of what the low level state is of the microprocess
 
 The process (container for threads) has all the attributes of what we think of as a application like memory, global vars, open files, signal handling like how much time each thread within the process consumed, and bookkeeping and accounting info.
 
-![image-20210302122331981](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210302122331981.png)
+![image-20210302122331981](D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210302122331981.png)
 
 
 
@@ -94,7 +94,7 @@ Thread #3: start burger -> wait for burger -> burger finishes -> repeat
 
 ## Structure
 
-<img src="D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210302132536875.png" alt="image-20210302132536875" style="zoom:67%;" />
+<img src="D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210302132536875.png" alt="image-20210302132536875" style="zoom:67%;" />
 
 In this example, there is a single process that has 3 threads. Say there is a single matrix multiply function somewhere and each thread is running this function. Each instance of a function has its own local variables but since there are three threads using the same function, they would have the same variables.
 
@@ -110,7 +110,7 @@ There's no reason for a single thread machine to do just one thing at a time, wi
 
 From the previous analogy, we can have:
 
-![image-20210302125644059](D:\Notes\UNSW\21T1\comp3231\processes_threads.assets\image-20210302125644059.png)
+![image-20210302125644059](D:\Notes\UNSW\3231comp\processes_threads.assets\image-20210302125644059.png)
 
 So **customer arrives**, we take order, start fries, start burger, **another customer arrives**, we take order, start fries ... **fries for customer #1 is done**, still wait, **burger for customer #1 is done**, assemble the order, **burger for customer #2 is done**, still assembling customer #1's order, **assembling done for customer #1**, serve customer #1, etc.
 
