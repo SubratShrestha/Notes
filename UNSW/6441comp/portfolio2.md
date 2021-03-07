@@ -10,4 +10,10 @@
 * lecture reflection
 	*  https://www.openlearning.com/u/subratshrestha-qolhbw/blog/Week3LectureReflection/
 * tutorial prep
-	*  
+	*  https://www.openlearning.com/u/subratshrestha-qolhbw/blog/Week3CaseStudyPrep/
+* Cognitive bias activity
+	*  https://www.openlearning.com/u/subratshrestha-qolhbw/blog/CognitiveVulnerabilityOstrichEffect/
+	* comments:
+		*  https://www.openlearning.com/u/shuxiandong-qok68e/blog/CognitiveVulnerabilityResearch#comment-60436231a7b03d1b29c6d00e
+		*  https://www.openlearning.com/u/kevinhavdahl-qolrhl/blog/CognitiveVulnerabilitiesConfirmationBias#comment-604363cfa3ed3260da4e9510
+		*  https://www.openlearning.com/u/cameronwhiteball/blog/CognitiveVulnerabilityResearchSelectiveAttention#comment-604365873d793802034a47b7 (proud of this one)
