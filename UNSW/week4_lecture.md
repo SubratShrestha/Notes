@@ -32,10 +32,25 @@ These examples are "insiders" that you trust and are inside the wall.
 
 Why become an insider?
 
-Greed, moral reasons, threatened/blackmailed, idiot, been planted, revenge, 
+Greed, moral reasons, threatened/blackmailed, idiot, been planted, revenge, etc
 
 
 
 How do we deal with them?
 
 insiders on the insiders, watch and monitor, system where threats from them are minimized
+
+
+
+Whistleblowers
+
+Admire whistleblowers because it takes a lot of bravery and courage to pull something like that off - they know they will be hated, decredited, etc. 
+
+look up the names on the slides.
+
+"Whistleblower's handbook, history is a point of view" book recommendation.
+
+My Lai Massacre
+
+
+
